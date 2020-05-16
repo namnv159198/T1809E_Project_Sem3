@@ -17,6 +17,11 @@ namespace T1809E_Project_Sem3.Models
             return userIdentity;
         }
     }
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -31,5 +36,7 @@ namespace T1809E_Project_Sem3.Models
         }
 
         public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.Category> Categories { get; set; }
+
+       
     }
 }
