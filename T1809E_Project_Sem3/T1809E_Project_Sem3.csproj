@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,9 +160,6 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +181,87 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminTemplate\.gitignore" />
+    <Content Include="AdminTemplate\assets\css\style.css" />
+    <Content Include="AdminTemplate\assets\images\dashboard\circle.png" />
+    <Content Include="AdminTemplate\assets\images\dashboard\circle.svg" />
+    <Content Include="AdminTemplate\assets\images\dashboard\img_1.jpg" />
+    <Content Include="AdminTemplate\assets\images\dashboard\img_2.jpg" />
+    <Content Include="AdminTemplate\assets\images\dashboard\img_3.jpg" />
+    <Content Include="AdminTemplate\assets\images\dashboard\img_4.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces-clipart\pic-1.png" />
+    <Content Include="AdminTemplate\assets\images\faces-clipart\pic-2.png" />
+    <Content Include="AdminTemplate\assets\images\faces-clipart\pic-3.png" />
+    <Content Include="AdminTemplate\assets\images\faces-clipart\pic-4.png" />
+    <Content Include="AdminTemplate\assets\images\faces\face1.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face10.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face11.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face12.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face13.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face14.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face15.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face16.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face17.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face18.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face19.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face2.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face20.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face21.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face22.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face23.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face24.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face25.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face26.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face27.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face3.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face4.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face5.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face6.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face7.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face8.jpg" />
+    <Content Include="AdminTemplate\assets\images\faces\face9.jpg" />
+    <Content Include="AdminTemplate\assets\images\favicon.png" />
+    <Content Include="AdminTemplate\assets\images\logo-mini.svg" />
+    <Content Include="AdminTemplate\assets\images\logo.svg" />
+    <Content Include="AdminTemplate\assets\images\sprites\blue.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\dark.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\flag.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\green.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\jsgrid-icons.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\red.png" />
+    <Content Include="AdminTemplate\assets\images\sprites\yellow.png" />
+    <Content Include="AdminTemplate\assets\js\chart.js" />
+    <Content Include="AdminTemplate\assets\js\dashboard.js" />
+    <Content Include="AdminTemplate\assets\js\file-upload.js" />
+    <Content Include="AdminTemplate\assets\js\hoverable-collapse.js" />
+    <Content Include="AdminTemplate\assets\js\misc.js" />
+    <Content Include="AdminTemplate\assets\js\off-canvas.js" />
+    <Content Include="AdminTemplate\assets\js\todo.js" />
+    <Content Include="AdminTemplate\assets\js\todolist.js" />
+    <Content Include="AdminTemplate\assets\vendors\chart.js\Chart.min.js" />
+    <Content Include="AdminTemplate\assets\vendors\css\vendor.bundle.base.css" />
+    <Content Include="AdminTemplate\assets\vendors\js\vendor.bundle.base.js" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="AdminTemplate\gulp-tasks\inject.js" />
+    <Content Include="AdminTemplate\gulp-tasks\serve.js" />
+    <Content Include="AdminTemplate\gulp-tasks\vendors.js" />
+    <Content Include="AdminTemplate\gulpfile.js" />
+    <Content Include="AdminTemplate\index.html" />
+    <Content Include="AdminTemplate\pages\charts\chartjs.html" />
+    <Content Include="AdminTemplate\pages\forms\basic_elements.html" />
+    <Content Include="AdminTemplate\pages\icons\mdi.html" />
+    <Content Include="AdminTemplate\pages\samples\blank-page.html" />
+    <Content Include="AdminTemplate\pages\samples\error-404.html" />
+    <Content Include="AdminTemplate\pages\samples\error-500.html" />
+    <Content Include="AdminTemplate\pages\samples\login.html" />
+    <Content Include="AdminTemplate\pages\samples\register.html" />
+    <Content Include="AdminTemplate\pages\tables\basic-table.html" />
+    <Content Include="AdminTemplate\pages\ui-features\buttons.html" />
+    <Content Include="AdminTemplate\pages\ui-features\typography.html" />
+    <Content Include="AdminTemplate\partials\_footer.html" />
+    <Content Include="AdminTemplate\partials\_navbar.html" />
+    <Content Include="AdminTemplate\partials\_sidebar.html" />
+    <Content Include="AdminTemplate\screenshot.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -190,6 +272,102 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="AdminTemplate\.DS_Store" />
+    <Content Include="AdminTemplate\.git\config" />
+    <Content Include="AdminTemplate\.git\description" />
+    <Content Include="AdminTemplate\.git\HEAD" />
+    <Content Include="AdminTemplate\.git\hooks\applypatch-msg.sample" />
+    <Content Include="AdminTemplate\.git\hooks\commit-msg.sample" />
+    <Content Include="AdminTemplate\.git\hooks\fsmonitor-watchman.sample" />
+    <Content Include="AdminTemplate\.git\hooks\post-update.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-applypatch.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-commit.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-merge-commit.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-push.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-rebase.sample" />
+    <Content Include="AdminTemplate\.git\hooks\pre-receive.sample" />
+    <Content Include="AdminTemplate\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="AdminTemplate\.git\hooks\update.sample" />
+    <Content Include="AdminTemplate\.git\index" />
+    <Content Include="AdminTemplate\.git\info\exclude" />
+    <Content Include="AdminTemplate\.git\logs\HEAD" />
+    <Content Include="AdminTemplate\.git\logs\refs\heads\master" />
+    <Content Include="AdminTemplate\.git\logs\refs\remotes\origin\HEAD" />
+    <Content Include="AdminTemplate\.git\objects\pack\pack-ef284c3d4e21592f47d541860a9be710a02d0602.idx" />
+    <Content Include="AdminTemplate\.git\objects\pack\pack-ef284c3d4e21592f47d541860a9be710a02d0602.pack" />
+    <Content Include="AdminTemplate\.git\packed-refs" />
+    <Content Include="AdminTemplate\.git\refs\heads\master" />
+    <Content Include="AdminTemplate\.git\refs\remotes\origin\HEAD" />
+    <Content Include="AdminTemplate\assets\css\style.css.map" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.eot" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.woff" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.woff2" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.eot" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.woff" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.woff2" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.eot" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.woff" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.woff2" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.eot" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.woff" />
+    <Content Include="AdminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.woff2" />
+    <Content Include="AdminTemplate\assets\scss\components\_badges.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_bootstrap-progress.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_breadcrumbs.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_buttons.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_cards.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_checkbox-radio.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_dropdown.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_forms.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_icons.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_lists.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_preview.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_tables.scss" />
+    <Content Include="AdminTemplate\assets\scss\components\_todo-list.scss" />
+    <Content Include="AdminTemplate\assets\scss\landing-screens\_auth.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_animation.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_background.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_badges.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_blockqoute.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_breadcrumbs.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_buttons.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_cards.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_misc.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_pagination.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_popovers.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_text.scss" />
+    <Content Include="AdminTemplate\assets\scss\mixins\_tooltips.scss" />
+    <Content Include="AdminTemplate\assets\scss\style.scss" />
+    <Content Include="AdminTemplate\assets\scss\_dashboard.scss" />
+    <Content Include="AdminTemplate\assets\scss\_demo.scss" />
+    <Content Include="AdminTemplate\assets\scss\_fonts.scss" />
+    <Content Include="AdminTemplate\assets\scss\_footer.scss" />
+    <Content Include="AdminTemplate\assets\scss\_functions.scss" />
+    <Content Include="AdminTemplate\assets\scss\_layouts.scss" />
+    <Content Include="AdminTemplate\assets\scss\_misc.scss" />
+    <Content Include="AdminTemplate\assets\scss\_navbar.scss" />
+    <Content Include="AdminTemplate\assets\scss\_reset.scss" />
+    <Content Include="AdminTemplate\assets\scss\_sidebar.scss" />
+    <Content Include="AdminTemplate\assets\scss\_typography.scss" />
+    <Content Include="AdminTemplate\assets\scss\_utilities.scss" />
+    <Content Include="AdminTemplate\assets\scss\_variables.scss" />
+    <Content Include="AdminTemplate\assets\scss\_vertical-wrapper.scss" />
+    <Content Include="AdminTemplate\assets\scss\_widget-grid.scss" />
+    <Content Include="AdminTemplate\assets\vendors\js\bootstrap.min.js.map" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\css\materialdesignicons.min.css.map" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="AdminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="AdminTemplate\CHANGELOG.md" />
+    <Content Include="AdminTemplate\LICENSE" />
+    <Content Include="AdminTemplate\package.json" />
+    <Content Include="AdminTemplate\PSD\Purple_dashboard_free.psd" />
+    <Content Include="AdminTemplate\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -235,8 +413,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared_Admin\_NavBar.cshtml" />
+    <Content Include="Views\Shared_Admin\_SideBar.cshtml" />
+    <Content Include="Views\Shared_Admin\_Footer.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Button.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdminTemplate\.git\objects\info\" />
+    <Folder Include="AdminTemplate\.git\refs\tags\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
