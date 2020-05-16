@@ -29,5 +29,7 @@ namespace T1809E_Project_Sem3.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.Category> Categories { get; set; }
     }
 }
