@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using T1809E_Project_Sem3.Models;
-
+using PagedList;
 namespace T1809E_Project_Sem3.Controllers
 {
     public class CategoriesController : Controller
@@ -15,17 +15,34 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string currentFilter, int? page)
         {
-            var listCategory = new List<Category>();
-            foreach(var c in db.Categories.ToList())
-            {
-                if (c.Status.GetHashCode() != -1)
-                {
-                    listCategory.Add(c);
-                }
+            //Category category = new Category();
+            var categories = from s in db.Categories select s;
+            if (!String.IsNullOrEmpty(searchString)){
+                categories = categories.Where(s => s.Name.Contains(searchString));
             }
-            return View(listCategory);
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            //var listCategory = new List<Category>();
+            //foreach(var c in db.Categories.ToList())
+            //{
+            //    if (c.Status.GetHashCode() != -1)
+            //    {
+            //        listCategory.Add(c);
+            //    }
+            //}
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(categories.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Categories/Details/5
