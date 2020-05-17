@@ -3526,6 +3526,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+
+    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared_Admin\_NavBar.cshtml" />
+    <Content Include="Views\Shared_Admin\_SideBar.cshtml" />
+
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Button.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
@@ -3533,6 +3538,7 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
@@ -3544,6 +3550,13 @@
     <Content Include="Views\Admin\Basic_Table.cshtml" />
     <Content Include="Views\Admin\Edit_Table.cshtml" />
     <Content Include="Views\Admin\Responsive_Table.cshtml" />
+
+    <Content Include="Views\Admin\Chart.cshtml" />
+    <Content Include="Views\Admin\Table.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\css\css\css\css\" />
