@@ -31,7 +31,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Role Table</h4>
-               
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -53,11 +53,11 @@
 
                                 <td>
                                     <a href="@Url.Action("Edit", "Role", new { id = item.Id })" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a>
-                                    
+
                                     <button type="button" class="btn btn-sm btn-outline-success border-success " data-toggle="modal" data-target="#myModal">
                                         Delete
                                     </button>
-</tr>
+                            </tr>
                             <div class="modal" id="myModal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -92,7 +92,9 @@
                     </tbody>
                 </table>
 
-
+                <span class="btn btn-outline-success btn-fw">
+                    @Html.ActionLink("Add Role", "Create")
+                </span>
             </div>
         </div>
     </div>
