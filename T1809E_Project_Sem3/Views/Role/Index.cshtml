@@ -1,0 +1,65 @@
+﻿@using System.Collections.Specialized
+@using T1809E_Project_Sem3.Models
+@model IEnumerable<T1809E_Project_Sem3.Models.RoleViewModel>
+
+@{
+    ViewBag.Title = "Index";
+
+   Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+    var Iconsort = ViewBag.SortIcon;
+
+
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="content-wrapper">
+    <div class="grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <h4 class="card-title">Role Table</h4>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                                <i class="@Iconsort" aria-hidden="true"></i>
+                            </th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit", "Role", new {id = item.Id})" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a>
+                                    <a href="@Url.Action("Delete", "Role", new {id = item.Id})" class="btn btn-sm btn-outline-danger js-sweetalert border-danger" title="Delete" data-type="confirm"
+                                       onclick="return confirm('Xóa quyền Admin : @item.Name ')"><i class="fa fa-trash"></i></a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
