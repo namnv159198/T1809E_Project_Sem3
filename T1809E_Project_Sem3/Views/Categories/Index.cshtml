@@ -2,38 +2,77 @@
 
 @{
     ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">Category </h3>
+            @*<nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Category", "Index")</li>
+                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+            </nav>*@
+        </div>
+        <div class="row">
+            <div class="col-md-3 grid-margin stretch-card">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Index</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "mdi mdi-tooltip-edit my-class" }) |
+                                            @Html.ActionLink("Delete", "EditDelete", new { id = item.Id })
+                                        </td>
+                                    </tr>
+                                    @*<div class="col-sm-6 col-md-4 col-lg-3">
+                                        <i class="mdi mdi-delete"></i> mdi mdi-delete
+                                    </div>*@
+                                }
 
-</table>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-outline-success btn-fw">@Html.ActionLink("Create New", "Create")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+

@@ -21,19 +21,19 @@ namespace T1809E_Project_Sem3.Controllers
         }
 
         // GET: Categories/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Category category = db.Categories.Find(id);
+        //    if (category == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(category);
+        //}
 
         // GET: Categories/Create
         public ActionResult Create()
@@ -88,6 +88,25 @@ namespace T1809E_Project_Sem3.Controllers
             }
             return View(category);
         }
+
+        enum enumDelete
+        {
+            Active = 0,
+            Deactive = 1,
+            Delete = -1
+        }
+        public ActionResult EditDelete([Bind(Include = "Id,Name,Status")] Category category)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                db.Entry(category).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+         
 
         // GET: Categories/Delete/5
         public ActionResult Delete(int? id)

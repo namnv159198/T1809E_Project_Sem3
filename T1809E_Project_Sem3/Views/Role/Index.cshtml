@@ -4,10 +4,19 @@
 
 @{
     ViewBag.Title = "Index";
+
    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
     var Iconsort = ViewBag.SortIcon;
 
+
 }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="content-wrapper">
     <p class="border-primary">

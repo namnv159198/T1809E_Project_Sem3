@@ -176,9 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005161756047_role.cs" />
-    <Compile Include="Migrations\202005161756047_role.Designer.cs">
-      <DependentUpon>202005161756047_role.cs</DependentUpon>
+    <Compile Include="Migrations\202005170338461_AddRole.cs" />
+    <Compile Include="Migrations\202005170338461_AddRole.Designer.cs">
+      <DependentUpon>202005170338461_AddRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -373,7 +373,6 @@
     <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Shared_Admin\_NavBar.cshtml" />
     <Content Include="Views\Shared_Admin\_SideBar.cshtml" />
-    <Content Include="Views\Shared_Admin\_Footer.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Button.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
@@ -404,8 +403,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005161756047_role.resx">
-      <DependentUpon>202005161756047_role.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005170338461_AddRole.resx">
+      <DependentUpon>202005170338461_AddRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
