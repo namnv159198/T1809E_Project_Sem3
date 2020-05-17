@@ -54,17 +54,25 @@ namespace T1809E_Project_Sem3.Controllers
          [HttpPost]
          public async Task<ActionResult> Create(RoleViewModel model)
          {
-        var role = new ApplicationRole() { Name = model.Name };
-        await RoleManager.CreateAsync(role);
-        return RedirectToAction("Index");
+             if (ModelState.IsValid)
+             {
+                 var role = new ApplicationRole() {Name = model.Name};
+                 await RoleManager.CreateAsync(role);
+                 return RedirectToAction("Index");
+            }
 
-         }
+             return View(model);
+        }
          [HttpPost]
         public async Task<ActionResult> Edit(RoleViewModel model)
         {
-            var role = new ApplicationRole() { Id = model.Id, Name = model.Name };
-            await RoleManager.UpdateAsync(role);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var role = new ApplicationRole() {Id = model.Id, Name = model.Name};
+                await RoleManager.UpdateAsync(role);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         public async Task<ActionResult> Delete(string id)

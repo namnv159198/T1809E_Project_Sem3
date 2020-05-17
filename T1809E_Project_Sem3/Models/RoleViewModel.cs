@@ -16,6 +16,7 @@ namespace T1809E_Project_Sem3.Models
         }
 
         public string Id { get; set; }
+
         [Required]
         public string Name { get; set; }
     }
