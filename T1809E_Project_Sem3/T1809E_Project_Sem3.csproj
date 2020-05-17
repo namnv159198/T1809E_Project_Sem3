@@ -176,9 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005170338461_AddRole.cs" />
-    <Compile Include="Migrations\202005170338461_AddRole.Designer.cs">
-      <DependentUpon>202005170338461_AddRole.cs</DependentUpon>
+    <Compile Include="Migrations\202005171434014_Add-Data.cs" />
+    <Compile Include="Migrations\202005171434014_Add-Data.Designer.cs">
+      <DependentUpon>202005171434014_Add-Data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3351,10 +3351,6 @@
     <Content Include="AdminTemplate\js\fuelux\img\tree-icons.png" />
     <Content Include="AdminTemplate\js\fuelux\js\spinner.min.js" />
     <Content Include="AdminTemplate\js\fuelux\js\tree.min.js" />
-    <Content Include="AdminTemplate\js\fullcalendar\bootstrap-fullcalendar.css" />
-    <Content Include="AdminTemplate\js\fullcalendar\fullcalendar.min.js" />
-    <Content Include="AdminTemplate\js\google-map\gmaps-init.js" />
-    <Content Include="AdminTemplate\js\google-map\gmaps.js" />
     <Content Include="AdminTemplate\js\gritter\css\jquery.gritter.css" />
     <Content Include="AdminTemplate\js\gritter\images\gritter-light.png" />
     <Content Include="AdminTemplate\js\gritter\images\gritter.png" />
@@ -3417,13 +3413,6 @@
     <Content Include="AdminTemplate\js\iCheck\skins\square\yellow%402x.png" />
     <Content Include="AdminTemplate\js\iCheck\skins\square\yellow.css" />
     <Content Include="AdminTemplate\js\iCheck\skins\square\yellow.png" />
-    <Content Include="AdminTemplate\js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.css" />
-    <Content Include="AdminTemplate\js\ion.rangeSlider-1.8.2\css\ion.rangeSlider.skinFlat.css" />
-    <Content Include="AdminTemplate\js\ion.rangeSlider-1.8.2\img\sprite-skin-flat.png" />
-    <Content Include="AdminTemplate\js\ion.rangeSlider-1.8.2\js\ion-rangeSlider\ion.rangeSlider.min.js" />
-    <Content Include="AdminTemplate\js\ios-switch\ios-init.js" />
-    <Content Include="AdminTemplate\js\ios-switch\switchery.css" />
-    <Content Include="AdminTemplate\js\ios-switch\switchery.js" />
     <Content Include="AdminTemplate\js\jquery-1.10.2.min.js" />
     <Content Include="AdminTemplate\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="AdminTemplate\js\jquery-multi-select\css\multi-select.css" />
@@ -3437,12 +3426,6 @@
     <Content Include="AdminTemplate\js\jquery.nicescroll.js" />
     <Content Include="AdminTemplate\js\jquery.stepy.js" />
     <Content Include="AdminTemplate\js\jquery.validate.min.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\data\jquery.vmap.sampledata.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\jquery.vmap.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\maps\continents\jquery.vmap.asia.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\maps\continents\jquery.vmap.australia.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\maps\continents\jquery.vmap.europe.js" />
-    <Content Include="AdminTemplate\js\jvector-map\jqvmap\maps\jquery.vmap.world.js" />
     <Content Include="AdminTemplate\js\main-chart.js" />
     <Content Include="AdminTemplate\js\modernizr.min.js" />
     <Content Include="AdminTemplate\js\morris-chart\morris.css" />
@@ -3526,11 +3509,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-
-    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
-    <Content Include="Views\Shared_Admin\_NavBar.cshtml" />
-    <Content Include="Views\Shared_Admin\_SideBar.cshtml" />
-
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Button.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
@@ -3538,11 +3516,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-
-    <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Role\Edit.cshtml" />
-    <Content Include="Views\Role\Create.cshtml" />
-    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Shared_Admin\_Header.cshtml" />
     <Content Include="Views\Shared_Admin\_Left_Slider.cshtml" />
     <Content Include="Views\Admin\Fontawesome.cshtml" />
@@ -3550,13 +3523,10 @@
     <Content Include="Views\Admin\Basic_Table.cshtml" />
     <Content Include="Views\Admin\Edit_Table.cshtml" />
     <Content Include="Views\Admin\Responsive_Table.cshtml" />
-
-    <Content Include="Views\Admin\Chart.cshtml" />
-    <Content Include="Views\Admin\Table.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
-
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\css\css\css\css\" />
@@ -7173,8 +7143,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005170338461_AddRole.resx">
-      <DependentUpon>202005170338461_AddRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005171434014_Add-Data.resx">
+      <DependentUpon>202005171434014_Add-Data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
