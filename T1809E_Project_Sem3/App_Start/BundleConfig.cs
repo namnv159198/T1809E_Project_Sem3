@@ -25,6 +25,21 @@ namespace T1809E_Project_Sem3
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            // Admin Template
+            bundles.Add(new StyleBundle("~/AdminTemplateContent/css").Include(
+                "~/AdminTemplate/assets/vendors/mdi/css/materialdesignicons.min.css",
+                "~/AdminTemplate/assets/vendors/css/vendor.bundle.base.css",
+                "~/AdminTemplate/assets/css/style.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/AdminTemplateBundles/jquery").Include(
+                "~/AdminTemplate/assets/vendors/js/vendor.bundle.base.js",
+                "~/AdminTemplate/assets/vendors/chart.js/Chart.min.js",
+                "~/AdminTemplate/assets/js/hoverable-collapse.js",
+                "~/AdminTemplate/assets/js/off-canvas.js",
+                "~/AdminTemplate/assets/js/misc.js",
+                "~/AdminTemplate/assets/js/dashboard.js",
+                "~/AdminTemplate/assets/js/todolist.js"));
         }
     }
 }
