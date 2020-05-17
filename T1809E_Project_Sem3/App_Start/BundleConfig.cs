@@ -25,6 +25,41 @@ namespace T1809E_Project_Sem3
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // Admin template
+            // file css
+            bundles.Add(new StyleBundle("~/AdminTemplateContent/css").Include(
+                "~/AdminTemplate/js/iCheck/skins/minimal/minimal.css",
+                "~/AdminTemplate/js/iCheck/skins/square/square.css",
+                "~/AdminTemplate/js/iCheck/skins/square/red.css",
+                "~/AdminTemplate/js/iCheck/skins/square/blue.css",
+                "~/AdminTemplate/css/clndr.css",
+                "~/AdminTemplate/css/style.css",
+                "~/AdminTemplate/css/style-responsive.css"));
+
+            // file js
+            bundles.Add(new ScriptBundle("~/AdminTemplateContent/js").Include(
+                "~/AdminTemplate/js/jquery-1.10.2.min.js",
+                "~/AdminTemplate/js/jquery-ui-1.9.2.custom.min.js",
+                "~/AdminTemplate/js/jquery-migrate-1.2.1.min.js",
+                "~/AdminTemplate/js/bootstrap.min.js",
+                "~/AdminTemplate/js/modernizr.min.js",
+                "~/AdminTemplate/js/jquery.nicescroll.js",
+                "~/AdminTemplate/js/easypiechart/jquery.easypiechart.js",
+                "~/AdminTemplate/js/easypiechart/easypiechart-init.js",
+                "~/AdminTemplate/js/sparkline/jquery.sparkline.js",
+                "~/AdminTemplate/js/sparkline/sparkline-init.js",
+                "~/AdminTemplate/js/iCheck/jquery.icheck.js",
+                "~/AdminTemplate/js/icheck-init.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.tooltip.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.resize.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.pie.resize.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.selection.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.stack.js",
+                "~/AdminTemplate/js/flot-chart/jquery.flot.time.js",
+                "~/AdminTemplate/js/main-chart.js",
+                "~/AdminTemplate/js/scripts.js"));
         }
     }
 }

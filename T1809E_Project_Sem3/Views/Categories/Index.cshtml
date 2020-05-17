@@ -5,121 +5,104 @@
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 }
 
+<div class="wrapper">
+    <section class="panel">
+        <header class="panel-heading">
+            Category Table
+            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+        </header>
+        <div class="panel-body">
+            <div class="btn-group">
 
-<div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Category </h3>
-        @*<nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">@Html.ActionLink("Category", "Index")</li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav>*@
-    </div>
-    <div class="row">
-        <div class="col-md-3 grid-margin stretch-card">
-
-        </div>
-        <div class="col-lg-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Index</h4>
-                    <button type="button" class="btn btn-outline-success btn-fw">@Html.ActionLink("Create New", "Create")</button>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Id)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Name)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Edit", "Categories", new { id = item.Id })" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a> |
-                                        <button type="button" class="btn btn-sm btn-outline-success border-success " data-toggle="modal" data-target="#myModal_@item.Id">
-                                            Delete
-                                        </button>
-
-                                        <div class="modal" id="myModal_@item.Id">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Message</h4>
-
-                                                    </div>
-
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <span>Are your sure delete</span>  <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span>  ?
-                                                    </div>
-
-                                                    <!-- Modal footer -->
-                                                    <div class="modal-footer">
-                                                        <!-- Cỏntroller -->
-                                                        @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
-                                                        {
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="submit" value="Delete" class="btn btn-default btn-danger" />
-                                                        }
-                                                        <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-                                @*<div class="col-sm-6 col-md-4 col-lg-3">
-                                        <i class="mdi mdi-delete"></i> mdi mdi-delete
-                                    </div>*@
-                            }
-
-                        </tbody>
-                    </table>
-
-                </div>
+                <button id="editable-sample_new" class="btn btn-primary">
+                    @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                </button>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Categories", new {id = item.Id})" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a> |
+                                <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
+                                    Delete
+                                </button>
+
+                                <div class="modal" id="myModal_@item.Id">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Message</h4>
+
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <!-- Cỏntroller -->
+                                                @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                }
+                                                <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" /> 
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    }
+
+                </tbody>
+            </table>
         </div>
-    </div>
+
+    </section>
+
+    
+
 
 </div>
-
-@*@section Sscript{
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
-
-        function alertt() {
-            swal("Hello world!");
-        }
-    </script>
-}*@
-
-
-
+       

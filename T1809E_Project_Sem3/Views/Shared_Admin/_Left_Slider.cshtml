@@ -1,0 +1,87 @@
+﻿<div class="left-side sticky-left-side">
+
+    <!--logo and iconic logo start-->
+    <div class="logo">
+        <a href="@Url.Action("Index","Admin")"><img src="~/AdminTemplate/images/logo.png" alt=""></a>
+    </div>
+
+    <div class="logo-icon text-center">
+        <a href="@Url.Action("Index","Admin")"><img src="~/AdminTemplate/images/logo_icon.png" alt=""></a>
+    </div>
+    <!--logo and iconic logo end-->
+
+    <div class="left-side-inner">
+
+        <!-- visible to small devices only -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="media logged-user">
+                <img alt="" src="~/AdminTemplate/images/photos/user-avatar.png" class="media-object">
+                <div class="media-body">
+                    <h4><a href="#">John Doe</a></h4>
+                    <span>"Hello There..."</span>
+                </div>
+            </div>
+
+            <h5 class="left-nav-title">Account Information</h5>
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+            </ul>
+        </div>
+
+        <!--sidebar nav start-->
+        <ul class="nav nav-pills nav-stacked custom-nav">
+            <li class="menu-list nav-active">
+                <a href="@Url.Action("Index","Admin")"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+
+            </li>
+
+
+            <li class="menu-list">
+                <a href="#"><i class="fa fa-book"></i> <span>UI Elements</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="@Url.Action("Button","Admin")"> Buttons</a></li>
+                </ul>
+            </li>
+
+            <li><a href="@Url.Action("Fontawesome","Admin")"><i class="fa fa-bullhorn"></i> <span>Fontawesome</span></a></li>
+
+
+            <li class="menu-list">
+                <a href="#"><i class="fa fa-th-list"></i> <span>Data Tables</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="@Url.Action("Basic_Table","Admin")"> Basic Table</a></li>
+                    <li><a href="@Url.Action("Dynamic_Table","Admin")"> Advanced Table</a></li>
+                    <li><a href="@Url.Action("Responsive_Table","Admin")"> Responsive Table</a></li>
+                    <li><a href="@Url.Action("Edit_Table","Admin")"> Edit Table</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-list">
+                <a href="#"><i class="fa fa-th-list"></i> <span>Role Tables</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="@Url.Action("Index","Role")"> List Role</a></li>
+                    <li><a href="@Url.Action("Create","Role")"> Add Role</a></li>
+
+                </ul>
+            </li>
+
+            <li class="menu-list">
+                <a href="#"><i class="fa fa-th-list"></i> <span>Category Tables</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="@Url.Action("Index","Categories")"> List Category</a></li>
+                    <li><a href="@Url.Action("Create","Categories")"> Add Category</a></li>
+
+                </ul>
+            </li>
+
+
+
+
+
+        </ul>
+        <!--sidebar nav end-->
+
+    </div>
+</div>

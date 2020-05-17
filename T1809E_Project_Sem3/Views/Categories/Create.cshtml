@@ -6,60 +6,48 @@
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 
 }
+    <div class="wrapper">
+        <section class="panel">
+            <header class="panel-heading">
+                Add Category 
+               
+            </header>
+            <div class="panel-body">
+                @using (Html.BeginForm(new { @class = "forms-sample" }))
+                {
+                    @Html.AntiForgeryToken()
 
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h3 class="page-title">Category </h3>
-            @*<nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">@Html.ActionLink("Category", "Index")</li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav>*@
-        </div>
-        <div class="row">
-            <div class="col-md-2 grid-margin stretch-card">
-
-            </div>
-            <div class="col-md-8 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h2>Create</h2>
-                        @*<p class="card-description">Create Category</p>*@
-
-                        @using (Html.BeginForm(new { @class = "forms-sample" }))
-                        {
-                            @Html.AntiForgeryToken()
-
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
-                                <div class="col-sm-6">
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Category name" } })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "col-sm-2" })
-                                <div class="col-md-3"
-                                     >
-                                    @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            <button type="submit" class="btn btn-gradient-primary mr-2">Create</button>
-                            <button type="button" class="btn btn-light">@Html.ActionLink("Back", "Index")</button>
-                        }
-
-
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Category name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "col-sm-2" })
+                        <div class="col-md-3">
+                            @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-info mr-2">Create</button>
+                    <button type="button" class="btn btn-primary">@Html.ActionLink("Back", "Index")</button>
+                }
+
             </div>
-        </div>
-        
+
+        </section>
+
+
+       
+
+
     </div>
-        
-        
+
+
+
 
