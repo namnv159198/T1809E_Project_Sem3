@@ -13,5 +13,17 @@ namespace T1809E_Project_Sem3.Controllers
         {
             return View();
         }
+        public ActionResult Button()
+        {
+            return View();
+        }
+        public ActionResult Table()
+        {
+            return View();
+        }
+        public ActionResult Chart()
+        {
+            return View();
+        }
     }
 }

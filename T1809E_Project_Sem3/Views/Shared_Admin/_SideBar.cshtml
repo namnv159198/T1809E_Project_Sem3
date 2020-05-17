@@ -30,8 +30,8 @@
             </a>
             <div class="collapse" id="form-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Button")"> Button </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/AdminTemplate/pages/tables/basic-table.html"> Table  </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Button","Admin")"> Button </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Table","Admin")"> Table  </a></li>
 
                 </ul>
             </div>
@@ -39,7 +39,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="~/AdminTemplate/pages/charts/chartjs.html">
+            <a class="nav-link" href="@Url.Action("Chart","Admin")">
                 <span class="menu-title">Charts</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
@@ -81,7 +81,6 @@
             </a>
             <div class="collapse" id="role-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Create","Role")"> Add Role  </a></li>
                     <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Role")"> List Role  </a></li>
 
                 </ul>
