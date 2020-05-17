@@ -17,7 +17,15 @@ namespace T1809E_Project_Sem3.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var listCategory = new List<Category>();
+            foreach(var c in db.Categories.ToList())
+            {
+                if (c.Status.GetHashCode() != -1)
+                {
+                    listCategory.Add(c);
+                }
+            }
+            return View(listCategory);
         }
 
         // GET: Categories/Details/5
@@ -100,6 +108,7 @@ namespace T1809E_Project_Sem3.Controllers
            
             if (ModelState.IsValid)
             {
+
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -120,19 +129,22 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
-        }
-
-        // POST: Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            category.Status = Category.StatusEnum.Delete;
+            db.Entry(category).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // POST: Categories/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Category category = db.Categories.Find(id);
+        //    db.Categories.Remove(category);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
