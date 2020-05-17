@@ -64,15 +64,19 @@ namespace T1809E_Project_Sem3.Controllers
              return View(model);
         }
          [HttpPost]
-        public async Task<ActionResult> Edit(RoleViewModel model)
+        public async Task<ActionResult> Edit(string id,string name)
         {
+            var role = await RoleManager.FindByIdAsync(id);
             if (ModelState.IsValid)
             {
-                var role = new ApplicationRole() {Id = model.Id, Name = model.Name};
-                await RoleManager.UpdateAsync(role);
-                return RedirectToAction("Index");
+                if (role != null)
+                {
+                    role.Name = name;
+                    await RoleManager.UpdateAsync(role);
+                    return RedirectToAction("Index");
+                }
             }
-            return View(model);
+            return View();
         }
 
         public async Task<ActionResult> Delete(string id)
