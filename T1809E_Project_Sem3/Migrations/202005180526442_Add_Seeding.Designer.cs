@@ -7,13 +7,13 @@ namespace T1809E_Project_Sem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddData : IMigrationMetadata
+    public sealed partial class Add_Seeding : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddData));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Seeding));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005171434014_Add-Data"; }
+            get { return "202005180526442_Add_Seeding"; }
         }
         
         string IMigrationMetadata.Source
