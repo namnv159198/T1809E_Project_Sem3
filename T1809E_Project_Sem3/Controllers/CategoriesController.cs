@@ -15,13 +15,11 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
-        public ActionResult Index(string searchString, string currentFilter, int? page)
+        public ActionResult Index(string currentFilter, int? page,int? status, string searchString)
         {
-            //Category category = new Category();
+            
             var categories = from s in db.Categories select s;
-            if (!String.IsNullOrEmpty(searchString)){
-                categories = categories.Where(s => s.Name.Contains(searchString));
-            }
+            //Tim kiem theo ten
             if (searchString != null)
             {
                 page = 1;
@@ -30,16 +28,19 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 searchString = currentFilter;
             }
-
             ViewBag.CurrentFilter = searchString;
-            //var listCategory = new List<Category>();
-            //foreach(var c in db.Categories.ToList())
-            //{
-            //    if (c.Status.GetHashCode() != -1)
-            //    {
-            //        listCategory.Add(c);
-            //    }
-            //}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                
+                categories = categories.Where(p => (int)p.Status == status.Value);
+            }
+            
+            
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(categories.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
