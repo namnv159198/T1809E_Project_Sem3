@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using T1809E_Project_Sem3.Models;
 
 namespace T1809E_Project_Sem3.Controllers
@@ -12,6 +14,7 @@ namespace T1809E_Project_Sem3.Controllers
     public class RoleController : Controller
     {
         private ApplicationRoleManager _roleManager;
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public RoleController()
         {
@@ -37,10 +40,10 @@ namespace T1809E_Project_Sem3.Controllers
         // GET: Role
         public ActionResult Index()
         {
-            List<RoleViewModel> list = new List<RoleViewModel>();
-            foreach (var role in RoleManager.Roles)
-                list.Add(new RoleViewModel(role));
-            return View(list);
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            var roles = roleManager.Roles.ToList();
+            return View(roles);
         }
         public async Task<ActionResult> Edit(string id)
         {
