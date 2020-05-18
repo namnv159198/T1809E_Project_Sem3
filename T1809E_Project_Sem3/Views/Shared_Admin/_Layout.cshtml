@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
+<!-- Mirrored from adminex.themebucket.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Sep 2018 06:51:16 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -9,54 +11,87 @@
     <link rel="shortcut icon" href="#" type="image/png">
 
     <title>AdminX</title>
-
-    <!--icheck-->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--icheck-->
+    <link href="~/AdminTemplate/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+    <link href="~/AdminTemplate/js/iCheck/skins/square/square.css" rel="stylesheet">
+    <link href="~/AdminTemplate/js/iCheck/skins/square/red.css" rel="stylesheet">
+    <link href="~/AdminTemplate/js/iCheck/skins/square/blue.css" rel="stylesheet">
 
     <!--dashboard calendar-->
-    @Styles.Render("~/AdminTemplateContent/css")
+    <link href="~/AdminTemplate/css/clndr.css" rel="stylesheet">
+
+
+    <!--common-->
+    <link href="~/AdminTemplate/css/style.css" rel="stylesheet">
+    <link href="~/AdminTemplate/css/style-responsive.css" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
 
-
 <body class="sticky-header">
 
-<section>
-    <!-- left side start-->
+    <section>
+        <!-- left side start-->
     @RenderPage("_Left_Slider.cshtml")
-    <!-- left side end-->
-    <!-- main content start-->
-    <div class="main-content">
+        <!-- main content start-->
+        <div class="main-content">
 
-        <!-- header section start-->
-        @RenderPage("_Header.cshtml")
-
-        <!-- header section end-->
-        <!--body wrapper start-->
-        @RenderBody()
-
-        <!--body wrapper end-->
-        <!--footer section start-->
-        <!--footer section end-->
+            <!-- header section start-->
+            @RenderPage("_Header.cshtml")
+            <!-- header section end-->
+            <!--body wrapper start-->
+            @RenderBody()
+           
+            <!--body wrapper end-->
+            <!--footer section start-->
+            <!--footer section end-->
 
 
-    </div>
-    <!-- main content end-->
-</section>
+        </div>
+        <!-- main content end-->
+    </section>
 
-@Scripts.Render("~/AdminTemplateContent/js")
-@RenderSection("scripts", required: false)
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="~/AdminTemplate/js/jquery-1.10.2.min.js"></script>
+    <script src="~/AdminTemplate/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="~/AdminTemplate/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/AdminTemplate/js/bootstrap.min.js"></script>
+    <script src="~/AdminTemplate/js/modernizr.min.js"></script>
+    <script src="~/AdminTemplate/js/jquery.nicescroll.js"></script>
 
+    <!--easy pie chart-->
+    <script src="~/AdminTemplate/js/easypiechart/jquery.easypiechart.js"></script>
+    <script src="~/AdminTemplate/js/easypiechart/easypiechart-init.js"></script>
 
+    <!--Sparkline Chart-->
+    <script src="~/AdminTemplate/js/sparkline/jquery.sparkline.js"></script>
+    <script src="~/AdminTemplate/js/sparkline/sparkline-init.js"></script>
+
+    <!--icheck -->
+    <script src="~/AdminTemplate/js/iCheck/jquery.icheck.js"></script>
+    <script src="~/AdminTemplate/js/icheck-init.js"></script>
+
+    <!-- jQuery Flot Chart-->
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.tooltip.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.resize.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.pie.resize.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.selection.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.stack.js"></script>
+    <script src="~/AdminTemplate/js/flot-chart/jquery.flot.time.js"></script>
+    <script src="~/AdminTemplate/js/main-chart.js"></script>
+
+    <!--common scripts for all pages-->
+    <script src="~/AdminTemplate/js/scripts.js"></script>
 
 
 </body>
 
-
+<!-- Mirrored from adminex.themebucket.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Sep 2018 06:51:54 GMT -->
 </html>
