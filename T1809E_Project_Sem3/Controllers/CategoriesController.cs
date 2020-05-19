@@ -19,6 +19,11 @@ namespace T1809E_Project_Sem3.Controllers
         {
             
             var categories = from s in db.Categories select s;
+            if (searchString == null && status == null)
+            {
+                categories = categories.Where(p => (int)p.Status != -1);
+            }
+
             //Tim kiem theo ten
             if (searchString != null)
             {
@@ -31,6 +36,7 @@ namespace T1809E_Project_Sem3.Controllers
             ViewBag.CurrentFilter = searchString;
             if (!String.IsNullOrEmpty(searchString))
             {
+                
                 categories = categories.Where(s => s.Name.Contains(searchString));
             }
             if (status.HasValue)
@@ -76,6 +82,7 @@ namespace T1809E_Project_Sem3.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
