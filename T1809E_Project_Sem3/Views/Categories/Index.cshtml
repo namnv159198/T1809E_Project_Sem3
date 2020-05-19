@@ -1,6 +1,6 @@
 ﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.Category>
-    @using PagedList.Mvc;
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
 
@@ -17,29 +17,31 @@
             </span>
         </header>
         <div class="panel-body">
-            <div class="btn-group">
 
-                <button id="editable-sample_new" class="btn btn-primary">
-                    @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                </button>
-            </div>
-            @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+            @using (Html.BeginForm("Index", "Categories", FormMethod.Get, new { @name= "search-form" }))
             {
-                
-                <div class="form-group">
-                    
-                    <div class="col-lg-4">
-                        <div class="input-group m-bot15">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </span>
-                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class= "form-control", @placeholder = "Search By Name"})
-                           
-                        </div>
+
+
+
+                <div class="col-lg-6">
+                    <div class="input-group m-bot15">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                            
+                        </span>
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
+
+                    </div>
+                    @Html.DropDownList("status",
+                            EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Category.StatusEnum)),
+                            "Select Status",
+                            new { @class = "btn btn-default" })
+                    <div class="btn-group">
 
                     </div>
                 </div>
             }
+            
             <table class="table">
                 <thead>
                     <tr>
@@ -117,17 +119,32 @@
 
                 </tbody>
             </table>
+            <div class="btn-group">
+
+                <button id="editable-sample_new" class="btn btn-primary">
+                    @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                </button>
+            </div>
             <br />
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status}))
         </div>
 
     </section>
 
-    
+
 
 
 </div>
-       
+
+@section scripts{
+    <script type="text/javascript">
+
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+    </script>
+}

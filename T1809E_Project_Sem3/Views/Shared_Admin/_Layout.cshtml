@@ -38,7 +38,7 @@
 
     <section>
         <!-- left side start-->
-    @RenderPage("_Left_Slider.cshtml")
+        @RenderPage("_Left_Slider.cshtml")
         <!-- main content start-->
         <div class="main-content">
 
@@ -47,7 +47,7 @@
             <!-- header section end-->
             <!--body wrapper start-->
             @RenderBody()
-           
+
             <!--body wrapper end-->
             <!--footer section start-->
             <!--footer section end-->
@@ -89,6 +89,7 @@
 
     <!--common scripts for all pages-->
     <script src="~/AdminTemplate/js/scripts.js"></script>
+    @RenderSection("scripts", required: false)
 
 
 </body>
