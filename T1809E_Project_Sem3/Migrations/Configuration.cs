@@ -17,6 +17,7 @@
 
         protected override void Seed(T1809E_Project_Sem3.Models.ApplicationDbContext context)
         {
+
             //  This method will be called after migrating to the latest version.
             context.Categories.AddOrUpdate(x => x.Id,
                 new Category() { Id = 0, Name = "Men", Status = Category.StatusEnum.Active },
@@ -40,6 +41,7 @@
                 var role = new IdentityRole { Id = adminRoleId2, Name = "Employee" };
                 roleManager.Create(role);
             }
+
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }
