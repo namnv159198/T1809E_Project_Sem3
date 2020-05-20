@@ -183,9 +183,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
 
+    <Compile Include="Migrations\202005191417514_IndetityModels.cs" />
+    <Compile Include="Migrations\202005191417514_IndetityModels.Designer.cs">
+      <DependentUpon>202005191417514_IndetityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005191418135_Add_Entity_User.cs" />
+    <Compile Include="Migrations\202005191418135_Add_Entity_User.Designer.cs">
+      <DependentUpon>202005191418135_Add_Entity_User.cs</DependentUpon>
+
+
     <Compile Include="Migrations\202005191133276_Update_DataTable.cs" />
     <Compile Include="Migrations\202005191133276_Update_DataTable.Designer.cs">
       <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
+
 
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
@@ -194,6 +204,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\UserAdminViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1668,8 +1679,16 @@
   </ItemGroup>
   <ItemGroup>
 
+    <EmbeddedResource Include="Migrations\202005191417514_IndetityModels.resx">
+      <DependentUpon>202005191417514_IndetityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005191418135_Add_Entity_User.resx">
+      <DependentUpon>202005191418135_Add_Entity_User.cs</DependentUpon>
+
+
     <EmbeddedResource Include="Migrations\202005191133276_Update_DataTable.resx">
       <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
+
 
     </EmbeddedResource>
   </ItemGroup>
