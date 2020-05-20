@@ -30,6 +30,7 @@ namespace T1809E_Project_Sem3.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string PasswordConfirm { get; set; }
         public DateTime? Birthday { get; set; }
+        public DateTime? CreatedAt { get; set; }
         [Required]
         [StringLength(255)]
         public string Address { get; set; }
@@ -46,5 +47,11 @@ namespace T1809E_Project_Sem3.Models
         [StringLength(10)]
         [Phone(ErrorMessage = "Please enter a valid Phone No")]
         public string Phonenumber { get; set; }
+
+        public UserAdminViewModel()
+        {
+            this.CreatedAt = DateTime.Now;
+        }
+
     }
 }
