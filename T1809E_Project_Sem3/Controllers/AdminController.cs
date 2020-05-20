@@ -39,6 +39,10 @@ namespace T1809E_Project_Sem3.Controllers
         {
             return View();
         }
-        
+        public ActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

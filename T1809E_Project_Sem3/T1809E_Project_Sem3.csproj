@@ -185,6 +185,7 @@
     <Compile Include="Migrations\202005191133276_Update_DataTable.cs" />
     <Compile Include="Migrations\202005191133276_Update_DataTable.Designer.cs">
       <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\202005200910450_Add_Entity_User.cs" />
     <Compile Include="Migrations\202005200910450_Add_Entity_User.Designer.cs">
@@ -596,6 +597,8 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared_Admin\_Layout_For_Login.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
@@ -1672,6 +1675,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005191133276_Update_DataTable.resx">
       <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005200910450_Add_Entity_User.resx">
       <DependentUpon>202005200910450_Add_Entity_User.cs</DependentUpon>
