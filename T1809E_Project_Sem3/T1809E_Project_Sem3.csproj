@@ -182,9 +182,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\202005200920366_Update_Database.cs" />
     <Compile Include="Migrations\202005200920366_Update_Database.Designer.cs">
       <DependentUpon>202005200920366_Update_Database.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -592,6 +594,8 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared_Admin\_Layout_For_Login.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
@@ -1666,6 +1670,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+
     <EmbeddedResource Include="Migrations\202005200920366_Update_Database.resx">
       <DependentUpon>202005200920366_Update_Database.cs</DependentUpon>
     </EmbeddedResource>
