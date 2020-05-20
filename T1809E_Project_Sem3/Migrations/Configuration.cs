@@ -19,12 +19,10 @@
         {
             //  This method will be called after migrating to the latest version.
             context.Categories.AddOrUpdate(x => x.Id,
-                new Category() { Id = 1, Name = "Đồng hồ Nam", Status = Category.StatusEnum.Active },
-                new Category() { Id = 2, Name = "Đồng hồ Nữ", Status = Category.StatusEnum.Active },
-                new Category() { Id = 3, Name = "Đồng hồ cho Trẻ Em", Status = Category.StatusEnum.Active },
-                new Category() { Id = 4, Name = "Đồng hồ Apple", Status = Category.StatusEnum.Active },
-                new Category() { Id = 5, Name = "Đồng hồ Rolex", Status = Category.StatusEnum.Active },
-                new Category() { Id = 6, Name = "Đồng hồ Việt Nam", Status = Category.StatusEnum.Active }
+                new Category() { Id = 0, Name = "Men", Status = Category.StatusEnum.Active },
+                new Category() { Id = 1, Name = "Lady", Status = Category.StatusEnum.Active },
+                new Category() { Id = 2, Name = "Boy Kid", Status = Category.StatusEnum.Active },
+                new Category() { Id = 3, Name = "Girl Kid", Status = Category.StatusEnum.Active }
             );
             var adminId = "Admin";
             var adminRoleId = "Admin";
