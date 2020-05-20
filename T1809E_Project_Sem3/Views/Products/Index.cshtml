@@ -22,14 +22,14 @@
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.CreateBy.UserName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DeleteBy.UserName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UpdateBy.UserName)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.CreateBy.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DeleteBy.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UpdateBy.UserName)
+                            </th>*@
 
                         <th>
                             Category
@@ -52,6 +52,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.CreateAt)
                         </th>
+                        <th>
+                            Action
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,17 +65,17 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.CreateBy.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DeleteBy.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdateBy.UserName)*@
+                                    @Html.DisplayFor(modelItem => item.CreateBy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DeleteBy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateBy.UserName)*@
                             @*</td>*@
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Category.Name)
+                                @Html.DisplayFor(modelItem => item.category.Name)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)

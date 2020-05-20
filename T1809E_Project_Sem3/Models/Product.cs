@@ -23,24 +23,22 @@ namespace T1809E_Project_Sem3.Models
         }
         [Required]
         public string Description { get; set; }
-        [Required]
         public string Thumbnails { get; set; }
-        [Required]
         public decimal Price { get; set; }
         public int Discount { get; set; }
         public DateTime? CreateAt { get; set; }
-        
+        public Product() {
+            this.CreateAt = DateTime.Now;
+        }
         [Display(Name = "Category")]
-        [ForeignKey("Category")]
         public int CategoryID { get; set; }
-        
-        public virtual Category Category { get; set; }
-
-
+        [ForeignKey("CategoryID")]
+        public Category category { get; set; }
         [Display(Name = "Create By")]
         public String CreateById { get; set; }
         [ForeignKey("CreateById")]
         public virtual ApplicationUser CreateBy { get; set; }
+
         [Display(Name = "Update By")]
         public string UpdateById { get; set; }
         [ForeignKey("UpdateById")]
@@ -49,5 +47,6 @@ namespace T1809E_Project_Sem3.Models
         public String DeleteById { get; set; }
         [ForeignKey("DeleteById")]
         public virtual ApplicationUser DeleteBy { get; set; }
+
     }
 }

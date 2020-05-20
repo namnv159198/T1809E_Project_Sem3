@@ -19,6 +19,9 @@ namespace T1809E_Project_Sem3.Controllers
         {
             
             var categories = from s in db.Categories select s;
+            if (searchString == null && status == null) {
+                categories = categories.Where(p => (int)p.Status != -1);
+                    }
             //Tim kiem theo ten
             if (searchString != null)
             {

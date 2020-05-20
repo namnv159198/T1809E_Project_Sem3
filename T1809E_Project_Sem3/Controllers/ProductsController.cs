@@ -14,14 +14,14 @@ namespace T1809E_Project_Sem3.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Products
+        // GET: Products1
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             return View(products.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Products1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,17 +36,17 @@ namespace T1809E_Project_Sem3.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        // GET: Products1/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories.Where(p => (int)p.Status != -1), "Id", "Name");
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "Name");
             ViewBag.CreateById = new SelectList(db.Users, "Id", "Email");
             ViewBag.DeleteById = new SelectList(db.Users, "Id", "Email");
             ViewBag.UpdateById = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Products1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -55,7 +55,6 @@ namespace T1809E_Project_Sem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                product.CreateAt = DateTime.Now;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -68,7 +67,7 @@ namespace T1809E_Project_Sem3.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Products1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,7 +86,7 @@ namespace T1809E_Project_Sem3.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Products1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -107,7 +106,7 @@ namespace T1809E_Project_Sem3.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Products1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +121,7 @@ namespace T1809E_Project_Sem3.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Products1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
