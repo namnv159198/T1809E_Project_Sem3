@@ -17,7 +17,7 @@ namespace T1809E_Project_Sem3.Models
         [Display(Name = "Address")]
         public string Address { get; set; }
         [Display(Name = "Birthday")]
-        public DateTime? BirthdayAt { get; set; }
+        public DateTime? Birthday { get; set; }
         [Display(Name = "Gender")]
         public GenderEnum Gender { get; set; }
         public enum GenderEnum
