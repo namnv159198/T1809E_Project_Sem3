@@ -7,13 +7,13 @@ namespace T1809E_Project_Sem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_DataTable : IMigrationMetadata
+    public sealed partial class Update_Database : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_DataTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Database));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005191133276_Update_DataTable"; }
+            get { return "202005200920366_Update_Database"; }
         }
         
         string IMigrationMetadata.Source
