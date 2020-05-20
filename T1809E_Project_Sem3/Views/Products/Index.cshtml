@@ -1,0 +1,153 @@
+﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <section class="panel">
+        <header class="panel-heading">
+            Category Table
+            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+        </header>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.CreateBy.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DeleteBy.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UpdateBy.UserName)
+                            </th>*@
+
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Thumbnails)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Discount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateAt)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.CreateBy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DeleteBy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateBy.UserName)*@
+                            @*</td>*@
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.category.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Thumbnails)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Discount)%
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateAt)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
+                                    Delete
+                                </button>
+
+                                <div class="modal" id="myModal_@item.Id">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Message</h4>
+
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <!-- Cỏntroller -->
+                                                @using (Html.BeginForm("Delete", "Products", new { id = item.Id }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                    <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                }
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="btn-group">
+
+                <button id="editable-sample_new" class="btn btn-primary">
+                    @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</div>
