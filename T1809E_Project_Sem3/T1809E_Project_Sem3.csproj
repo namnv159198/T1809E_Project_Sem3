@@ -182,14 +182,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005191133276_Update_DataTable.cs" />
-    <Compile Include="Migrations\202005191133276_Update_DataTable.Designer.cs">
-      <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
 
-    </Compile>
-    <Compile Include="Migrations\202005200910450_Add_Entity_User.cs" />
-    <Compile Include="Migrations\202005200910450_Add_Entity_User.Designer.cs">
-      <DependentUpon>202005200910450_Add_Entity_User.cs</DependentUpon>
+    <Compile Include="Migrations\202005200920366_Update_Database.cs" />
+    <Compile Include="Migrations\202005200920366_Update_Database.Designer.cs">
+      <DependentUpon>202005200920366_Update_Database.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1673,12 +1670,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005191133276_Update_DataTable.resx">
-      <DependentUpon>202005191133276_Update_DataTable.cs</DependentUpon>
 
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005200910450_Add_Entity_User.resx">
-      <DependentUpon>202005200910450_Add_Entity_User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005200920366_Update_Database.resx">
+      <DependentUpon>202005200920366_Update_Database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
