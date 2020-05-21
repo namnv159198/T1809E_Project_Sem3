@@ -176,13 +176,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201152498_Update-Database.cs" />
+    <Compile Include="Migrations\202005201152498_Update-Database.Designer.cs">
+      <DependentUpon>202005201152498_Update-Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201304050_Update_Product.cs" />
+    <Compile Include="Migrations\202005201304050_Update_Product.Designer.cs">
+      <DependentUpon>202005201304050_Update_Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -517,117 +524,6 @@
     <Content Include="AdminTemplate\js\tagsinput-init.js" />
     <Content Include="AdminTemplate\js\tree-init.js" />
     <Content Include="AdminTemplate\js\validation-init.js" />
-    <Content Include="ClientTemplate\css\bootstrap.min.css" />
-    <Content Include="ClientTemplate\css\bundle.css" />
-    <Content Include="ClientTemplate\css\css-plugins-call.css" />
-    <Content Include="ClientTemplate\css\css-plugins\animate.min.css" />
-    <Content Include="ClientTemplate\css\css-plugins\easyzoom.css" />
-    <Content Include="ClientTemplate\css\css-plugins\images\ui-bg_glass_85_dfeffc_1x400.png" />
-    <Content Include="ClientTemplate\css\css-plugins\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
-    <Content Include="ClientTemplate\css\css-plugins\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
-    <Content Include="ClientTemplate\css\css-plugins\jquery-ui.min.css" />
-    <Content Include="ClientTemplate\css\css-plugins\meanmenu.min.css" />
-    <Content Include="ClientTemplate\css\css-plugins\nice-select.css" />
-    <Content Include="ClientTemplate\css\css-plugins\owl.carousel.min.css" />
-    <Content Include="ClientTemplate\css\css-plugins\slick.css" />
-    <Content Include="ClientTemplate\css\font-awesome.min.css" />
-    <Content Include="ClientTemplate\css\main.css" />
-    <Content Include="ClientTemplate\css\material-design-iconic-font.min.css" />
-    <Content Include="ClientTemplate\css\responsive.css" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont.svg" />
-    <Content Include="ClientTemplate\images\banner\1.jpeg" />
-    <Content Include="ClientTemplate\images\banner\10.jpeg" />
-    <Content Include="ClientTemplate\images\banner\11.jpeg" />
-    <Content Include="ClientTemplate\images\banner\2.jpeg" />
-    <Content Include="ClientTemplate\images\banner\3.jpeg" />
-    <Content Include="ClientTemplate\images\banner\4.png" />
-    <Content Include="ClientTemplate\images\banner\5.jpeg" />
-    <Content Include="ClientTemplate\images\banner\6.png" />
-    <Content Include="ClientTemplate\images\banner\7.jpeg" />
-    <Content Include="ClientTemplate\images\banner\8.jpeg" />
-    <Content Include="ClientTemplate\images\banner\9.jpeg" />
-    <Content Include="ClientTemplate\images\bg\1.jpeg" />
-    <Content Include="ClientTemplate\images\bg\2.jpeg" />
-    <Content Include="ClientTemplate\images\bg\3.jpeg" />
-    <Content Include="ClientTemplate\images\blog\1.jpeg" />
-    <Content Include="ClientTemplate\images\blog\11.jpeg" />
-    <Content Include="ClientTemplate\images\blog\12.jpeg" />
-    <Content Include="ClientTemplate\images\blog\13.jpeg" />
-    <Content Include="ClientTemplate\images\blog\2.jpeg" />
-    <Content Include="ClientTemplate\images\blog\3.jpeg" />
-    <Content Include="ClientTemplate\images\blog\recent-post\1.jpeg" />
-    <Content Include="ClientTemplate\images\blog\recent-post\2.jpeg" />
-    <Content Include="ClientTemplate\images\blog\recent-post\3.jpeg" />
-    <Content Include="ClientTemplate\images\blog\recent-post\4.jpeg" />
-    <Content Include="ClientTemplate\images\brand\1.png" />
-    <Content Include="ClientTemplate\images\brand\2.png" />
-    <Content Include="ClientTemplate\images\brand\3.png" />
-    <Content Include="ClientTemplate\images\brand\4.png" />
-    <Content Include="ClientTemplate\images\brand\5.png" />
-    <Content Include="ClientTemplate\images\icons\1.png" />
-    <Content Include="ClientTemplate\images\icons\2.png" />
-    <Content Include="ClientTemplate\images\icons\3.png" />
-    <Content Include="ClientTemplate\images\icons\4.png" />
-    <Content Include="ClientTemplate\images\icons\5.png" />
-    <Content Include="ClientTemplate\images\icons\6.png" />
-    <Content Include="ClientTemplate\images\icons\7.png" />
-    <Content Include="ClientTemplate\images\icons\8.png" />
-    <Content Include="ClientTemplate\images\icons\arrow-left-1.png" />
-    <Content Include="ClientTemplate\images\icons\arrow-left-2.png" />
-    <Content Include="ClientTemplate\images\icons\arrow-right-1.png" />
-    <Content Include="ClientTemplate\images\icons\arrow-right-2.png" />
-    <Content Include="ClientTemplate\images\icons\avatar.png" />
-    <Content Include="ClientTemplate\images\icons\icon-logo-2.png" />
-    <Content Include="ClientTemplate\images\icons\icon-logo.png" />
-    <Content Include="ClientTemplate\images\icons\payment.png" />
-    <Content Include="ClientTemplate\images\icons\sticky-icon.png" />
-    <Content Include="ClientTemplate\images\logo\footer-logo.png" />
-    <Content Include="ClientTemplate\images\logo\logo.png" />
-    <Content Include="ClientTemplate\images\others\about-1.jpeg" />
-    <Content Include="ClientTemplate\images\others\about-2.jpeg" />
-    <Content Include="ClientTemplate\images\others\about-3.jpeg" />
-    <Content Include="ClientTemplate\images\others\gravatar-1.png" />
-    <Content Include="ClientTemplate\images\others\gravatar-2.png" />
-    <Content Include="ClientTemplate\images\others\gravatar-3.png" />
-    <Content Include="ClientTemplate\images\others\service-1.jpeg" />
-    <Content Include="ClientTemplate\images\others\service-2.jpeg" />
-    <Content Include="ClientTemplate\images\others\service-3.jpeg" />
-    <Content Include="ClientTemplate\images\portfolio\1.jpeg" />
-    <Content Include="ClientTemplate\images\portfolio\2.jpeg" />
-    <Content Include="ClientTemplate\images\portfolio\3.jpeg" />
-    <Content Include="ClientTemplate\images\portfolio\4.jpeg" />
-    <Content Include="ClientTemplate\images\portfolio\5.jpeg" />
-    <Content Include="ClientTemplate\images\product\1.jpeg" />
-    <Content Include="ClientTemplate\images\product\10.jpeg" />
-    <Content Include="ClientTemplate\images\product\11.jpeg" />
-    <Content Include="ClientTemplate\images\product\12.jpeg" />
-    <Content Include="ClientTemplate\images\product\13.jpeg" />
-    <Content Include="ClientTemplate\images\product\14.jpeg" />
-    <Content Include="ClientTemplate\images\product\15.jpeg" />
-    <Content Include="ClientTemplate\images\product\16.jpeg" />
-    <Content Include="ClientTemplate\images\product\17.jpeg" />
-    <Content Include="ClientTemplate\images\product\18.jpeg" />
-    <Content Include="ClientTemplate\images\product\19.jpeg" />
-    <Content Include="ClientTemplate\images\product\2.jpeg" />
-    <Content Include="ClientTemplate\images\product\20.jpeg" />
-    <Content Include="ClientTemplate\images\product\3.jpeg" />
-    <Content Include="ClientTemplate\images\product\4.jpeg" />
-    <Content Include="ClientTemplate\images\product\5.jpeg" />
-    <Content Include="ClientTemplate\images\product\6.jpeg" />
-    <Content Include="ClientTemplate\images\product\7.jpeg" />
-    <Content Include="ClientTemplate\images\product\8.jpeg" />
-    <Content Include="ClientTemplate\images\product\9.jpeg" />
-    <Content Include="ClientTemplate\images\slider\1.jpeg" />
-    <Content Include="ClientTemplate\images\slider\2-1.jpeg" />
-    <Content Include="ClientTemplate\images\slider\2-2.jpeg" />
-    <Content Include="ClientTemplate\images\slider\2.jpeg" />
-    <Content Include="ClientTemplate\images\slider\4-1.jpeg" />
-    <Content Include="ClientTemplate\images\slider\4-2.jpeg" />
-    <Content Include="ClientTemplate\js\bootstrap.min.js" />
-    <Content Include="ClientTemplate\js\jquery-3.2.1.min.js" />
-    <Content Include="ClientTemplate\js\main.js" />
-    <Content Include="ClientTemplate\js\plugins.js" />
-    <Content Include="ClientTemplate\js\popper.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -639,14 +535,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont-1.bin" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont-2.bin" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont-3.bin" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont.bin" />
-    <Content Include="ClientTemplate\fonts\fontawesome-webfont.ttf" />
-    <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font-1.bin" />
-    <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.bin" />
-    <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -717,12 +605,6 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Shared_Client\_Layout.cshtml" />
-    <Content Include="Views\Shared_Client\_Header.cshtml" />
-    <Content Include="Views\Shared_Client\_Slider.cshtml" />
-    <Content Include="Views\Shared_Client\_Banner.cshtml" />
-    <Content Include="Views\Shared_Client\_Footer.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
@@ -1795,6 +1677,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005201152498_Update-Database.resx">
+      <DependentUpon>202005201152498_Update-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201304050_Update_Product.resx">
+      <DependentUpon>202005201304050_Update_Product.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
