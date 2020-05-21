@@ -15,84 +15,9 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy).OrderByDescending(p => p.CreateAt);
-            if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
-            {
-                ViewBag.DateSort = "date-desc";
-                ViewBag.PriceSort = "price-desc";
-                ViewBag.NameSort = "name-desc";
-                ViewBag.DiscountSort = "discount-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
-            else if (sortOrder.Equals("date-desc"))
-            {
-                ViewBag.DateSort = "date-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
-            }
-            else if (sortOrder.Equals("price-asc"))
-            {
-                ViewBag.PriceSort = "price-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
-            else if (sortOrder.Equals("price-desc"))
-            {
-                ViewBag.PriceSort = "price-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
-            }
-            else if (sortOrder.Equals("name-asc"))
-            {
-                ViewBag.NameSort = "name-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
-            else if (sortOrder.Equals("name-desc"))
-            {
-                ViewBag.NameSort = "name-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
-            }
-            else if (sortOrder.Equals("discount-desc"))
-            {
-                ViewBag.NameSort = "discount-asc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
-            else if (sortOrder.Equals("discount-asc"))
-            {
-                ViewBag.NameSort = "discount-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
-
-            switch (sortOrder)
-            {
-                case "name-asc":
-                    products = products.OrderBy(p => p.Name);
-                    break;
-                case "name-desc":
-                    products = products.OrderByDescending(p => p.Name);
-                    break;
-                case "price-asc":
-                    products = products.OrderBy(p => p.Price);
-                    break;
-                case "price-desc":
-                    products = products.OrderByDescending(p => p.Price);
-                    break;
-                case "date-asc":
-                    products = products.OrderBy(p => p.CreateAt);
-                    break;
-                case "date-desc":
-                    products = products.OrderByDescending(p => p.CreateAt);
-                    break;
-                case "discount-desc":
-                    products = products.OrderByDescending(p => p.Discount);
-                    break;
-                case "discount-asc":
-                    products = products.OrderBy(p => p.Discount);
-                    break;
-                default:
-                    products = products.OrderByDescending(p => p.CreateAt);
-                    ViewBag.SortIcon = "fa fa-sort";
-                    break;
-            }
+            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             return View(products.ToList());
         }
 
