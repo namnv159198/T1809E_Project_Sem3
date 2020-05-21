@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+    var Iconsort = ViewBag.SortIcon;
 }
 
 <div class="wrapper">
@@ -14,12 +15,18 @@
                 <a href="javascript:;" class="fa fa-times"></a>
             </span>
         </header>
+        <div>
+            <form action="Products/Index" method="get">
+                <input type="hidden" name="sortOrder" value="" />
+            </form>
+        </div>
         <div class="panel-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Name)
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
+                            <i class="@Iconsort" aria-hidden="true"></i>
                         </th>
                         @*<th>
                                 @Html.DisplayNameFor(model => model.CreateBy.UserName)
@@ -44,13 +51,16 @@
                             @Html.DisplayNameFor(model => model.Thumbnails)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Price)
+                            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSort })
+                            <i class="@Iconsort" aria-hidden="true"></i>
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Discount)
+                            @Html.ActionLink("Discount", "Index", new { sortOrder = ViewBag.DiscountSort })
+                            <i class="@Iconsort" aria-hidden="true"></i>
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CreateAt)
+                            @Html.ActionLink("Created At", "Index", new { sortOrder = ViewBag.DateSort })
+                            <i class="@Iconsort" aria-hidden="true"></i>
                         </th>
                         <th>
                             Action
