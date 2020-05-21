@@ -51,15 +51,15 @@ namespace T1809E_Project_Sem3.Controllers
                 ViewBag.NameSort = "name-asc";
                 ViewBag.SortIcon = "fa fa-sort-asc";
             }
-            else if (sortOrder.Equals("discount-desc"))
-            {
-                ViewBag.NameSort = "discount-asc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
-            }
             else if (sortOrder.Equals("discount-asc"))
             {
-                ViewBag.NameSort = "discount-desc";
+                ViewBag.DiscountSort = "discount-desc";
                 ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("discount-desc"))
+            {
+                ViewBag.DiscountSort = "discount-asc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
             }
 
             switch (sortOrder)
@@ -82,11 +82,11 @@ namespace T1809E_Project_Sem3.Controllers
                 case "date-desc":
                     products = products.OrderByDescending(p => p.CreateAt);
                     break;
-                case "discount-desc":
-                    products = products.OrderByDescending(p => p.Discount);
-                    break;
                 case "discount-asc":
                     products = products.OrderBy(p => p.Discount);
+                    break;
+                case "discount-desc":
+                    products = products.OrderByDescending(p => p.Discount);
                     break;
                 default:
                     products = products.OrderByDescending(p => p.CreateAt);
