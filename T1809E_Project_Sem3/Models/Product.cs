@@ -14,8 +14,8 @@ namespace T1809E_Project_Sem3.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public EnumStatus Status { get; set; }
-        public enum EnumStatus
+        public ProductStatus Status { get; set; }
+        public enum ProductStatus
         {
             Active = 0,
             DeActive = 1,
@@ -24,6 +24,7 @@ namespace T1809E_Project_Sem3.Models
         [Required]
         public string Description { get; set; }
         public string Thumbnails { get; set; }
+        [Required]
         public decimal Price { get; set; }
         [Range(0, 100)]
         public int Discount { get; set; }
