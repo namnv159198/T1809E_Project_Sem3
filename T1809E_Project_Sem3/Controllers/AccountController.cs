@@ -392,7 +392,7 @@ namespace T1809E_Project_Sem3.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Admin");
         }
 
         //
