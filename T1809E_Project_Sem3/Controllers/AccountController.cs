@@ -449,8 +449,10 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
+
         }
+
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {

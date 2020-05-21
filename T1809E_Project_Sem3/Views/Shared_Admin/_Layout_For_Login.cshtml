@@ -26,7 +26,10 @@
     <div class="container">
         @RenderBody()
 
-        <form class="form-signin" action="http://adminex.themebucket.net/index.html">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+        <form class="form-signin">
             <div class="form-signin-heading text-center">
                 <h1 class="sign-title">Sign In</h1>
                 <img src="images/login-logo.png" alt="" />
@@ -78,6 +81,8 @@
             <!-- modal -->
 
         </form>
+        }
+        
 
     </div>
 
