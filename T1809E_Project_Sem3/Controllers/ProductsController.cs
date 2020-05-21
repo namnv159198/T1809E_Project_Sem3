@@ -24,42 +24,42 @@ namespace T1809E_Project_Sem3.Controllers
                 ViewBag.PriceSort = "price-desc";
                 ViewBag.NameSort = "name-desc";
                 ViewBag.DiscountSort = "discount-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
             }
             else if (sortOrder.Equals("date-desc"))
             {
                 ViewBag.DateSort = "date-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
             }
             else if (sortOrder.Equals("price-asc"))
             {
                 ViewBag.PriceSort = "price-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
             }
             else if (sortOrder.Equals("price-desc"))
             {
                 ViewBag.PriceSort = "price-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
             }
             else if (sortOrder.Equals("name-asc"))
             {
                 ViewBag.NameSort = "name-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
             }
             else if (sortOrder.Equals("name-desc"))
             {
                 ViewBag.NameSort = "name-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
             }
             else if (sortOrder.Equals("discount-asc"))
             {
                 ViewBag.DiscountSort = "discount-desc";
-                ViewBag.SortIcon = "fa fa-sort-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
             }
             else if (sortOrder.Equals("discount-desc"))
             {
                 ViewBag.DiscountSort = "discount-asc";
-                ViewBag.SortIcon = "fa fa-sort-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
             }
 
             switch (sortOrder)
