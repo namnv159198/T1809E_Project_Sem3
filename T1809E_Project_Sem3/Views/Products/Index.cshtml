@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
+@using T1809E_Project_Sem3.Models
 
 @{
     ViewBag.Title = "Index";
@@ -21,6 +22,30 @@
             </form>
         </div>
         <div class="panel-body">
+
+            @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @name = "search-form" }))
+            {
+
+
+
+                <div class="col-lg-6">
+                    <div class="input-group m-bot15">
+                        @*<span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+
+                        </span>*@
+                        @*@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })*@
+
+                    </div>
+                    @Html.DropDownList("status",
+                            EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Product.ProductStatus)),
+                            "Select Status",
+                            new { @class = "btn btn-default" })
+                    <div class="btn-group">
+
+                    </div>
+                </div>
+            }
             <table class="table">
                 <thead>
                     <tr>
@@ -161,3 +186,15 @@
 
 
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+
+
+    </script>
+}
