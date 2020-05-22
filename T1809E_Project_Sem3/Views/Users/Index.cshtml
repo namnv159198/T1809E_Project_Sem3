@@ -1,5 +1,7 @@
-﻿@model IEnumerable<T1809E_Project_Sem3.Models.User>
-
+﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.User>
+@using PagedList.Mvc
+@using T1809E_Project_Sem3.Models
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
@@ -28,17 +30,19 @@
                         <i class="@Iconsort" aria-hidden="true"></i>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Address)
+                        Adress
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                        PhoneNumber
                     </th>
                     <th>
                         @Html.ActionLink("Create At", "Index", new { sortOrder = ViewBag.DateSortParm })
                         <i class="@Iconsort " aria-hidden="true"></i>
                     </th>
-                    <th></th>
+                    <th>
+                        Action
+                    </th>
                 </tr>
 
                 @foreach (var item in Model)
@@ -73,6 +77,11 @@
                     @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
                 </button>
             </div>
+            <br />
+            @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort}))
         </div>
     </section>
 
