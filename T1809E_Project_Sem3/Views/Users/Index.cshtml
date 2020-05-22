@@ -24,7 +24,8 @@
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.Email)
+                        @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                        <i class="@Iconsort" aria-hidden="true"></i>
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Address)
