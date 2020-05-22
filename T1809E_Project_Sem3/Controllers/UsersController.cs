@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using T1809E_Project_Sem3.Models;
+using PagedList;
 
 namespace T1809E_Project_Sem3.Controllers
 {
@@ -60,9 +61,9 @@ namespace T1809E_Project_Sem3.Controllers
         }
        
         // GET: Users
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, int? page)
         {
-            
+            ViewBag.CurrentSort = sortOrder;
             List<User> t = new List<User>();
             
             foreach (var u in UserManager.Users)
@@ -137,7 +138,9 @@ namespace T1809E_Project_Sem3.Controllers
                     ViewBag.SortIcon = "fa fa-sort";
                     break;
             }
-            return View(list.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(list.ToPagedList(pageNumber, pageSize));
         }
         public async Task<ActionResult> Details(string id)
         {
