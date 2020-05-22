@@ -70,48 +70,73 @@ namespace T1809E_Project_Sem3.Controllers
                 t.Add(new User(u));
             }
             var list = t.AsEnumerable();
-            //if (String.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
-            //{
-            //    ViewBag.DateSortParm = "date-desc";
-            //    ViewBag.NameSortParm = "name-desc";
-            //    ViewBag.SortIcon = "fa fa-sort-asc";
+            if (String.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
+            {
+                ViewBag.DateSortParm = "date-desc";
+                ViewBag.NameSortParm = "name-desc";
+                ViewBag.EmailSortParm = "email-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
 
-            //}
-            //else if (sortOrder.Equals("date-desc"))
-            //{
-            //    ViewBag.DateSortParm = "date-asc";
-            //    ViewBag.SortIcon = "fa fa-sort-desc";
-            //}
-            //else if (sortOrder.Equals("name-asc"))
-            //{
-            //    ViewBag.NameSortParm = "name-desc";
-            //    ViewBag.SortIcon = "fa fa-sort-asc";
-            //}
-            //else if (sortOrder.Equals("name-desc"))
-            //{
-            //    ViewBag.NameSortParm = "name-asc";
-            //    ViewBag.SortIcon = "fa fa-sort-desc";
-            //}
+            }
+            //Date
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.DateSortParm = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.DateSortParm = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            //Email
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.EmailSortParm = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.EmailSortParm = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            //UserName
+            else if (sortOrder.Equals("name-asc"))
+            {
+                ViewBag.NameSortParm = "name-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("name-desc"))
+            {
+                ViewBag.NameSortParm = "name-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
 
-            //switch (sortOrder)
-            //{
-            //    case "name-asc":
-            //        list = list.OrderBy(p => p.UserName);
-            //        break;
-            //    case "name-desc":
-            //        list = list.OrderByDescending(p => p.UserName);
-            //        break;
-            //    case "date-asc":
-            //        list = list.OrderBy(p => p.CreateAt);
-            //        break;
-            //    case "date-desc":
-            //        list = list.OrderByDescending(p => p.CreateAt);
-            //        break;
-            //    default:
-            //        list = list.OrderByDescending(p => p.CreateAt);
-            //        ViewBag.SortIcon = "fa fa-sort";
-            //        break;
-            //}
+            switch (sortOrder)
+            {
+                case "name-asc":
+                    list = list.OrderBy(p => p.UserName);
+                    break;
+                case "name-desc":
+                    list = list.OrderByDescending(p => p.UserName);
+                    break;
+                case "email-asc":
+                    list = list.OrderBy(p => p.Email);
+                    break;
+                case "email-desc":
+                    list = list.OrderByDescending(p => p.Email);
+                    break;
+                case "date-asc":
+                    list = list.OrderBy(p => p.CreateAt);
+                    break;
+                case "date-desc":
+                    list = list.OrderByDescending(p => p.CreateAt);
+                    break;
+                default:
+                    list = list.OrderByDescending(p => p.CreateAt);
+                    ViewBag.SortIcon = "fa fa-sort";
+                    break;
+            }
             return View(list.ToList());
         }
         public async Task<ActionResult> Details(string id)
