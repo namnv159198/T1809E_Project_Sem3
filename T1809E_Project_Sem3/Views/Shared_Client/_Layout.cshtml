@@ -25,17 +25,20 @@
     <!-- Body main wrapper start -->
     <div class="wrapper">
         <!-- HEADER AREA START -->
-      @RenderPage("_Header.cshtml")
+        @RenderPage("_Header.cshtml")
         <!-- HRADER AREA END -->
         <!-- SLIDER AREA START -->
         @RenderPage("_Slider.cshtml")
         <!-- SLIDER AREA END -->
         <!-- BANNER AREA START -->
-         @RenderPage("_Banner.cshtml")
+        @RenderPage("_Banner.cshtml")
         <!-- BANNER AREA END -->
+
+
         @RenderBody()
+
         @RenderPage("_Footer.cshtml")
-  
+
         <div id="quickview-wrapper">
             <!-- Modal -->
             <div class="modal fade" id="product_modal" tabindex="-1">
@@ -168,4 +171,5 @@
     <!-- Main js  -->
     <script src="~/ClientTemplate/js/main.js"></script>
 </body>
+@RenderSection("scripts", required: false)
 </html>
