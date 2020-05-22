@@ -1,0 +1,70 @@
+﻿@model T1809E_Project_Sem3.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+}
+
+<div class="wrapper">
+
+    <section class="panel">
+        <header class="panel-heading">
+            Details User
+        </header>
+
+        <div class="panel-body">
+            <div>
+                <h4>User: @Model.UserName</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreateAt)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreateAt)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+        <ul class="pager">
+            <li>@Html.ActionLink("Edit ", "Edit", new { id = Model.Id })</li>
+            <li>@Html.ActionLink("Back to List", "Index")</li>
+
+        </ul>
+    </section>
+
+</div>
