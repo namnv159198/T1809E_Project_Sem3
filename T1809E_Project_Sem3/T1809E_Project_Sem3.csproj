@@ -733,6 +733,13 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Client\Shop.cshtml" />
+    <Content Include="Views\Client\About.cshtml" />
+    <Content Include="Views\Client\Contact.cshtml" />
+    <Content Include="Views\Shared_Client\Login.cshtml" />
+    <Content Include="Views\Client\Login.cshtml" />
+    <Content Include="Views\Client\Checkout.cshtml" />
+    <Content Include="Views\Client\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
