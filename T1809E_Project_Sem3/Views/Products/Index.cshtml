@@ -94,7 +94,7 @@
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Thumbnails)
+                                <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" width="300" height="300" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Price)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -49,5 +50,53 @@ namespace T1809E_Project_Sem3.Models
         public String DeleteById { get; set; }
         [ForeignKey("DeleteById")]
         public virtual ApplicationUser DeleteBy { get; set; }
+
+        public string GetDefaultThumbnails()
+        {
+            if (this.Thumbnails != null && this.Thumbnails.Length > 0)
+            {
+                var arrayThumbnails = this.Thumbnails.Split(',');
+                if (arrayThumbnails.Length > 0)
+                {
+                    return
+                        ConfigurationManager.AppSettings["CloudinaryPrefix"] + arrayThumbnails[0];
+                }
+
+            }
+
+            return
+                ConfigurationManager.AppSettings["ImageNull"];
+        }
+        public string[] GetThumbnails()
+        {
+            if (this.Thumbnails != null && this.Thumbnails.Length > 0)
+            {
+                var arrayThumbnails = this.Thumbnails.Split(',');
+                if (arrayThumbnails.Length > 0)
+                {
+                    return arrayThumbnails;
+                }
+
+            }
+
+            return new string[0];
+        }
+
+        public string[] GetThumbnailIDs()
+        {
+            var idThumbnail = new List<string>();
+            var thumbnails = GetThumbnails();
+            foreach (var i in thumbnails)
+            {
+                var SplittedThumbnails = i.Split('/');
+                if (SplittedThumbnails.Length != 4)
+                {
+                    continue;
+                }
+                idThumbnail.Add(SplittedThumbnails[3].Split('.')[0]);
+
+            }
+            return idThumbnail.ToArray();
+        }
     }
 }
