@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
 using T1809E_Project_Sem3.Models;
 
 namespace T1809E_Project_Sem3.Controllers
@@ -16,19 +16,19 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index(string sortOrder, int? status, string searchString, string currentFilter)
+        public ActionResult Index(string sortOrder, int? status, string searchString, string currentFilter , int? page)
         {
             var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
-          
-            ////if (searchString != null)
-            ////{
-            ////    page = 1;
-            ////}
-            ////else
-            ////{
-            ////    searchString = currentFilter;
-            ////}
-            ////ViewBag.CurrentFilter = searchString;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.Name.Contains(searchString));
@@ -117,7 +117,10 @@ namespace T1809E_Project_Sem3.Controllers
             }
 
 
-            return View(products.ToList());
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(products.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5
