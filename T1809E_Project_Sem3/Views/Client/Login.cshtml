@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared_Client/_Layout.cshtml";
+}
+
+<!-- Body main wrapper start -->
+<div class="wrapper">
+    
+    <!-- BREADCRUMB AREA START -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcurmb-inner">
+                        <!-- breadcrumb-menu -->
+                        <div class="breadcrumb-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html" title="Home Page"><i class="fa fa-home"></i></a></li>
+                                    <li>My Account</li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- breadcrumb-title -->
+                        <div class="breadcrumb-title line-bottom">
+                            <h2>My Account</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+    <!-- LOGIN REGISTER AREA START -->
+    <div class="login-register-area mt-0 mb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="xl-pr-15">
+                        <div class="login-area">
+                            <h2>Login</h2>
+                            <form action="#">
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password" placeholder="Password">
+                                <input type="submit" value="Login">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="xl-pl-15">
+                        <div class="register-area">
+                            <h2>Register</h2>
+                            <form action="#">
+                                <input type="text" name="name" placeholder="Name">
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password" placeholder="Password">
+                                <div class="mb-20">
+                                    <label><input type="checkbox"> I agree <a href="terms-conditions.html">Tarms & Conditions</a></label>
+                                </div>
+                                <input type="submit" value="Register">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN REGISTER AREA END -->
+   
+</div>
+<!-- Body main wrapper end -->
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button.owl-prev").find("img").remove();
+            $("button.owl-next").find("img").remove();
+            var iconPrev = "<i></i>";
+            $("button.owl-prev").append(iconPrev);
+            $("button.owl-prev i").addClass("fa fa-arrow-left");
+            $("button.owl-next").append(iconPrev);
+            $("button.owl-next i").addClass("fa fa-arrow-right");
+        });
+    </script>
+}
