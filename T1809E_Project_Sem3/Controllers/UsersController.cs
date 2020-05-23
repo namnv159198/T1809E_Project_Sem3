@@ -224,7 +224,7 @@ namespace T1809E_Project_Sem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber,Gender = model.Gender };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber,Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
