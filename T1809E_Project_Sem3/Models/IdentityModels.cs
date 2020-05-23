@@ -22,21 +22,10 @@ namespace T1809E_Project_Sem3.Models
         [Display(Name = "Birthday")]
         public DateTime? Birthday { get; set; }
         [Display(Name = "Gender")]
-        public GenderEnum Gender { get; set; }
-        public enum GenderEnum
-        {
-            Male = 0,
-            Female = 1,
-            Other = 2
-        }
-        public EnumStatus Status { get; set; }
-        public enum EnumStatus
-        {
-            Active = 0,
-            Banned = 1,
-            Delete = -1
-
-        }
+        public User.GenderEnum Gender { get; set; }
+       
+        public User.UserStatus Status { get; set; }
+       
         public DateTime CreateAt { get; set; }
         public ApplicationUser()
         {
