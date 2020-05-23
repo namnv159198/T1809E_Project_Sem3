@@ -61,7 +61,7 @@ namespace T1809E_Project_Sem3.Controllers
         }
        
         // GET: Users
-        public ActionResult Index(string sortOrder, int? page, DateTime? start, DateTime? end, int? status, int? gender)
+        public ActionResult Index(string sortOrder, int? page, DateTime? start, DateTime? end, int? status, int? gender, string currentFilter, string searchString,string keyword)
         {
             ViewBag.CurrentSort = sortOrder;
             List<User> t = new List<User>();
@@ -72,12 +72,32 @@ namespace T1809E_Project_Sem3.Controllers
             }
             var list = t.AsEnumerable();
 
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.UserName.Contains(searchString) || s.Email.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                list = list.Where(p => p.UserName.Contains(keyword) || p.Email.Contains(keyword));
+            }
             if (status.HasValue)
             {
+                ViewBag.Status = status;
                 list = list.Where(p => (int)p.Status == status.Value);
             }
             if (gender.HasValue)
             {
+                ViewBag.Gender = gender;
                 list = list.Where(p => (int)p.Gender == gender.Value);
             }
             //Search by Time

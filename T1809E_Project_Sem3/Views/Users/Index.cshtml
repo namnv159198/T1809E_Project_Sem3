@@ -12,7 +12,7 @@
 <style>
     .padding {
         padding-top: 10px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 </style>
 <div class="wrapper">
@@ -33,13 +33,22 @@
                     <div class="col-md-7">
                         <form action="/Users/Index" method="get" name="search-form">
                             <div class="row">
-                                @*<div class="col-md-3">
-                                    Search
-                                </div>*@
+                                <div class="col-lg-6">
+                                    <div class="input-group m-bot15">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+
+                                        </span>
+                                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
+
+                                        
+                                    </div>
+                                    
+                                </div>
                                 <div class="col-md-9">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="hidden" name="keyword" value="" class="form-control" />
+
                                             <input type="hidden" name="start" value="" />
                                             <input type="hidden" name="end" value="" />
                                             <input type="hidden" name="sortOrder" value="" />
@@ -72,6 +81,7 @@
                         </form>
                     </div>
                     <div class="btn-group">
+                        
                         <form action="/Users/Index" method="get">
                             <p>Search By Time </p>
                             <input type="text" name="daterange" value="" class="form-control" />
@@ -154,7 +164,7 @@
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @Html.PagedListPager(Model, page => Url.Action("Index",
-                    new { page, sortOrder = ViewBag.CurrentSort }))
+                    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status, gender = ViewBag.Gender }))
             </div>
             </section>
         </div>
