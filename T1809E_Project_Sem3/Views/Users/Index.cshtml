@@ -1,0 +1,227 @@
+﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.User>
+@using PagedList.Mvc
+@using T1809E_Project_Sem3.Models
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+    var Iconsort = ViewBag.SortIcon;
+    var STT = 0;
+}
+
+<style>
+    .padding {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+</style>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Users Table
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-chevron-down"></a>
+                        <a href="javascript:;" class="fa fa-times"></a>
+                    </span>
+                </header>
+                @*Search*@
+            
+            <div class="panel-body">
+                <div class="row padding">
+                    <div class="col-md-7">
+                        <form action="/Users/Index" method="get" name="search-form">
+                            <div class="row">
+                                @*<div class="col-md-3">
+                                    Search
+                                </div>*@
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="keyword" value="" class="form-control" />
+                                            <input type="hidden" name="start" value="" />
+                                            <input type="hidden" name="end" value="" />
+                                            <input type="hidden" name="sortOrder" value="" />
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="row padding">
+
+                                <div class="col-lg-4">
+                                    <div class="padding">
+                                        @Html.DropDownList("status",
+                                            EnumHelper.GetSelectList(typeof(User.UserStatus)),
+                                            " Select Status ",
+                                            new { @class = "btn btn-default dropdown-toggle" })
+                                    </div>
+                                    <div class="">
+                                        @Html.DropDownList("gender",
+                                            EnumHelper.GetSelectList(typeof(User.GenderEnum)),
+                                            "Select Gender",
+                                            new { @class = "btn btn-default dropdown-toggle" })
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="btn-group">
+                        <form action="/Users/Index" method="get">
+                            <p>Search By Time </p>
+                            <input type="text" name="daterange" value="" class="form-control" />
+                        </form>
+                    </div>
+
+                </div>
+                <table class="display table table-bordered table-striped " id="dynamic-table">
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            @Html.ActionLink("User Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            <i class="@Iconsort" aria-hidden="true"></i>
+                        </th>
+
+                        <th>
+                            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                            <i class="@Iconsort" aria-hidden="true"></i>
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            @Html.ActionLink("Create At", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            <i class="@Iconsort " aria-hidden="true"></i>
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @{
+                                    STT = STT + 1;
+                                }
+                                @STT
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateAt)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="btn-group">
+
+                    <button id="editable-sample_new" class="btn btn-primary">
+                        @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page, sortOrder = ViewBag.CurrentSort }))
+            </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        var start = moment().subtract(29, 'days');
+        var end = moment();
+
+        var url_string = location.href;
+        var url = new URL(url_string);
+
+        // Cắt đoạn biến trong herf
+        var initStart = url.searchParams.get("start");
+        var initEnd = url.searchParams.get("end");
+        var keyword = url.searchParams.get("keyword");
+        var sortOrder = url.searchParams.get("sortOrder");
+
+
+        if (initStart != null && moment(initStart, 'YYYY-MM-DD', true).isValid()) {
+            // Gán biến cho start trong thẻ input
+            start = initStart;
+            $('input[name="start"]').val(start);
+        }
+        if (initEnd != null && moment(initEnd, 'YYYY-MM-DD', true).isValid()) {
+            end = initEnd;
+            $('input[name="end"]').val(end);
+        }
+        if (sortOrder != null) {
+            $('input[name="sortOrder"]').val(keyword);
+        }
+        $('input[name="daterange"]').daterangepicker({
+            startDate: start,
+            endDate: end,
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [
+                    moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')
+                ]
+            }
+        });
+        $('input[name="daterange"]').on('apply.daterangepicker',
+            function (ev, picker) {
+                var startDate = picker.startDate.format('YYYY-MM-DD');
+                var endDate = picker.endDate.format('YYYY-MM-DD');
+                $('input[name="start"]').val(startDate);
+                $('input[name="end"]').val(endDate);
+                $('form[name="search-form"]').submit();
+            });
+
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+        $('select[name="gender"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+    </script>
+}

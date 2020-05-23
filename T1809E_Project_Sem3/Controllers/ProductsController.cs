@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 using T1809E_Project_Sem3.Models;
 
 namespace T1809E_Project_Sem3.Controllers
@@ -15,9 +16,120 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, int? status, DateTime? start, DateTime? end, string searchString, string currentFilter)
+
         {
             var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+          
+            ////if (searchString != null)
+            ////{
+            ////    page = 1;
+            ////}
+            ////else
+            ////{
+            ////    searchString = currentFilter;
+            ////}
+            ////ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString));
+            }
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                products = products.Where(p => (int)p.Status == status.Value);
+
+            }
+            if (start != null)
+            {
+                var startDate = start.GetValueOrDefault().Date;
+                startDate = startDate.Date + new TimeSpan(0, 0, 0);
+                products = products.Where(p => p.CreateAt >= startDate);
+            }
+            if (end != null)
+            {
+                var endDate = end.GetValueOrDefault().Date;
+                endDate = endDate.Date + new TimeSpan(23, 59, 59);
+                products = products.Where(p => p.CreateAt <= endDate);
+            }
+            if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
+
+            {
+                ViewBag.DateSort = "date-desc";
+                ViewBag.PriceSort = "price-desc";
+                ViewBag.NameSort = "name-desc";
+                ViewBag.DiscountSort = "discount-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.DateSort = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("price-asc"))
+            {
+                ViewBag.PriceSort = "price-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("price-desc"))
+            {
+                ViewBag.PriceSort = "price-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("name-asc"))
+            {
+                ViewBag.NameSort = "name-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("name-desc"))
+            {
+                ViewBag.NameSort = "name-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("discount-asc"))
+            {
+                ViewBag.DiscountSort = "discount-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("discount-desc"))
+            {
+                ViewBag.DiscountSort = "discount-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+
+            switch (sortOrder)
+            {
+                case "name-asc":
+                    products = products.OrderBy(p => p.Name);
+                    break;
+                case "name-desc":
+                    products = products.OrderByDescending(p => p.Name);
+                    break;
+                case "price-asc":
+                    products = products.OrderBy(p => p.Price);
+                    break;
+                case "price-desc":
+                    products = products.OrderByDescending(p => p.Price);
+                    break;
+                case "date-asc":
+                    products = products.OrderBy(p => p.CreateAt);
+                    break;
+                case "date-desc":
+                    products = products.OrderByDescending(p => p.CreateAt);
+                    break;
+                case "discount-asc":
+                    products = products.OrderBy(p => p.Discount);
+                    break;
+                case "discount-desc":
+                    products = products.OrderByDescending(p => p.Discount);
+                    break;
+                default:
+                    products = products.OrderByDescending(p => p.CreateAt);
+                    ViewBag.SortIcon = "fa fa-sort";
+                    break;
+            }
+
+
             return View(products.ToList());
         }
 
@@ -51,10 +163,16 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product)
+
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
+
         {
             if (ModelState.IsValid)
             {
+                if (thumbnails != null && thumbnails.Length > 0)
+                {
+                    product.Thumbnails = string.Join(",", thumbnails);
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,10 +209,15 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product)
+
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
         {
             if (ModelState.IsValid)
             {
+                if (thumbnails != null && thumbnails.Length > 0)
+                {
+                    product.Thumbnails = string.Join(",", thumbnails);
+                }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

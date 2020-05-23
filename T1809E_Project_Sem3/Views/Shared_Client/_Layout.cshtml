@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Nikado || Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/ClientTemplate/images/icons/icon-logo.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="~/ClientTemplate/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/ClientTemplate/css/css-plugins-call.css">
+    <link rel="stylesheet" href="~/ClientTemplate/css/bundle.css">
+    <link rel="stylesheet" href="~/ClientTemplate/css/main.css">
+    <link rel="stylesheet" href="~/ClientTemplate/css/responsive.css">
+</head>
+<body>
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- HEADER AREA START -->
+        @RenderPage("_Header.cshtml")
+        <!-- HRADER AREA END -->
+
+
+
+        @RenderBody()
+
+        @RenderPage("_Footer.cshtml")
+
+        
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- jQuery Local -->
+    <script src="~/ClientTemplate/js/jquery-3.2.1.min.js"></script>
+
+    <!-- Popper min js -->
+    <script src="~/ClientTemplate/js/popper.min.js"></script>
+    <!-- Bootstrap min js  -->
+    <script src="~/ClientTemplate/js/bootstrap.min.js"></script>
+    <!-- All plugins here -->
+    <script src="~/ClientTemplate/js/plugins.js"></script>
+    <!-- Main js  -->
+    <script src="~/ClientTemplate/js/main.js"></script>
+</body>
+@RenderSection("scripts", required: false)
+</html>
