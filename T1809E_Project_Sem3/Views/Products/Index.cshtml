@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
 @using T1809E_Project_Sem3.Models
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
@@ -22,16 +23,18 @@
 
                     @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @name = "search-form" }))
                     {
+
                         <input type="hidden" name="start" value="" />
                         <input type="hidden" name="end" value="" />
                         <input type="hidden" name="sortOrder" value="" />
+
                         <div class="col-lg-6 ">
                             <div class="input-group m-bot15">
-                                @*<span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
 
-                    </span>*@
-                                @*@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })*@
+                                </span>
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
 
                             </div>
                             @Html.DropDownList("status",
@@ -43,11 +46,13 @@
                             </div>
                         </div>
                     }
+
                     <div class="col-lg-3">
                         <form action="/Products/Index" method="get">
                             <input type="text" name="daterange" value="" class="form-control fa fa-clock-o" />
                         </form>
                     </div>
+
                     <div class="adv-table ">
                         <table class="display table table-bordered table-striped " id="dynamic-table">
                             <thead>
@@ -56,6 +61,7 @@
                                         @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
                                         <i class="@Iconsort" aria-hidden="true"></i>
                                     </th>
+
 
                                     <th>
                                         Category
@@ -90,17 +96,13 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Name)
                                         </td>
+
                                         <td>
                                             @Html.DisplayFor(modelItem => item.category.Name)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Status)
                                         </td>
-
-                                        <td>
-                                            <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" style="width: 100px !important; height: 100px;" />
-                                        </td>
-
 
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Price)
@@ -148,6 +150,26 @@
 
                                                     </div>
 
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <!-- Cỏntroller -->
+                                                        @using (Html.BeginForm("Delete", "Products", new { id = item.Id }))
+                                                        {
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                            <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                        }
+
+
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </td>
@@ -156,6 +178,7 @@
                             </tbody>
                         </table>
                     </div>
+
 
                     <div class="btn-group">
 
@@ -166,13 +189,39 @@
                 </div>
             </section>
         </div>
+
+
+
+
+                </div>
+        
+        </section>
+            </div>
+
+        }
+
+
+
     </div>
 
+
+    <div class="btn-group">
 
 
 
 
 </div>
+        <button id="editable-sample_new" class="btn btn-primary">
+            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+</div>
+
+
+
+
+
 
 @section scripts{
     <script type="text/javascript">
@@ -180,5 +229,9 @@
         $('select[name="status"]').change(function () {
             $('form[name="search-form"]').submit();
         });
+
+
+
+
     </script>
 }

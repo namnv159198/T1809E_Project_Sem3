@@ -69,6 +69,7 @@ namespace T1809E_Project_Sem3.Models
             PhoneNumber = user.PhoneNumber;
             CreateAt = user.CreateAt;
             Status = user.Status;
+            Gender = user.Gender;
         }
         public User()
         {
