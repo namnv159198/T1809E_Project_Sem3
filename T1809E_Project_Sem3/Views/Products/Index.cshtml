@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
-
-
 @using T1809E_Project_Sem3.Models
 
 
@@ -36,7 +34,7 @@
                                     <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
 
                                 </span>
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
 
                             </div>
                             @Html.DropDownList("status",

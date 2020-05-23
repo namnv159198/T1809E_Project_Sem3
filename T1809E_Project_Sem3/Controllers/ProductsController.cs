@@ -20,15 +20,15 @@ namespace T1809E_Project_Sem3.Controllers
         {
             var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
           
-            //if (searchString != null)
-            //{
-            //    page = 1;
-            //}
-            //else
-            //{
-            //    searchString = currentFilter;
-            //}
-            //ViewBag.CurrentFilter = searchString;
+            ////if (searchString != null)
+            ////{
+            ////    page = 1;
+            ////}
+            ////else
+            ////{
+            ////    searchString = currentFilter;
+            ////}
+            ////ViewBag.CurrentFilter = searchString;
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.Name.Contains(searchString));
