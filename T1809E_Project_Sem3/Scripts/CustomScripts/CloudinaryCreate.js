@@ -1,7 +1,7 @@
 ﻿function showUploadWidget() {
     cloudinary.openUploadWidget({
         cloudName: "dye967djr",
-        uploadPreset: "cq7nzzi0",
+        uploadPreset: "ml_default",
         sources: [
             "local",
             "url",
@@ -28,6 +28,7 @@ $('body').on('click', '.cloudinary-delete', function () {
     var imgId = spiltedLink[spiltedLink.length - 1].split('.')[0];
     $(`input[data-cloudinary-public-id="${imgId}"]`).remove();
     $(`li[value="${imgId}"]`).remove();
+    return false;
 });
 document.getElementById("upload_widget").addEventListener("click", function () {
     showUploadWidget();

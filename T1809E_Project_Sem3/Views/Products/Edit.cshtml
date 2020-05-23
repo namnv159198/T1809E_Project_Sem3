@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Edit";
     var resCloud = "https://res.cloudinary.com/dye967djr/";
-    var StringJPG = ".jpg";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 }
 
@@ -58,7 +57,7 @@
                                 {
                                     <li class="cloudinary-thumbnail active" value="@i">
                                         <img src="@resCloud@i" alt="Thumbnail" class="img-thumbnail" style="width: 100px; height: 100px;"/>
-                                        <a href="" class="cloudinary-delete">x</a>
+                                        <a href="#" class="cloudinary-delete">x</a>
                                     </li>
                                 }
                             </ul>
