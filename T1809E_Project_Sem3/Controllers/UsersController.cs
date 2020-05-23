@@ -61,7 +61,7 @@ namespace T1809E_Project_Sem3.Controllers
         }
        
         // GET: Users
-        public ActionResult Index(string sortOrder, int? page)
+        public ActionResult Index(string sortOrder, int? page, DateTime? start, DateTime? end, int? status, int? gender)
         {
             ViewBag.CurrentSort = sortOrder;
             List<User> t = new List<User>();
@@ -71,6 +71,28 @@ namespace T1809E_Project_Sem3.Controllers
                 t.Add(new User(u));
             }
             var list = t.AsEnumerable();
+
+            //if (status.HasValue)
+            //{
+            //    list = list.Where(p => (int)p.Status == status.Value);
+            //}
+            //if (gender.HasValue)
+            //{
+            //    list = list.Where(p => (int)p.Gender == gender.Value);
+            //}
+            //Search by Time
+            if (start != null)
+            {
+                var startDate = start.GetValueOrDefault().Date;
+                startDate = startDate.Date + new TimeSpan(0, 0, 0);
+                list = list.Where(p => p.CreateAt >= startDate);
+            }
+            if (end != null)
+            {
+                var endDate = end.GetValueOrDefault().Date;
+                endDate = endDate.Date + new TimeSpan(23, 59, 59);
+                list = list.Where(p => p.CreateAt <= endDate);
+            }
             if (String.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
             {
                 ViewBag.DateSortParm = "date-desc";
@@ -79,6 +101,7 @@ namespace T1809E_Project_Sem3.Controllers
                 ViewBag.SortIcon = "fa fa-sort-asc";
 
             }
+
             //Date
             else if (sortOrder.Equals("date-desc"))
             {
