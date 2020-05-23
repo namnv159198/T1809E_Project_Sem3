@@ -35,6 +35,7 @@ namespace T1809E_Project_Sem3.Models
             Female = 1,
             Other = 2
         }
+        public string RoleName { get; set; }
     }
 
     public class User
@@ -48,6 +49,7 @@ namespace T1809E_Project_Sem3.Models
         public DateTime CreateAt { get; set; }
         public UserStatus Status { get; set; }
         public GenderEnum Gender { get; set; }
+        public string RoleName { get; set; }
         public enum GenderEnum
         {
             Male = 0,
