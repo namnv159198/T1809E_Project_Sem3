@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
 @using T1809E_Project_Sem3.Models
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
     var Iconsort = ViewBag.SortIcon;
 }
 
-    <div class="wrapper">
+<div class="wrapper">
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
@@ -33,11 +34,11 @@
 
                         <div class="col-lg-6 ">
                             <div class="input-group m-bot15">
-                                @*<span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
 
-                    </span>*@
-                                @*@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })*@
+                                </span>
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
 
                             </div>
                             @Html.DropDownList("status",
@@ -49,85 +50,125 @@
                             </div>
                         </div>
                     }
-                <div class="adv-table ">
-                    <table class="display table table-bordered table-striped " id="dynamic-table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
 
-                                <th>
-                                    Category
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Thumbnails)
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Discount", "Index", new { sortOrder = ViewBag.DiscountSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Created At", "Index", new { sortOrder = ViewBag.DateSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
-                                <th>
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.category.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
+                    <div class="adv-table ">
+                        <table class="display table table-bordered table-striped " id="dynamic-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
+                                        <i class="@Iconsort" aria-hidden="true"></i>
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.CreateBy.UserName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DeleteBy.UserName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UpdateBy.UserName)
+                                        </th>*@
 
-                                <td>
-                                    <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" style="width: 100px !important; height: 100px;" />
-                                </td>
-                           
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Thumbnails)
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSort })
+                                        <i class="@Iconsort" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Discount", "Index", new { sortOrder = ViewBag.DiscountSort })
+                                        <i class="@Iconsort" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Created At", "Index", new { sortOrder = ViewBag.DateSort })
+                                        <i class="@Iconsort" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.CreateBy.UserName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DeleteBy.UserName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UpdateBy.UserName)*@
+                                        @*</td>*@
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Discount)%
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreateAt)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                    <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
-                                        Delete
-                                    </button>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.category.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
 
-                                    <div class="modal" id="myModal_@item.Id">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Discount)%
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreateAt)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                            <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
+                                                Delete
+                                            </button>
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Message</h4>
+                                            <div class="modal" id="myModal_@item.Id">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                </div>
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Message</h4>
+
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <!-- Cỏntroller -->
+                                                            @using (Html.BeginForm("Delete", "Products", new { id = item.Id }))
+                                                            {
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                                <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                            }
+
+
+                                                        </div>
+
+                                                    </div>
+
+               
 
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
@@ -149,6 +190,15 @@
 
                                             </div>
 
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
                                         </div>
                                     </div>
                                 </td>
@@ -158,31 +208,34 @@
                     </table>
                 </div>
                    
+
                     <div class="btn-group">
 
                         <button id="editable-sample_new" class="btn btn-primary">
                             @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
                         </button>
                     </div>
+
                 </div>
-</section>
+
+            </section>
         </div>
-        </div>
-       
-
-
-
-
     </div>
 
-            @section scripts{
-                <script type="text/javascript">
-
-                    $('select[name="status"]').change(function () {
-                        $('form[name="search-form"]').submit();
-                    });
 
 
 
-                </script>
-            }
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+
+
+    </script>
+}
