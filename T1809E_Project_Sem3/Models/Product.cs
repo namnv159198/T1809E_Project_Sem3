@@ -71,7 +71,7 @@ namespace T1809E_Project_Sem3.Models
         {
             if (this.Thumbnails != null && this.Thumbnails.Length > 0)
             {
-                var arrayThumbnails = this.Thumbnails.Split(',');
+                var arrayThumbnails = Thumbnails.Split(',');
                 if (arrayThumbnails.Length > 0)
                 {
                     return arrayThumbnails;
@@ -88,12 +88,8 @@ namespace T1809E_Project_Sem3.Models
             var thumbnails = GetThumbnails();
             foreach (var i in thumbnails)
             {
-                var SplittedThumbnails = i.Split('/');
-                if (SplittedThumbnails.Length != 4)
-                {
-                    continue;
-                }
-                idThumbnail.Add(SplittedThumbnails[3].Split('.')[0]);
+                var splitThumbnails = i;
+                idThumbnail.Add(splitThumbnails);
 
             }
             return idThumbnail.ToArray();
