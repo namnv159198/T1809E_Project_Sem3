@@ -135,10 +135,16 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Status,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product)
+
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
+
         {
             if (ModelState.IsValid)
             {
+                if (thumbnails != null && thumbnails.Length > 0)
+                {
+                    product.Thumbnails = string.Join(",", thumbnails);
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -175,10 +181,15 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Status,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product)
+
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
         {
             if (ModelState.IsValid)
             {
+                if (thumbnails != null && thumbnails.Length > 0)
+                {
+                    product.Thumbnails = string.Join(",", thumbnails);
+                }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

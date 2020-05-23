@@ -654,6 +654,7 @@
     <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.bin" />
     <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\CustomScripts\CloudinaryCreate.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
