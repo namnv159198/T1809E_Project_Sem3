@@ -41,7 +41,7 @@
                                         </span>
                                         @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
 
-                                        
+
                                     </div>
                                     
                                 </div>
@@ -104,6 +104,9 @@
                             <i class="@Iconsort" aria-hidden="true"></i>
                         </th>
                         <th>
+                            Role
+                        </th>
+                        <th>
                             Status
                         </th>
                         <th>
@@ -135,6 +138,9 @@
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoleName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)

@@ -16,18 +16,30 @@ namespace T1809E_Project_Sem3.Controllers
 
     public class UsersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+       
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationRoleManager _roleManager;
         public UsersController()
         {
         }
 
-        public UsersController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public UsersController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -214,7 +226,12 @@ namespace T1809E_Project_Sem3.Controllers
         [AllowAnonymous]
         public ActionResult Create()
         {
-            
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach(var role in RoleManager.Roles)
+            {
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+                ViewBag.Roles = list;
+            }
             return View();
         }
         [HttpPost]
@@ -228,6 +245,7 @@ namespace T1809E_Project_Sem3.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
