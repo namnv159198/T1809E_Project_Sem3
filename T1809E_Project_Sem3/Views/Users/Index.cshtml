@@ -9,6 +9,12 @@
     var STT = 0;
 }
 
+<style>
+    .padding {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+</style>
 <div class="wrapper">
     <div class="row">
         <div class="col-sm-12">
@@ -21,126 +27,135 @@
                     </span>
                 </header>
                 @*Search*@
-            <div class="row padding">
-                <div class="col-md-7">
-                    <form action="/Users/Index" method="get" name="search-form">
-                        <div class="row">
-                            <div class="col-md-3">
-                                Search
-                            </div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="hidden" name="keyword" value="" class="form-control" />
-                                        <input type="hidden" name="start" value="" />
-                                        <input type="hidden" name="end" value="" />
-                                        <input type="hidden" name="sortOrder" value="" />
+            
+            <div class="panel-body">
+                <div class="row padding">
+                    <div class="col-md-7">
+                        <form action="/Users/Index" method="get" name="search-form">
+                            <div class="row">
+                                @*<div class="col-md-3">
+                                    Search
+                                </div>*@
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="keyword" value="" class="form-control" />
+                                            <input type="hidden" name="start" value="" />
+                                            <input type="hidden" name="end" value="" />
+                                            <input type="hidden" name="sortOrder" value="" />
+                                        </div>
+
                                     </div>
 
+
                                 </div>
-
-
                             </div>
-                        </div>
-                        @*<div class="row padding">
-                            <div class="col-md-3">
-                                Filter by status
+                            <div class="row padding">
+
+                                <div class="col-lg-4">
+                                    <div class="padding">
+                                        @Html.DropDownList("status",
+                                            EnumHelper.GetSelectList(typeof(User.UserStatus)),
+                                            " Select Status ",
+                                            new { @class = "btn btn-default dropdown-toggle" })
+                                    </div>
+                                    <div class="">
+                                        @Html.DropDownList("gender",
+                                            EnumHelper.GetSelectList(typeof(User.GenderEnum)),
+                                            "Select Gender",
+                                            new { @class = "btn btn-default dropdown-toggle" })
+                                    </div>
+                                </div>
+                                
                             </div>
-                            <div class="col-md-9">
-                                @Html.DropDownList("status",
-                                    EnumHelper.GetSelectList(typeof(User.UserStatus)),
-                                    "Select Status",
-                                    new { @class = "form-control" })
-                                <input type="submit" value="Search" class="btn btn-primary" style="margin-top: 20px" />
-                            </div>
-                        </div>*@
 
-                    </form>
-                </div>
-                <div class="col-md-5">
-                    <form action="/Users/Index" method="get">
-                        Search by time <input type="text" name="daterange" value="" class="form-control" />
-                    </form>
-                </div>
-
-            </div>
-                <div class="panel-body">
-                    <table class="display table table-bordered table-striped " id="dynamic-table">
-                        <tr>
-                            <th>
-                                STT
-                            </th>
-                            <th>
-                                @Html.ActionLink("User Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-                                <i class="@Iconsort" aria-hidden="true"></i>
-                            </th>
-
-                            <th>
-                                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
-                                <i class="@Iconsort" aria-hidden="true"></i>
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Gender
-                            </th>
-                            <th>
-                                @Html.ActionLink("Create At", "Index", new { sortOrder = ViewBag.DateSortParm })
-                                <i class="@Iconsort " aria-hidden="true"></i>
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
-
-                            <tr>
-                                <td>
-                                    @{
-                                        STT = STT + 1;
-                                    }
-                                    @STT
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Gender)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreateAt)
-                                </td>
-
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                                </td>
-                            </tr>
-                        }
-
-                    </table>
-                    <div class="btn-group">
-
-                        <button id="editable-sample_new" class="btn btn-primary">
-                            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                        </button>
+                        </form>
                     </div>
-                    <br />
-                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    <div class="btn-group">
+                        <form action="/Users/Index" method="get">
+                            <p>Search By Time </p>
+                            <input type="text" name="daterange" value="" class="form-control" />
+                        </form>
+                    </div>
 
-                    @Html.PagedListPager(Model, page => Url.Action("Index",
-                        new { page, sortOrder = ViewBag.CurrentSort }))
                 </div>
+                <table class="display table table-bordered table-striped " id="dynamic-table">
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            @Html.ActionLink("User Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            <i class="@Iconsort" aria-hidden="true"></i>
+                        </th>
+
+                        <th>
+                            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                            <i class="@Iconsort" aria-hidden="true"></i>
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            @Html.ActionLink("Create At", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            <i class="@Iconsort " aria-hidden="true"></i>
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @{
+                                    STT = STT + 1;
+                                }
+                                @STT
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateAt)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="btn-group">
+
+                    <button id="editable-sample_new" class="btn btn-primary">
+                        @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page, sortOrder = ViewBag.CurrentSort }))
+            </div>
             </section>
         </div>
     </div>
@@ -200,5 +215,13 @@
                 $('input[name="end"]').val(endDate);
                 $('form[name="search-form"]').submit();
             });
+
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+        $('select[name="gender"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
     </script>
 }

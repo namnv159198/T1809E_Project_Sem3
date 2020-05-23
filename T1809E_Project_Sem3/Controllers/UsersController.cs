@@ -72,14 +72,14 @@ namespace T1809E_Project_Sem3.Controllers
             }
             var list = t.AsEnumerable();
 
-            //if (status.HasValue)
-            //{
-            //    list = list.Where(p => (int)p.Status == status.Value);
-            //}
-            //if (gender.HasValue)
-            //{
-            //    list = list.Where(p => (int)p.Gender == gender.Value);
-            //}
+            if (status.HasValue)
+            {
+                list = list.Where(p => (int)p.Status == status.Value);
+            }
+            if (gender.HasValue)
+            {
+                list = list.Where(p => (int)p.Gender == gender.Value);
+            }
             //Search by Time
             if (start != null)
             {
