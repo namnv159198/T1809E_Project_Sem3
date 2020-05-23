@@ -1,0 +1,102 @@
+﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.User>
+@using PagedList.Mvc
+@using T1809E_Project_Sem3.Models
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+    var Iconsort = ViewBag.SortIcon;
+    var STT = 0;
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Users Table
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-chevron-down"></a>
+                        <a href="javascript:;" class="fa fa-times"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <table class="display table table-bordered table-striped " id="dynamic-table">
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                @Html.ActionLink("User Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                                <i class="@Iconsort" aria-hidden="true"></i>
+                            </th>
+
+                            <th>
+                                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                                <i class="@Iconsort" aria-hidden="true"></i>
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                @Html.ActionLink("Create At", "Index", new { sortOrder = ViewBag.DateSortParm })
+                                <i class="@Iconsort " aria-hidden="true"></i>
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+
+                    <tr>
+                        <td>
+                            @{
+                                STT = STT +1;
+                            }
+                            @STT
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateAt)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </td>
+                    </tr>
+                        }
+
+                    </table>
+                    <div class="btn-group">
+
+                        <button id="editable-sample_new" class="btn btn-primary">
+                            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <br />
+                    @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort }))
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+</div>

@@ -27,6 +27,7 @@ namespace T1809E_Project_Sem3.Models
         public string Thumbnails { get; set; }
         [Required]
         public decimal Price { get; set; }
+        [Range(0, 100)]
         public int Discount { get; set; }
         public DateTime? CreateAt { get; set; }
         public Product()

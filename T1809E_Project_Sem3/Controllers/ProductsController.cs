@@ -15,10 +15,17 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, int? status)
         {
-            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy).OrderByDescending(p => p.CreateAt);
+            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                products = products.Where(p => (int)p.Status == status.Value);
+
+            }
             if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
+
             {
                 ViewBag.DateSort = "date-desc";
                 ViewBag.PriceSort = "price-desc";
@@ -93,6 +100,8 @@ namespace T1809E_Project_Sem3.Controllers
                     ViewBag.SortIcon = "fa fa-sort";
                     break;
             }
+
+
             return View(products.ToList());
         }
 
@@ -126,7 +135,9 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Create([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
+
         {
             if (ModelState.IsValid)
             {
@@ -170,6 +181,7 @@ namespace T1809E_Project_Sem3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
         {
             if (ModelState.IsValid)
