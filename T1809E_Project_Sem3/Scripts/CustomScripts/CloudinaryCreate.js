@@ -27,6 +27,7 @@ $('body').on('click', '.cloudinary-delete', function () {
     var spiltedLink = $(this).prev().attr('src').split('/');
     var imgId = spiltedLink[spiltedLink.length - 1].split('.')[0];
     $(`input[data-cloudinary-public-id="${imgId}"]`).remove();
+    $(`li[value="${imgId}"]`).remove();
 });
 document.getElementById("upload_widget").addEventListener("click", function () {
     showUploadWidget();
