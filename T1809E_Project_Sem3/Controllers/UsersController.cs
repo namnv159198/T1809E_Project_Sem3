@@ -157,7 +157,9 @@ namespace T1809E_Project_Sem3.Controllers
                 UserName = user.UserName,
                 Address = user.Address,
                 PhoneNumber = user.PhoneNumber,
-                CreateAt = user.CreateAt
+                CreateAt = user.CreateAt,
+                Status = user.Status,
+                Gender = user.Gender,
             };
             if (u == null)
             {
@@ -179,7 +181,7 @@ namespace T1809E_Project_Sem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber,Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -214,6 +216,8 @@ namespace T1809E_Project_Sem3.Controllers
                 UserName = user.UserName,
                 Address = user.Address,
                 PhoneNumber = user.PhoneNumber,
+                Status = user.Status,
+                Gender = user.Gender,
             };
             if (u == null)
             {
@@ -236,7 +240,9 @@ namespace T1809E_Project_Sem3.Controllers
                     usersIdentity.UserName = user.UserName;
                     usersIdentity.PhoneNumber = user.PhoneNumber;
                     usersIdentity.Address = user.Address;
-                    var result = await UserManager.UpdateAsync(usersIdentity);
+                    usersIdentity.Status = user.Status;
+                    usersIdentity.Gender = user.Gender;
+                  var result = await UserManager.UpdateAsync(usersIdentity);
                     if (result.Succeeded)
                     {
 
