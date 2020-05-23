@@ -15,7 +15,7 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index(string sortOrder, int? status)
+        public ActionResult Index(string sortOrder, int? status, DateTime? start, DateTime? end)
         {
             var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             if (status.HasValue)
@@ -23,6 +23,18 @@ namespace T1809E_Project_Sem3.Controllers
                 ViewBag.Status = status;
                 products = products.Where(p => (int)p.Status == status.Value);
 
+            }
+            if (start != null)
+            {
+                var startDate = start.GetValueOrDefault().Date;
+                startDate = startDate.Date + new TimeSpan(0, 0, 0);
+                products = products.Where(p => p.CreateAt >= startDate);
+            }
+            if (end != null)
+            {
+                var endDate = end.GetValueOrDefault().Date;
+                endDate = endDate.Date + new TimeSpan(23, 59, 59);
+                products = products.Where(p => p.CreateAt <= endDate);
             }
             if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
 
