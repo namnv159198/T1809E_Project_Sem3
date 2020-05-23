@@ -17,7 +17,7 @@ namespace T1809E_Project_Sem3.Controllers
 
         // GET: Products
 
-        public ActionResult Index(string sortOrder, int? status, DateTime? start, DateTime? end, string searchString, string currentFilter, , int? page)
+        public ActionResult Index(string sortOrder, int? status, DateTime? start, DateTime? end, string searchString, string currentFilter , int? page)
 
 
         {
