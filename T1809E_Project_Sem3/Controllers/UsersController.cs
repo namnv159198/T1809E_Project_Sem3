@@ -61,7 +61,7 @@ namespace T1809E_Project_Sem3.Controllers
         }
        
         // GET: Users
-        public ActionResult Index(string sortOrder, int? page)
+        public ActionResult Index(string sortOrder, int? page, DateTime? start, DateTime? end, int? status, int? gender, string currentFilter, string searchString,string keyword)
         {
             ViewBag.CurrentSort = sortOrder;
             List<User> t = new List<User>();
@@ -71,6 +71,48 @@ namespace T1809E_Project_Sem3.Controllers
                 t.Add(new User(u));
             }
             var list = t.AsEnumerable();
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.UserName.Contains(searchString) || s.Email.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                list = list.Where(p => p.UserName.Contains(keyword) || p.Email.Contains(keyword));
+            }
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                list = list.Where(p => (int)p.Status == status.Value);
+            }
+            if (gender.HasValue)
+            {
+                ViewBag.Gender = gender;
+                list = list.Where(p => (int)p.Gender == gender.Value);
+            }
+            //Search by Time
+            if (start != null)
+            {
+                var startDate = start.GetValueOrDefault().Date;
+                startDate = startDate.Date + new TimeSpan(0, 0, 0);
+                list = list.Where(p => p.CreateAt >= startDate);
+            }
+            if (end != null)
+            {
+                var endDate = end.GetValueOrDefault().Date;
+                endDate = endDate.Date + new TimeSpan(23, 59, 59);
+                list = list.Where(p => p.CreateAt <= endDate);
+            }
             if (String.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
             {
                 ViewBag.DateSortParm = "date-desc";
@@ -79,6 +121,7 @@ namespace T1809E_Project_Sem3.Controllers
                 ViewBag.SortIcon = "fa fa-sort-asc";
 
             }
+
             //Date
             else if (sortOrder.Equals("date-desc"))
             {
@@ -157,7 +200,9 @@ namespace T1809E_Project_Sem3.Controllers
                 UserName = user.UserName,
                 Address = user.Address,
                 PhoneNumber = user.PhoneNumber,
-                CreateAt = user.CreateAt
+                CreateAt = user.CreateAt,
+                Status = user.Status,
+                Gender = user.Gender,
             };
             if (u == null)
             {
@@ -179,7 +224,7 @@ namespace T1809E_Project_Sem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, Address = model.Address, CreateAt = DateTime.Now, PhoneNumber = model.PhoneNumber,Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -214,6 +259,8 @@ namespace T1809E_Project_Sem3.Controllers
                 UserName = user.UserName,
                 Address = user.Address,
                 PhoneNumber = user.PhoneNumber,
+                Status = user.Status,
+                Gender = user.Gender,
             };
             if (u == null)
             {
@@ -236,7 +283,9 @@ namespace T1809E_Project_Sem3.Controllers
                     usersIdentity.UserName = user.UserName;
                     usersIdentity.PhoneNumber = user.PhoneNumber;
                     usersIdentity.Address = user.Address;
-                    var result = await UserManager.UpdateAsync(usersIdentity);
+                    usersIdentity.Status = user.Status;
+                    usersIdentity.Gender = user.Gender;
+                  var result = await UserManager.UpdateAsync(usersIdentity);
                     if (result.Succeeded)
                     {
 

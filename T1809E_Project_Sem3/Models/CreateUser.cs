@@ -28,12 +28,13 @@ namespace T1809E_Project_Sem3.Models
         [Display(Name ="Phone Number")]
         public string PhoneNumber { get; set; }
         public DateTime CreateAt { get; set; }
-        //public UserStatus Status { get; set; }
-        //public enum UserStatus
-        //{
-        //    Active = 1,
-        //    Block = 0
-        //}
+        public User.GenderEnum Gender { get; set; }
+        public enum GenderEnum
+        {
+            Male = 0,
+            Female = 1,
+            Other = 2
+        }
     }
 
     public class User
@@ -46,10 +47,18 @@ namespace T1809E_Project_Sem3.Models
         public string PhoneNumber { get; set; }
         public DateTime CreateAt { get; set; }
         public UserStatus Status { get; set; }
+        public GenderEnum Gender { get; set; }
+        public enum GenderEnum
+        {
+            Male = 0,
+            Female = 1,
+            Other = 2
+        }
         public enum UserStatus
         {
-            Active = 1,
-            Block = 0
+            Active = 0,
+            Banned = 1,
+            Delete = -1
         }
         public User(ApplicationUser user)
         {
@@ -59,6 +68,8 @@ namespace T1809E_Project_Sem3.Models
             UserName = user.UserName;
             PhoneNumber = user.PhoneNumber;
             CreateAt = user.CreateAt;
+            Status = user.Status;
+            Gender = user.Gender;
         }
         public User()
         {
