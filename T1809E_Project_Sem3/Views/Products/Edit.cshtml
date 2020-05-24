@@ -55,7 +55,7 @@
                             <ul class="cloudinary-thumbnails">
                                 @foreach (var i in Model.GetThumbnailIDs())
                                 {
-                                    <li class="cloudinary-thumbnail active" value="@i">
+                                    <li class="cloudinary-thumbnail active" value="@resCloud@i">
                                         <img src="@resCloud@i" alt="Thumbnail" class="img-thumbnail" style="width: 100px; height: 100px;"/>
                                         <a href="#" class="cloudinary-delete">x</a>
                                     </li>
