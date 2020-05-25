@@ -688,7 +688,6 @@
     <Content Include="LoginTemplate\vendor\select2\select2.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-
     <Content Include="LoginTemplate\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="LoginTemplate\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="LoginTemplate\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -750,7 +749,6 @@
     <Content Include="LoginTemplate\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="LoginTemplate\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="LoginTemplate\vendor\bootstrap\css\bootstrap.min.css.map" />
-
     <Content Include="ClientTemplate\fonts\fontawesome-webfont-1.bin" />
     <Content Include="ClientTemplate\fonts\fontawesome-webfont-2.bin" />
     <Content Include="ClientTemplate\fonts\fontawesome-webfont-3.bin" />
@@ -759,7 +757,6 @@
     <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font-1.bin" />
     <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.bin" />
     <Content Include="ClientTemplate\fonts\Material-Design-Iconic-Font.ttf" />
-
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\CloudinaryCreate.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -822,7 +819,6 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared_Admin\_Layout_For_Login.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
@@ -848,6 +844,7 @@
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Client\Checkout.cshtml" />
     <Content Include="Views\Client\Cart.cshtml" />
+    <Content Include="Views\Shared_Admin\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
