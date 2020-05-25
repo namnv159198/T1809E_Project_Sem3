@@ -89,8 +89,18 @@ namespace T1809E_Project_Sem3.Models
             var thumbnails = GetThumbnails();
             foreach (var i in thumbnails)
             {
-                var splitThumbnails = i;
-                idThumbnail.Add(splitThumbnails);
+                // image/upload/v1587720852/trang-phuc-nakroth-bboy-cong-nghe-compressed_ewu3rb_qj7zct.jpg#81ad3dee47db0da23fae48523665b35024516448
+                var SplittedThumbnails = i.Split('/');
+                // [image,   upload,  v1587720852,  trang-phuc-nakroth-bboy-cong-nghe-compressed_ewu3rb_qj7zct.jpg#81ad3dee47db0da23fae48523665b35024516448] = 4
+                //   0    ,  1 ,       2 ,             3]
+                if (SplittedThumbnails.Length != 4)
+                {
+                    continue;
+                }
+                //[trang-phuc-nakroth-bboy-cong-nghe-compressed_ewu3rb_qj7zct.jpg#81ad3dee47db0da23fae48523665b35024516448]
+                idThumbnail.Add(SplittedThumbnails[3].Split('.')[0]);
+                // [trang-phuc-nakroth-bboy-cong-nghe-compressed_ewu3rb_qj7zct , jpg#81ad3dee47db0da23fae48523665b35024516448]
+                // id = trang-phuc-nakroth-bboy-cong-nghe-compressed_ewu3rb_qj7zct 
 
             }
             return idThumbnail.ToArray();
