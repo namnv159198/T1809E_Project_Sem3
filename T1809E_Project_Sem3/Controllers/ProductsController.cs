@@ -227,6 +227,7 @@ namespace T1809E_Project_Sem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "Name", product.CategoryID);
             ViewBag.CreateById = new SelectList(db.Users, "Id", "Address", product.CreateById);
             ViewBag.DeleteById = new SelectList(db.Users, "Id", "Address", product.DeleteById);
