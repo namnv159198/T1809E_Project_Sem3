@@ -13,69 +13,63 @@
 @RenderPage("~/Views/Shared_Client/_Banner.cshtml")
 <!-- BANNER AREA END -->
 <!-- PRODUCT AREA START -->
-<div class="product-area pt-60 pb-30">
+<div class="product-area product-area-2 pt-60 pb-30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="product-tab-menu">
                     <div class="nav">
-                        <a class="active" data-toggle="tab" href="#product-link-1-1">FEATURED</a>
-
+                        <a class="active" data-toggle="tab" href="#product-link-3-1">FEATURE</a>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="product-link-1-1">
+                    <div class="tab-pane fade show active" id="product-link-3-1">
                         <div class="row">
                             <div class="product-carousel-active owl-carousel arrow-style-1">
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html"><img src="" alt="Image of Product"></a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-lg-12">
+                                        <!-- single-product-wrapper -->
+                                        <div class="single-product-wrapper">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
+                                                </a>
+                                                <div class="product-hover">
+                                                    <div class="quick-view">
+                                                        <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
+                                                    </div>
+                                                    <div class="product-action clearfix">
+                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html"></a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span></span><del>£150.00</del>
+                                            <!-- product-info -->
+                                            <div class="product-info">
+                                                <h4><a href="single-product.html">Aliquam lobortis</a></h4>
+                                                <div class="product-rattings">
+                                                    <span><i class="fa fa-star"></i></span>
+                                                    <span><i class="fa fa-star"></i></span>
+                                                    <span><i class="fa fa-star"></i></span>
+                                                    <span><i class="fa fa-star-half-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>
+                                                </div>
+                                                <div class="product-price">
+                                                    <span>@item.Price</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-                                </div>
-
-
-
+                                }
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -133,66 +127,162 @@
             <div class="col-lg-12">
                 <div class="product-tab-menu">
                     <div class="nav">
-                        <a class="active" data-toggle="tab" href="#product-link-2-1">WOMEN</a>
-                        <a data-toggle="tab" href="#product-link-2-2">MEN</a>
-                        <a data-toggle="tab" href="#product-link-2-3">SPORT</a>
-                        <a data-toggle="tab" href="#product-link-2-4">ACCESSORIES</a>
+                        <a class="active" data-toggle="tab" href="#product-link-2-1">MEN</a>
+                        <a data-toggle="tab" href="#product-link-2-2">Lady</a>
+                        <a data-toggle="tab" href="#product-link-2-3">KID</a>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="tab-content">
+
                     <div class="tab-pane fade show active" id="product-link-2-1">
                         <div class="row">
-                            @foreach (var item in Model)
-                            {
-                                <div class="product-carousel-active owl-carousel arrow-style-2">
-                                    <div class="col-lg-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="@item.GetDefaultThumbnails()" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                            <div class="product-carousel-active owl-carousel arrow-style-1">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.category.Name == "Men")
+                                    {
+                                        <div class="col-lg-12">
+                                            <!-- single-product-wrapper -->
+                                            <div class="single-product-wrapper">
+                                                <div class="product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
+                                                    </a>
+                                                    <div class="product-hover">
+                                                        <div class="quick-view">
+                                                            <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
+                                                        </div>
+                                                        <div class="product-action clearfix">
+                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Aliquam loborti</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>@item.Price</span><del>£150.00</del>
+                                                <!-- product-info -->
+                                                <div class="product-info">
+                                                    <h4><a href="single-product.html">@item.Name</a></h4>
+                                                    <div class="product-rattings">
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star-half-o"></i></span>
+                                                        <span><i class="fa fa-star-o"></i></span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span>@item.Price $</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
-
-                                </div>
-
-                            }
-
+                                    }
+                                }
+                            </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade show active" id="product-link-2-2">
+                        <div class="row">
+                            <div class="product-carousel-active owl-carousel arrow-style-1">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.category.Name == "Lady")
+                                    {
+                                        <div class="col-lg-12">
+                                            <!-- single-product-wrapper -->
+                                            <div class="single-product-wrapper">
+                                                <div class="product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
+                                                    </a>
+                                                    <div class="product-hover">
+                                                        <div class="quick-view">
+                                                            <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
+                                                        </div>
+                                                        <div class="product-action clearfix">
+                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- product-info -->
+                                                <div class="product-info">
+                                                    <h4><a href="single-product.html">Aliquam lobortis</a></h4>
+                                                    <div class="product-rattings">
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star-half-o"></i></span>
+                                                        <span><i class="fa fa-star-o"></i></span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span>@item.Price</span><del>£150.00</del>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
 
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="product-link-2-3">
+                        <div class="row">
+                            <div class="product-carousel-active owl-carousel arrow-style-1">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.category.Name == "Kid")
+                                    {
+                                        <div class="col-lg-12">
+                                            <!-- single-product-wrapper -->
+                                            <div class="single-product-wrapper">
+                                                <div class="product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
+                                                    </a>
+                                                    <div class="product-hover">
+                                                        <div class="quick-view">
+                                                            <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
+                                                        </div>
+                                                        <div class="product-action clearfix">
+                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- product-info -->
+                                                <div class="product-info">
+                                                    <h4><a href="single-product.html">@item.Name</a></h4>
+                                                    <div class="product-rattings">
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star-half-o"></i></span>
+                                                        <span><i class="fa fa-star-o"></i></span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span>@item.Price $</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+       
     </div>
 </div>
 <!-- PRODUCT AREA 2 END -->
@@ -308,11 +398,15 @@
                     <div class="tab-pane fade show active" id="product-link-3-1">
                         <div class="row">
                             <div class="product-carousel-active owl-carousel arrow-style-1">
+                            @foreach (var item in Model)
+                            {
                                 <div class="col-lg-12">
                                     <!-- single-product-wrapper -->
                                     <div class="single-product-wrapper">
                                         <div class="product-img">
-                                            <a href="single-product.html"><img src="~/ClientTemplate/images/product/1.jpeg" alt="Image of Product"></a>
+                                            <a href="single-product.html">
+                                                <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
+                                            </a>
                                             <div class="product-hover">
                                                 <div class="quick-view">
                                                     <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
@@ -335,140 +429,13 @@
                                                 <span><i class="fa fa-star-o"></i></span>
                                             </div>
                                             <div class="product-price">
-                                                <span>£145.00</span><del>£150.00</del>
+                                                <span>@item.Price</span><del>£150.00</del>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html"><img src="~/ClientTemplate/images/product/2.jpeg" alt="Image of Product"></a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html">Ornare sed consequat</a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span>£145.00</span><del>£150.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
+                            }
                                 </div>
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html"><img src="~/ClientTemplate/images/product/3.jpeg" alt="Image of Product"></a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html">The Shirt Women</a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span>£145.00</span><del>£150.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html"><img src="~/ClientTemplate/images/product/4.jpeg" alt="Image of Product"></a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html">Phasellus shirt women</a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span>£145.00</span><del>£150.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html"><img src="~/ClientTemplate/images/product/5.jpeg" alt="Image of Product"></a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html">Pellentesque men</a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span>£145.00</span><del>£150.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -721,7 +688,7 @@
                                             <div class="tab-content product-details-large">
                                                 <div class="tab-pane active" id="product-details-tab-1-1">
                                                     <div class="easyzoom easyzoom--overlay">
-                                                        <a href="~/ClientTemplate/images/product/1.jpeg"><img src="~/ClientTemplate/images/product/1.jpeg" alt="Images of Product"></a>
+                                                        <a href="@item.GetDefaultThumbnails()"><img src="@item.GetDefaultThumbnails()" alt="Images of Product"></a>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="product-details-tab-1-2">
@@ -769,7 +736,7 @@
                                 <div class="col-md-6">
                                     <!-- modal-product-info -->
                                     <div class="modal-product-info">
-                                        <h3>Handcrafted Supper Mug</h3>
+                                        <h3>@item.Name</h3>
                                         <div class="product-rattings">
                                             <span><i class="fa fa-star"></i></span>
                                             <span><i class="fa fa-star"></i></span>
@@ -778,13 +745,13 @@
                                             <span><i class="fa fa-star-o"></i></span>
                                         </div>
                                         <div class="product-price">
-                                            <span>@item.Price</span><del>£150.00</del>
+                                            <span>@item.Price</span>
                                         </div>
                                         <p class="in-stock">1000 In Stock</p>
                                         <div class="see-all-features">
                                             <a href="#">See all features</a>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                                        <p>@item.Description</p>
                                         <!-- modal-product-color -->
                                         <div class="modal-product-color clearfix">
                                             <select class="nice-select-menu">
