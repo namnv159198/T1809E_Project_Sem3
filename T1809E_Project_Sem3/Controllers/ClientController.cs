@@ -23,9 +23,18 @@ namespace T1809E_Project_Sem3.Controllers
         {
             return View();
         }
-        public ActionResult Lady()
+        public ActionResult Lady(string searchString)
+
         {
-            return View();
+            var products = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString)) ;
+            }
+
+            products = products.Where(s => s.category.Name == "Lady");
+            return View(products);
         }
         public ActionResult Kid()
         {
