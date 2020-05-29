@@ -27,7 +27,12 @@
                     </span>
                 </header>
                 <div class="panel-body">
+                    <div class="btn-group" style="margin-bottom: 1%">
 
+                        <button id="editable-sample_new" class="btn btn-primary">
+                            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
                     @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @name = "search-form" }))
                     {
 
@@ -44,8 +49,8 @@
                                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
 
                             </div>
-                            
-                        
+
+
                             <div class="padding">
                                 @Html.DropDownList("status",
                              EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Product.ProductStatus)),
@@ -115,11 +120,12 @@
                                         @Html.DisplayFor(modelItem => item.Status)
                                     </td>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
+
                                     <td>
                                         <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" width="100" height="100" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Discount)%
@@ -194,12 +200,7 @@
                     </div>
 
 
-                    <div class="btn-group">
 
-                        <button id="editable-sample_new" class="btn btn-primary">
-                            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
 
                     <br />
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
