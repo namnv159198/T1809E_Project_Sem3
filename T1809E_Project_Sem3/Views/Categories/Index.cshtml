@@ -17,6 +17,12 @@
          
             </header>
             <div class="panel-body">
+                <div class="btn-group" style="margin-bottom:1%">
+
+                    <button id="editable-sample_new" class="btn btn-primary">
+                        @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
+                    </button>
+                </div>
 
                 @using (Html.BeginForm("Index", "Categories", FormMethod.Get, new { @name = "search-form" }))
                 {
@@ -159,12 +165,7 @@
 
                     </tbody>
                 </table>
-                <div class="btn-group">
 
-                    <button id="editable-sample_new" class="btn btn-primary">
-                        @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                    </button>
-                </div>
                 <br />
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
