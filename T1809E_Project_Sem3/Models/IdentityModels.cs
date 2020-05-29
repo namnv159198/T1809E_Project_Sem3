@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 using System.ComponentModel.DataAnnotations.Schema;
@@ -52,6 +53,8 @@ namespace T1809E_Project_Sem3.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        internal IEnumerable<object> products;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
