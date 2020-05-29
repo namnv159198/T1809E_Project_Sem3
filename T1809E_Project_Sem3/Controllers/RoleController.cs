@@ -61,10 +61,12 @@ namespace T1809E_Project_Sem3.Controllers
              {
                  var role = new ApplicationRole() {Name = model.Name};
                  await RoleManager.CreateAsync(role);
-                 return RedirectToAction("Index");
+                TempData["message"] = "Create";
+                return RedirectToAction("Index");
             }
+            else { TempData["message"] = "Fail"; }
 
-             return View(model);
+            return View(model);
         }
          [HttpPost]
         public async Task<ActionResult> Edit(string id,string name)
@@ -76,8 +78,10 @@ namespace T1809E_Project_Sem3.Controllers
                 {
                     role.Name = name;
                     await RoleManager.UpdateAsync(role);
+                    TempData["message"] = "Edit";
                     return RedirectToAction("Index");
                 }
+                else { TempData["message"] = "Fail"; }
             }
             return View();
         }

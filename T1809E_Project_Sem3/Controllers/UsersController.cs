@@ -235,9 +235,10 @@ namespace T1809E_Project_Sem3.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    TempData["message"] = "Create";
                     return RedirectToAction("Index");
                 }
+                else { TempData["message"] = "Fail"; }
                 AddErrors(result);
             }
 
@@ -295,9 +296,10 @@ namespace T1809E_Project_Sem3.Controllers
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                        TempData["message"] = "Edit";
                         return RedirectToAction("Index", "Users");
                     }
+                    else { TempData["message"] = "Fail"; }
 
                 }
             }
