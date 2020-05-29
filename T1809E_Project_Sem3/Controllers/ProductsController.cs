@@ -215,7 +215,7 @@ namespace T1809E_Project_Sem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Thumbnails,Price,Discount,Status,CreateAt,CategoryID,CreateById,UpdateById,DeleteById")] Product product, string[] thumbnails)
         {
             if (ModelState.IsValid)
             {
