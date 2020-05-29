@@ -146,10 +146,10 @@
                                         @Html.DisplayFor(modelItem => item.CreateAt)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        <a href="@Url.Action("Edit", "Products", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
+                                        <a href="@Url.Action("Details", "Products", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightgreen"><i class="fa fa-info-circle"></i></a> |
                                         <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
-                                            Delete
+                                            <i class="fa fa-trash"></i>
                                         </button>
 
                                         <div class="modal" id="myModal_@item.Id">
