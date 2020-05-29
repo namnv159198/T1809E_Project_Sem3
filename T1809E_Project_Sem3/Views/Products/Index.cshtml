@@ -25,10 +25,11 @@
                 </header>
                 <div class="panel-body">
                     <div class="btn-group" style="margin-bottom: 1%">
-
-                        <button id="editable-sample_new" class="btn btn-primary" >
-                            @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                        </button>
+                        <a href="@Url.Action("Create","Products")" class="btn btn-primary">
+                            Create New &nbsp;
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        
                     </div>
                     @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @name = "search-form" }))
                     {
@@ -40,14 +41,14 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-5">
                                 <p class="padding">
-                                    Search By Time
+                                    Search By Keyword
                                 </p>
                                 <div class="input-group m-bot15">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                                        <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
 
                                     </span>
-                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
+                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
 
                                 </div>
                             </div>
@@ -159,16 +160,6 @@
                                             @Html.DisplayFor(modelItem => item.CreateAt)
                                         </td>
                                         <td>
-                                            @*<button class="btn btn-sm">
-                                                <a href="@Url.Action("Edit", "Products", new { id = item.Id })">Edit</a>
-                                            </button>
-                                            <button class="btn btn-default">
-                                                <a href="@Url.Action("Details", "Products", new { id = item.Id })">Details</a>
-                                            </button>*@
-                                            @*<button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
-                                                Delete
-                                            </button>*@
-
                                             <div class="btn-group">
                                                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="true"><span class="caret"></span></button>
                                                 <ul role="menu" class="dropdown-menu">
@@ -177,8 +168,7 @@
                                                     <li><a   data-toggle="modal" data-target="#myModal_@item.Id">
                                                                 Delete
                                                                 </a></li>
-                                                    @*<li class="divider"></li>*@
-                                                    @*<li><a href="#">Separated link</a></li>*@
+                                                   
                                                 </ul>
                                             </div>
 
@@ -231,8 +221,11 @@
                     <br />
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
+                
                     @Html.PagedListPager(Model, page => Url.Action("Index",
                         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status }))
+         
+               
 
                 </div>
             </section>

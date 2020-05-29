@@ -26,11 +26,12 @@
                 @*Search*@
             
             <div class="panel-body">
-                <div class="btn-group" style="margin-bottom:1%">
+                <div class="btn-group" style="margin-bottom: 1%">
+                    <a href="@Url.Action("Create","Users")" class="btn btn-primary">
+                        Create New &nbsp;
+                        <i class="fa fa-plus"></i>
+                    </a>
 
-                    <button id="editable-sample_new" class="btn btn-primary">
-                        @Html.ActionLink("Create New ", "Create") <i class="fa fa-plus"></i>
-                    </button>
                 </div>
                 @using (Html.BeginForm("Index", "Users", FormMethod.Get, new { @name = "search-form" }))
                 {
@@ -40,16 +41,16 @@
                     <input type="hidden" name="sortOrder" value="" />
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-5">
+                        <div class="col-lg-4 col-md-5">
                             <p class="padding">
-                                Search By Time
+                                Search By Keyword
                             </p>
                             <div class="input-group m-bot15">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                                    <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
 
                                 </span>
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search by Name " })
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
 
                             </div>
                         </div>
