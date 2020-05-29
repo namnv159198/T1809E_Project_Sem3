@@ -7,7 +7,13 @@
 
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 }
+<style>
 
+    .padding {
+        padding-top: 15px;
+        padding-bottom: 8px;
+    }
+</style>
 <div class="wrapper">
 <div class="row">
     <div class="col-sm-12">
@@ -29,22 +35,38 @@
 
 
 
-                    <div class="col-lg-6">
-                        <div class="input-group m-bot15">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <p class="padding">
+                        Search By Time
+                    </p>
+                    <div class="input-group m-bot15">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> Search <i class="fa fa-search"></i></button>
+                        </span>
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <p class="padding">
+                        Search By Status
+                    </p>
+                    @Html.DropDownList("status",
+               EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Category.StatusEnum)),
+               "Select Status",
+               new { @class = "btn btn-default " })
+                </div>
 
-                            </span>
-                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Search By Name" })
+            </div>
+                    <div class="padding">
 
-                        </div>
-                        @Html.DropDownList("status",
-                            EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Category.StatusEnum)),
-                            "Select Status",
-                            new { @class = "btn btn-default" })
-                        <div class="btn-group">
+                    </div>
+                }
 
-                        </div>
+                @if(Model.Count == 0)
+                {
+                    <div style="font-style:italic ; text-align:center ; font-size: 1.2em;" class="padding">
+                        (NO RESULT IS FOUND)
                     </div>
                 }
 
@@ -88,7 +110,9 @@
                                     }
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "Categories", new {id = item.Id})" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a> |
+                                    <button class="btn btn-sm">
+                                        <a href="@Url.Action("Edit", "Categories", new {id = item.Id})" class=""> Edit </a>
+                                    </button> |
                                     <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
                                         Delete
                                     </button>
