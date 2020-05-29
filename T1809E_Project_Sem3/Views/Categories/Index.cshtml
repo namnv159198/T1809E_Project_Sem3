@@ -88,9 +88,9 @@
                                     }
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Edit", "Categories", new {id = item.Id})" class="btn btn-sm btn-outline-success border-success"><i class="fa fa-pencil"></i></a> |
+                                    <a href="@Url.Action("Edit", "Categories", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
                                     <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
-                                        Delete
+                                        <i class="fa fa-trash"></i>
                                     </button>
 
                                     <div class="modal" id="myModal_@item.Id">
