@@ -25,7 +25,10 @@ namespace T1809E_Project_Sem3.Models
         public string ConfirmPassword { get; set; }
         public string Address { get; set; }
         public string Username { get; set; }
-        [Display(Name ="Phone Number")]
+        [Required]
+        [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
         public DateTime CreateAt { get; set; }
         public User.GenderEnum Gender { get; set; }
