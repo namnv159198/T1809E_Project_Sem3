@@ -95,7 +95,7 @@ ul{
 .clear{clear:both}
 body {
     background-color: white;
-    background: url("img/top_bg.png")no-repeat scroll 0 0;
+    background: url("../img/top_bg.png")no-repeat scroll 0 0;
     color: #666666;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
