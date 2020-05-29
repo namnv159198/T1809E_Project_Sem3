@@ -155,8 +155,8 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                <a href="@Url.Action("Edit", "Users", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
+                                <a href="@Url.Action("Details", "Users", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightgreen"><i class="fa fa-info-circle"></i></a> 
                             </td>
                         </tr>
                     }
