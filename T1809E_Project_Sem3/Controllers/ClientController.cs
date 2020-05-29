@@ -27,7 +27,9 @@ namespace T1809E_Project_Sem3.Controllers
         public ActionResult Women()
         {
 
-            return View();
+            var Product = db.Products.Where(m => m.category.Name == "Women");
+
+            return View(Product);
         }
     }
 }
