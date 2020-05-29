@@ -14,6 +14,16 @@ namespace T1809E_Project_Sem3.Models
         public decimal TotalPrice { get; set; }
         public double Discount { get; set; }
         public String CustomerName { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public EnumGender Gender { get; set; }
+        public enum EnumGender
+        {
+            Male = 1,
+            Female = 0,
+            Other = -1
+        }
         public string CreatedById { get; set; }
         public string UpdatedById { get; set; }
         [ForeignKey("CreatedById")]
