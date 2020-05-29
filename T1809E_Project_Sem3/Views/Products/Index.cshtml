@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.Product>
 @using T1809E_Project_Sem3.Models
 @using PagedList.Mvc;
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -21,8 +21,8 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                   Product Table 
-       
+                    Product Table
+
                 </header>
                 <div class="panel-body">
                     <div class="btn-group" style="margin-bottom: 1%">
@@ -30,7 +30,7 @@
                             Create New &nbsp;
                             <i class="fa fa-plus"></i>
                         </a>
-                        
+
                     </div>
                     @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @name = "search-form" }))
                     {
@@ -153,13 +153,13 @@
                                                 @Html.Hidden("CreateById", item.CreateById)
                                                 @Html.Hidden("UpdateById", item.UpdateById)
                                                 @Html.Hidden("DeleteById", item.DeleteById)
-                                                @Html.DropDownList("Status", EnumHelper.GetSelectList(typeof(Product.ProductStatus), item.Status), new {onchange = "this.form.submit()", @class = "btn btn-default"})
+                                                @Html.DropDownList("Status", EnumHelper.GetSelectList(typeof(Product.ProductStatus), item.Status), new { onchange = "this.form.submit()", @class = "btn btn-default" })
                                             }
                                         </td>
 
 
                                         <td>
-                                            <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" width="100" height="100"/>
+                                            <img src="@item.GetDefaultThumbnails()" alt="Thumbnail" class="img-thumbnail" width="100" height="100" />
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Price)
@@ -179,7 +179,8 @@
                                                     <li>
                                                         <a data-toggle="modal" data-target="#myModal_@item.Id">
                                                             Delete
-                                                        </a></li>
+                                                        </a>
+                                                    </li>
 
                                                 </ul>
                                             </div>
@@ -202,11 +203,11 @@
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
                                                             <!-- Cỏntroller -->
-                                                            @using (Html.BeginForm("Delete", "Products", new {id = item.Id}))
+                                                            @using (Html.BeginForm("Delete", "Products", new { id = item.Id }))
                                                             {
                                                                 @Html.AntiForgeryToken()
-                                                                <input type="submit" value="Delete" class="btn btn-default btn-danger"/>
-                                                                <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel"/>
+                                                                <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                                <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
                                                             }
 
 
@@ -233,11 +234,11 @@
                     <br />
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                
+
                     @Html.PagedListPager(Model, page => Url.Action("Index",
                         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status }))
-         
-               
+
+
 
                 </div>
             </section>
@@ -246,10 +247,10 @@
 
 
 
-                </div>
-        
+    </div>
 
-            </div>
+
+</div>
 
         }
 @section scripts{
@@ -264,3 +265,50 @@
 
     </script>
 }
+@{ if ((string)TempData["message"] == "Create")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Created',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Edit")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edited',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Fail")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Delete")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+} 

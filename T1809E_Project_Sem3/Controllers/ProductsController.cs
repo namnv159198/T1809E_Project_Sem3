@@ -180,8 +180,10 @@ namespace T1809E_Project_Sem3.Controllers
                 }
                 db.Products.Add(product);
                 db.SaveChanges();
+                TempData["message"] = "Create";
                 return RedirectToAction("Index");
             }
+            else { TempData["message"] = "Fail"; }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "Name", product.CategoryID);
             ViewBag.CreateById = new SelectList(db.Users, "Id", "Address", product.CreateById);
@@ -225,8 +227,10 @@ namespace T1809E_Project_Sem3.Controllers
                 }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "Edit";
                 return RedirectToAction("Index");
             }
+            else { TempData["message"] = "Fail"; }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "Name", product.CategoryID);
             ViewBag.CreateById = new SelectList(db.Users, "Id", "Address", product.CreateById);
@@ -249,6 +253,7 @@ namespace T1809E_Project_Sem3.Controllers
             }
             db.Products.Remove(product);
             db.SaveChanges();
+            TempData["message"] = "Delete";
             return RedirectToAction("Index");
         }
 

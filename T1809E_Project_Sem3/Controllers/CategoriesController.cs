@@ -20,6 +20,10 @@ namespace T1809E_Project_Sem3.Controllers
             
             var categories = from s in db.Categories select s;
             //Tim kiem theo ten
+            if(searchString ==null || status ==null)
+            {
+                categories = categories.Where(p => (int)p.Status != -1);
+            }
             if (searchString != null)
             {
                 page = 1;
@@ -78,8 +82,10 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                TempData["message"] = "Create";
                 return RedirectToAction("Index");
             }
+            else { TempData["message"] = "Fail"; }
 
             return View(category);
         }
@@ -110,8 +116,11 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "Edit";
                 return RedirectToAction("Index");
             }
+            else { TempData["message"] = "Fail"; }
+            
             return View(category);
         }
 
@@ -121,18 +130,18 @@ namespace T1809E_Project_Sem3.Controllers
             Deactive = 1,
             Delete = -1
         }
-        public ActionResult EditDelete([Bind(Include = "Id,Name,Status")] Category category)
-        {
+        //public ActionResult EditDelete([Bind(Include = "Id,Name,Status")] Category category)
+        //{
            
-            if (ModelState.IsValid)
-            {
+        //    if (ModelState.IsValid)
+        //    {
 
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(category);
-        }
+        //        db.Entry(category).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(category);
+        //}
          
 
         // GET: Categories/Delete/5
@@ -150,6 +159,7 @@ namespace T1809E_Project_Sem3.Controllers
             category.Status = Category.StatusEnum.Delete;
             db.Entry(category).State = EntityState.Modified;
             db.SaveChanges();
+            TempData["message"] = "Delete";
             return RedirectToAction("Index");
         }
 

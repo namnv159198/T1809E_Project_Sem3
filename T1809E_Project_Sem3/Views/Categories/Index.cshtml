@@ -15,193 +15,193 @@
     }
 </style>
 <div class="wrapper">
-<div class="row">
-    <div class="col-sm-12">
-        <section class="panel">
-            <header class="panel-heading">
-                Category Table
-         
-            </header>
-            <div class="panel-body">
-                <div class="btn-group" style="margin-bottom: 1%">
-                    <a href="@Url.Action("Create","Categories")" class="btn btn-primary">
-                        Create New &nbsp;
-                        <i class="fa fa-plus"></i>
-                    </a>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Category Table
 
+                </header>
+                <div class="panel-body">
+                    <div class="btn-group" style="margin-bottom: 1%">
+                        <a href="@Url.Action("Create", "Categories")" class="btn btn-primary">
+                            Create New &nbsp;
+                            <i class="fa fa-plus"></i>
+                        </a>
+
+                    </div>
+
+                    @using (Html.BeginForm("Index", "Categories", FormMethod.Get, new { @name = "search-form" }))
+                    {
+
+
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+                                <p class="padding">
+                                    Search By Keyword
+                                </p>
+                                <div class="input-group m-bot15">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
+
+                                    </span>
+                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <p class="padding">
+                                    Search By Status
+                                </p>
+                                @Html.DropDownList("status",
+        EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Category.StatusEnum)),
+        "Select Status",
+        new { @class = "btn btn-default " })
+                            </div>
+
+                        </div>
+                        <div class="padding">
+
+                        </div>
+                    }
+
+                    @if (Model.Count == 0)
+                    {
+                        <div style="font-style:italic ; text-align:center ; font-size: 1.2em;" class="padding">
+                            (NO RESULT IS FOUND)
+                        </div>
+                    }
+
+                    <table class="display table table-bordered table-striped " id="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("Edit", "Categories", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("Id", item.Id)
+                                            @Html.Hidden("Name", item.Name)
+                                            <div class="drop">
+                                                @Html.DropDownList("Status", EnumHelper.GetSelectList(typeof(Category.StatusEnum), item.Status), new { onchange = "this.form.submit()", @class = "btn btn-default" })
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+
+                                        <a href="@Url.Action("Edit", "Categories", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
+
+                                        <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+
+                                        <div class="modal" id="myModal_@item.Id">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Message</h4>
+
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <!-- Cỏntroller -->
+                                                        @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
+                                                        {
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                            <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                        }
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal" id="myModal_@item.Id">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Message</h4>
+
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <!-- Cỏntroller -->
+                                                        @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
+                                                        {
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                            <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                        }
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                    <br />
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status }))
                 </div>
 
-                @using (Html.BeginForm("Index", "Categories", FormMethod.Get, new { @name = "search-form" }))
-                {
-
-
-
-                    <div class="row">
-                        <div class="col-lg-4 col-md-5">
-                            <p class="padding">
-                                Search By Keyword
-                            </p>
-                            <div class="input-group m-bot15">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
-
-                                </span>
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-12">
-                            <p class="padding">
-                                Search By Status
-                            </p>
-                            @Html.DropDownList("status",
-                       EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.Category.StatusEnum)),
-                       "Select Status",
-                       new { @class = "btn btn-default " })
-                        </div>
-
-                    </div>
-                    <div class="padding">
-
-                    </div>
-                }
-
-                @if (Model.Count == 0)
-                {
-                    <div style="font-style:italic ; text-align:center ; font-size: 1.2em;" class="padding">
-                        (NO RESULT IS FOUND)
-                    </div>
-                }
-
-                <table class="display table table-bordered table-striped " id="dynamic-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @using (Html.BeginForm("Edit", "Categories", FormMethod.Post))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("Id", item.Id)
-                                        @Html.Hidden("Name", item.Name)
-                                        <div class="drop">
-                                            @Html.DropDownList("Status", EnumHelper.GetSelectList(typeof(Category.StatusEnum), item.Status), new { onchange = "this.form.submit()", @class = "btn btn-default" })
-                                        </div>
-                                    }
-                                </td>
-                                <td>
-
-                                    <a href="@Url.Action("Edit", "Categories", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
-
-                                    <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-
-                                    <div class="modal" id="myModal_@item.Id">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Message</h4>
-
-                                                </div>
-
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <!-- Cỏntroller -->
-                                                    @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
-                                                    {
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="submit" value="Delete" class="btn btn-default btn-danger" />
-                                                        <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
-                                                    }
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal" id="myModal_@item.Id">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Message</h4>
-
-                                                </div>
-
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.Name </span> ?
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <!-- Cỏntroller -->
-                                                    @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }))
-                                                    {
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="submit" value="Delete" class="btn btn-default btn-danger" />
-                                                        <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
-                                                    }
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-
-                        }
-
-                    </tbody>
-                </table>
-
-                <br />
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                @Html.PagedListPager(Model, page => Url.Action("Index",
-                    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status }))
-            </div>
-
-        </section>
-    </div>
+            </section>
+        </div>
     </div>
 
 
@@ -210,14 +210,61 @@
 
 </div>
 
-        @section scripts{
-            <script type="text/javascript">
+@section scripts{
+    <script type="text/javascript">
 
-                $('select[name="status"]').change(function () {
-                    $('form[name="search-form"]').submit();
-                });
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
 
 
 
-            </script>
-        }
+    </script>
+}
+@{ if ((string)TempData["message"] == "Create")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Created',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Edit")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edited',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Fail")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Delete")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+} 

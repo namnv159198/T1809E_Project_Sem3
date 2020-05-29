@@ -13,55 +13,101 @@
 
 }
 
-    <div class="wrapper">
-        <section class="panel">
-            <header class="panel-heading">
-                Role Table
-            </header>
-            <div class="panel-body">
-                <div class="btn-group" style="margin-bottom: 1%">
-                    <a href="@Url.Action("Create","Role")" class="btn btn-primary">
-                        Create New &nbsp;
-                        <i class="fa fa-plus"></i>
-                    </a>
+<div class="wrapper">
+    <section class="panel">
+        <header class="panel-heading">
+            Role Table
+        </header>
+        <div class="panel-body">
+            <div class="btn-group" style="margin-bottom: 1%">
+                <a href="@Url.Action("Create","Role")" class="btn btn-primary">
+                    Create New &nbsp;
+                    <i class="fa fa-plus"></i>
+                </a>
 
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-                                <i class="@Iconsort" aria-hidden="true"></i>
-                            </th>
-
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-
-                                <td>
-                                    <a href="@Url.Action("Edit", "Role", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> 
-
-                                </td>
-
-                            </tr>
-                        }
-                    </tbody>
-                </table>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                            <i class="@Iconsort" aria-hidden="true"></i>
+                        </th>
 
-        </section>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("Edit", "Role", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </section>
 
 
-      
-
-    </div>
 
 
+</div>
+
+@{ if ((string)TempData["message"] == "Create")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Created',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Edit")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edited',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Fail")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Delete")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+}
 
