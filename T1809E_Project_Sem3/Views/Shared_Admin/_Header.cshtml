@@ -10,9 +10,7 @@
                 </a>
                 <!--toggle button end-->
                 <!--search start-->
-                <form class="searchform">
-                    <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
-                </form>
+               
                 <!--search end-->
                 <!--notification menu start -->
                 <div class="menu-right">
@@ -22,8 +20,6 @@
                                 <img src="~/AdminTemplate/images/photos/user-avatar.png" alt="" />@User.Identity.GetUserName()<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                                <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                                <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                                 {
                                     @Html.AntiForgeryToken()
