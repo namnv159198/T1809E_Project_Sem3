@@ -1,873 +1,658 @@
-﻿@model IEnumerable<T1809E_Project_Sem3.Models.Product>
-
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Client/_Layout.cshtml";
-
 }
-<link rel="stylesheet" href="~/ClientTemplate/fonts/fontawesome-webfont.svg">
-<!-- SLIDER AREA START -->
-@RenderPage("~/Views/Shared_Client/_Slider.cshtml")
-<!-- SLIDER AREA END -->
-<!-- BANNER AREA START -->
-@RenderPage("~/Views/Shared_Client/_Banner.cshtml")
-<!-- BANNER AREA END -->
-<!-- PRODUCT AREA START -->
-<div class="product-area product-area-2 pt-60 pb-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="product-tab-menu">
-                    <div class="nav">
-                        <a class="active" data-toggle="tab" href="#product-link-3-1">FEATURE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="product-link-3-1">
-                        <div class="row">
-                            <div class="product-carousel-active owl-carousel arrow-style-1">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="col-lg-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
-                                                </a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Aliquam lobortis</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>@item.Price</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- PRODUCT AREA END -->
-<!-- SERVICE AREA START -->
-<div class="service-area bg-1 color-white text-center pt-60 pb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <!-- single-service-wrapper -->
-                <div class="single-service-wrapper">
-                    <div class="service-icon">
-                        <i class="fa fa-truck"></i>
-                    </div>
-                    <div class="service-info">
-                        <h4 class="color-theme">FREE SHIPPING</h4>
-                        <p>Free shipping on all orders over $100</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- single-service-wrapper -->
-                <div class="single-service-wrapper">
-                    <div class="service-icon">
-                        <i class="fa fa-diamond"></i>
-                    </div>
-                    <div class="service-info">
-                        <h4 class="color-theme">MONEY BACK</h4>
-                        <p>100% money back guarantee</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- single-service-wrapper -->
-                <div class="single-service-wrapper">
-                    <div class="service-icon">
-                        <i class="fa fa-life-bouy"></i>
-                    </div>
-                    <div class="service-info">
-                        <h4 class="color-theme">ONLINE SUPPORT</h4>
-                        <p>Service support fast 24/7</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- SERVICE AREA END -->
-<!-- PRODUCT AREA 2 START -->
-<div class="product-area product-area-2 pt-60 pb-30 mt--145">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="product-tab-menu">
-                    <div class="nav">
-                        <a class="active" data-toggle="tab" href="#product-link-2-1">MEN</a>
-                        <a data-toggle="tab" href="#product-link-2-2">Lady</a>
-                        <a data-toggle="tab" href="#product-link-2-3">KID</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tab-content">
-
-                    <div class="tab-pane fade show active" id="product-link-2-1">
-                        <div class="row">
-                            <div class="product-carousel-active owl-carousel arrow-style-1">
-                                @foreach (var item in Model)
-                                {
-                                    if (item.category.Name == "Men")
-                                    {
-                                        <div class="col-lg-12">
-                                            <!-- single-product-wrapper -->
-                                            <div class="single-product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="single-product.html">
-                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
-                                                    </a>
-                                                    <div class="product-hover">
-                                                        <div class="quick-view">
-                                                            <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- product-info -->
-                                                <div class="product-info">
-                                                    <h4><a href="single-product.html">@item.Name</a></h4>
-                                                    <div class="product-rattings">
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star-half-o"></i></span>
-                                                        <span><i class="fa fa-star-o"></i></span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>@item.Price $</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="product-link-2-2">
-                        <div class="row">
-                            <div class="product-carousel-active owl-carousel arrow-style-1">
-                                @foreach (var item in Model)
-                                {
-                                    if (item.category.Name == "Lady")
-                                    {
-                                        <div class="col-lg-12">
-                                            <!-- single-product-wrapper -->
-                                            <div class="single-product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="single-product.html">
-                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
-                                                    </a>
-                                                    <div class="product-hover">
-                                                        <div class="quick-view">
-                                                            <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- product-info -->
-                                                <div class="product-info">
-                                                    <h4><a href="single-product.html">Aliquam lobortis</a></h4>
-                                                    <div class="product-rattings">
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star-half-o"></i></span>
-                                                        <span><i class="fa fa-star-o"></i></span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>@item.Price</span><del>£150.00</del>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="product-link-2-3">
-                        <div class="row">
-                            <div class="product-carousel-active owl-carousel arrow-style-1">
-                                @foreach (var item in Model)
-                                {
-                                    if (item.category.Name == "Kid")
-                                    {
-                                        <div class="col-lg-12">
-                                            <!-- single-product-wrapper -->
-                                            <div class="single-product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="single-product.html">
-                                                        <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
-                                                    </a>
-                                                    <div class="product-hover">
-                                                        <div class="quick-view">
-                                                            <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- product-info -->
-                                                <div class="product-info">
-                                                    <h4><a href="single-product.html">@item.Name</a></h4>
-                                                    <div class="product-rattings">
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star"></i></span>
-                                                        <span><i class="fa fa-star-half-o"></i></span>
-                                                        <span><i class="fa fa-star-o"></i></span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>@item.Price $</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-    </div>
-</div>
-<!-- PRODUCT AREA 2 END -->
-<!-- PRODUCT DEAL START -->
-<div class="product-deal-area bg-2">
+<!-- new-product-area start -->
+<div class="new-product-area ptb-85 md-ptb-55 small-ptb-30">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-1">
-                    <h2>DEAL OF THE DAYS</h2>
-                </div>
-            </div>
+        <div class="section-title">
+            <h3>New Collection Products</h3>
+            <p>Best products on sale.</p>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="deal-carousel-active owl-carousel arrow-style-1">
-                    <!-- single-deal-wrapper -->
-                    <div class="single-deal-wrapper">
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <!-- deal-img -->
-                                <div class="deal-img">
-                                    <a href="single-product.html"><img src="~/ClientTemplate/images/product/1.jpeg" alt="Image of Product"></a>
-                                    <div class="quick-view">
-                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <!-- deal-info -->
-                                <div class="deal-info">
-                                    <div class="deal-counter">
-                                        <div data-countdown="2019/02/02"></div>
-                                    </div>
-                                    <h4><a href="single-product.html">Handbag lobortis</a></h4>
-                                    <div class="product-rattings">
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star-half-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
-                                    <div class="deal-price">
-                                        <span>£145.00</span><del>£150.00</del>
-                                    </div>
-                                    <div class="select-option">
-                                        <a href="#"><i class="fa fa-shopping-bag"></i>Select option</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-deal-wrapper -->
-                    <div class="single-deal-wrapper">
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <!-- deal-img -->
-                                <div class="deal-img">
-                                    <a href="single-product.html"><img src="~/ClientTemplate/images/product/2.jpeg" alt="Image of Product"></a>
-                                    <div class="quick-view">
-                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <!-- deal-info -->
-                                <div class="deal-info">
-                                    <div class="deal-counter">
-                                        <div data-countdown="2019/08/02"></div>
-                                    </div>
-                                    <h4><a href="single-product.html">Handbag lobortis2</a></h4>
-                                    <div class="product-rattings">
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star-half-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
-                                    <div class="deal-price">
-                                        <span>£145.00</span><del>£150.00</del>
-                                    </div>
-                                    <div class="select-option">
-                                        <a href="#"><i class="fa fa-shopping-bag"></i>Select option</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- - -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- DEAL OF THE DAYS AREA END -->
-<!-- PRODUCT AREA 3 START -->
-<div class="product-area product-area-3 pt-60 pb-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="product-tab-menu">
-                    <div class="nav">
-                        <a class="active" data-toggle="tab" href="#product-link-3-1">RANDOM</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="product-link-3-1">
-                        <div class="row">
-                            <div class="product-carousel-active owl-carousel arrow-style-1">
-                            @foreach (var item in Model)
-                            {
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrapper -->
-                                    <div class="single-product-wrapper">
-                                        <div class="product-img">
-                                            <a href="single-product.html">
-                                                <img src="@item.GetDefaultThumbnails()" alt="Image of Product" width="300" height="300">
-                                            </a>
-                                            <div class="product-hover">
-                                                <div class="quick-view">
-                                                    <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                </div>
-                                                <div class="product-action clearfix">
-                                                    <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product-info -->
-                                        <div class="product-info">
-                                            <h4><a href="single-product.html">Aliquam lobortis</a></h4>
-                                            <div class="product-rattings">
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star"></i></span>
-                                                <span><i class="fa fa-star-half-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                            </div>
-                                            <div class="product-price">
-                                                <span>@item.Price</span><del>£150.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- PRODUCT AREA 3 END -->
-<div id="quickview-wrapper">
-    <!-- Modal -->
-    <div class="modal fade" id="product_modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-close-btn">
-                    <button class="close" data-dismiss="modal">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- modal-product-image -->
-                                <div class="modal-product-image">
-                                    <!-- product-details-gallery -->
-                                    <div class="product-details-tab-1 mb-80">
-                                        <div class="tab-content product-details-large">
-                                            <div class="tab-pane active" id="product-details-tab-1-1">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a href="~/ClientTemplate/images/product/1.jpeg"><img src="~/ClientTemplate/images/product/1.jpeg" alt="Images of Product"></a>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="product-details-tab-1-2">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a href="~/ClientTemplate/images/product/2.jpeg"><img src="~/ClientTemplate/images/product/2.jpeg" alt="Images of Product"></a>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="product-details-tab-1-3">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a href="~/ClientTemplate/images/product/3.jpeg"><img src="~/ClientTemplate/images/product/3.jpeg" alt="Images of Product"></a>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="product-details-tab-1-4">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a href="~/ClientTemplate/images/product/4.jpeg"><img src="~/ClientTemplate/images/product/4.jpeg" alt="Images of Product"></a>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="product-details-tab-1-5">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a href="~/ClientTemplate/images/product/5.jpeg"><img src="~/ClientTemplate/images/product/5.jpeg" alt="Images of Product"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="nav product-details-small modal-tab-carousel-active owl-carousel arrow-style-3">
-                                            <a class="active" href="#product-details-tab-1-1">
-                                                <img src="~/ClientTemplate/images/product/1.jpeg" alt="Images of Product">
-                                            </a>
-                                            <a href="#product-details-tab-1-2">
-                                                <img src="~/ClientTemplate/images/product/2.jpeg" alt="Images of Product">
-                                            </a>
-                                            <a href="#product-details-tab-1-3">
-                                                <img src="~/ClientTemplate/images/product/3.jpeg" alt="Images of Product">
-                                            </a>
-                                            <a href="#product-details-tab-1-4">
-                                                <img src="~/ClientTemplate/images/product/4.jpeg" alt="Images of Product">
-                                            </a>
-                                            <a href="#product-details-tab-1-5">
-                                                <img src="~/ClientTemplate/images/product/5.jpeg" alt="Images of Product">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- modal-product-info -->
-                                <div class="modal-product-info">
-                                    <h3>Handcrafted Supper Mug</h3>
-                                    <div class="product-rattings">
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star-half-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                    </div>
-                                    <div class="product-price">
-                                        <span>£145.00</span><del>£150.00</del>
-                                    </div>
-                                    <p class="in-stock">1000 In Stock</p>
-                                    <div class="see-all-features">
-                                        <a href="#">See all features</a>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                                    <!-- modal-product-color -->
-                                    <div class="modal-product-color clearfix">
-                                        <select class="nice-select-menu">
-                                            <option data-display="Color">Nothing</option>
-                                            <option value="1">Black</option>
-                                            <option value="2">White</option>
-                                            <option value="2">Gold</option>
-                                            <option value="3" disabled="">Red</option>
-                                            <option value="4">Blue</option>
-                                        </select>
-                                    </div>
-                                    <!-- product-quantity -->
-                                    <div class="product-quantity clearfix">
-                                        <label class="pull-left">Qty : </label>
-                                        <div class="cart-plus-minus pull-left">
-                                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                        </div>
-                                    </div>
-                                    <div class="modal-product-action clearfix">
-                                        <a href="#" class="addtocart" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i>Add to Cart</a>
-                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div><!-- END Modal -->
-</div>
-<!-- QUICKVIEW PRODUCT END -->
-<!-- BLOG AREA START -->
-<div class="blog-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-1">
-                    <h2>BLOG POSTS</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="blog-carousel-active owl-carousel arrow-style-1">
-                        <div class="col-lg-12">
-                            <!-- single-blog-wrapper -->
-                            <div class="single-blog-wrapper">
-                                <div class="blog-img">
-                                    <a href="single-blog.html"><img src="~/ClientTemplate/images/blog/1.jpeg" alt="Nikado"></a>
-                                </div>
-                                <div class="blog-content clearfix">
-                                    <div class="blog-date-pin">
-                                        <span>10</span>
-                                        <span class="month">Mar</span>
-                                    </div>
-                                    <div class="blog-info">
-                                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante</p>
-                                        <div class="button-2">
-                                            <a href="single-blog.html">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <!-- single-blog-wrapper -->
-                            <div class="single-blog-wrapper">
-                                <div class="blog-img">
-                                    <a href="single-blog.html"><img src="~/ClientTemplate/images/blog/2.jpeg" alt="Nikado"></a>
-                                </div>
-                                <div class="blog-content clearfix">
-                                    <div class="blog-date-pin">
-                                        <span>10</span>
-                                        <span class="month">Mar</span>
-                                    </div>
-                                    <div class="blog-info">
-                                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante</p>
-                                        <div class="button-2">
-                                            <a href="single-blog.html">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <!-- single-blog-wrapper -->
-                            <div class="single-blog-wrapper">
-                                <div class="blog-img">
-                                    <a href="single-blog.html"><img src="~/ClientTemplate/images/blog/3.jpeg" alt="Nikado"></a>
-                                </div>
-                                <div class="blog-content clearfix">
-                                    <div class="blog-date-pin">
-                                        <span>10</span>
-                                        <span class="month">Mar</span>
-                                    </div>
-                                    <div class="blog-info">
-                                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante</p>
-                                        <div class="button-2">
-                                            <a href="single-blog.html">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <!-- single-blog-wrapper -->
-                            <div class="single-blog-wrapper">
-                                <div class="blog-img">
-                                    <a href="single-blog.html"><img src="~/ClientTemplate/images/blog/3.jpeg" alt="Nikado"></a>
-                                </div>
-                                <div class="blog-content clearfix">
-                                    <div class="blog-date-pin">
-                                        <span>10</span>
-                                        <span class="month">Mar</span>
-                                    </div>
-                                    <div class="blog-info">
-                                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante</p>
-                                        <div class="button-2">
-                                            <a href="single-blog.html">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- BLOG AREA END -->
-<!-- Modal -->
-
-@foreach (var item in Model)
-{
-    <div id="quickview-wrapper">
-        <!-- Modal -->
-        <div class="modal fade" id="@item.Id" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-close-btn">
-                        <button class="close" data-dismiss="modal">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
+            <div class="col-lg-12 col-md-12">
+                <div class="main_wraper">
+                    <!-- Nav tabs -->
+                    <ul class="promo" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> Bestsellers</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"> New Arrivals</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"> Specials</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <!-- modal-product-image -->
-                                    <div class="modal-product-image">
-                                        <!-- product-details-gallery -->
-                                        <div class="product-details-tab-1 mb-80">
-                                            <div class="tab-content product-details-large">
-                                                <div class="tab-pane active" id="product-details-tab-1-1">
-                                                    <div class="easyzoom easyzoom--overlay">
-                                                        <a href="@item.GetDefaultThumbnails()"><img src="@item.GetDefaultThumbnails()" alt="Images of Product"></a>
-                                                    </div>
+                                <div class="new-product-carosel carosel-control">
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\1.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
                                                 </div>
-                                                <div class="tab-pane" id="product-details-tab-1-2">
-                                                    <div class="easyzoom easyzoom--overlay">
-                                                        <a href="~/ClientTemplate/images/product/2.jpeg"><img src="~/ClientTemplate/images/product/2.jpeg" alt="Images of Product"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane" id="product-details-tab-1-3">
-                                                    <div class="easyzoom easyzoom--overlay">
-                                                        <a href="~/ClientTemplate/images/product/3.jpeg"><img src="~/ClientTemplate/images/product/3.jpeg" alt="Images of Product"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane" id="product-details-tab-1-4">
-                                                    <div class="easyzoom easyzoom--overlay">
-                                                        <a href="~/ClientTemplate/images/product/4.jpeg"><img src="~/ClientTemplate/images/product/4.jpeg" alt="Images of Product"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane" id="product-details-tab-1-5">
-                                                    <div class="easyzoom easyzoom--overlay">
-                                                        <a href="~/ClientTemplate/images/product/5.jpeg"><img src="~/ClientTemplate/images/product/5.jpeg" alt="Images of Product"></a>
-                                                    </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
                                                 </div>
                                             </div>
-
-                                            <div class="nav product-details-small modal-tab-carousel-active owl-carousel arrow-style-3">
-                                                <a class="active" href="#product-details-tab-1-1">
-                                                    <img src="~/ClientTemplate/images/product/1.jpeg" alt="Images of Product">
-                                                </a>
-                                                <a href="#product-details-tab-1-2">
-                                                    <img src="~/ClientTemplate/images/product/2.jpeg" alt="Images of Product">
-                                                </a>
-                                                <a href="#product-details-tab-1-3">
-                                                    <img src="~/ClientTemplate/images/product/3.jpeg" alt="Images of Product">
-                                                </a>
-                                                <a href="#product-details-tab-1-4">
-                                                    <img src="~/ClientTemplate/images/product/4.jpeg" alt="Images of Product">
-                                                </a>
-                                                <a href="#product-details-tab-1-5">
-                                                    <img src="~/ClientTemplate/images/product/5.jpeg" alt="Images of Product">
-                                                </a>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\2.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\3.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\4.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\5.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\6.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\7.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <!-- modal-product-info -->
-                                    <div class="modal-product-info">
-                                        <h3>@item.Name</h3>
-                                        <div class="product-rattings">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star-half-o"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>@item.Price</span>
-                                        </div>
-                                        <p class="in-stock">1000 In Stock</p>
-                                        <div class="see-all-features">
-                                            <a href="#">See all features</a>
-                                        </div>
-                                        <p>@item.Description</p>
-                                        <!-- modal-product-color -->
-                                        <div class="modal-product-color clearfix">
-                                            <select class="nice-select-menu">
-                                                <option data-display="Color">Nothing</option>
-                                                <option value="1">Black</option>
-                                                <option value="2">White</option>
-                                                <option value="2">Gold</option>
-                                                <option value="3" disabled="">Red</option>
-                                                <option value="4">Blue</option>
-                                            </select>
-                                        </div>
-                                        <!-- product-quantity -->
-                                        <div class="product-quantity clearfix">
-                                            <label class="pull-left">Qty : </label>
-                                            <div class="cart-plus-minus pull-left">
-                                                <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="row">
+                                <div class="new-product-carosel carosel-control">
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\8.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
                                             </div>
                                         </div>
-                                        <div class="modal-product-action clearfix">
-                                            <a href="#" class="addtocart" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i>Add to Cart</a>
-                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\9.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\10.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\11.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\1.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\2.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\3.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="row">
+                                <div class="new-product-carosel carosel-control">
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\3.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\5.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\6.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\7.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\10.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\1.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-item">
+                                            <div class="product-img">
+                                                <a href="#"><img src="~/ClientTemplate/img\feature\2.jpeg" alt="product"></a>
+                                                <div class="product-action">
+                                                    <ul>
+                                                        <li><a href="#" title="Add to cart"><i class="icon_heart_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to wishlist"><i class="icon_tags_alt"></i></a></li>
+                                                        <li><a href="#" title="Add to compare"><i class="arrow_expand_alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hook-reviews">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o black" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a href="#"><h5> Faded Short Sleeves T-shirt </h5></a>
+                                                <p class="manufacturer_name"> Dolce & Gabbana</p>
+                                                <div class="price">
+                                                    <p>$ 19.68</p>
+                                                </div>
+                                                <a class="add-button" href="#">+add to cart</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!-- .modal-content -->
-            </div><!-- .modal-dialog -->
-        </div><!-- END Modal -->
-    </div>
-}
-<!-- BRAND AREA START -->
-<div class="brand-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-1">
-                    <h2>BRAND LOGO</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="brand-carousel-active owl-carousel arrow-style-1">
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/1.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/2.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/3.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/4.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/5.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/1.png" alt="Brand Logo"></a>
-                    </div>
-                    <!-- single-brand-wrapper -->
-                    <div class="single-brand-wrapper">
-                        <a href="#"><img src="~/ClientTemplate/images/brand/2.png" alt="Brand Logo"></a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- BRAND AREA END -->
-<!-- BANNER CALL TO ACTION START -->
-<div class="banner-call-to-action-area text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <!-- single-banner-call-to-action-wrapper -->
-                <div class="single-banner-call-to-action-wrapper">
-                    <img src="~/ClientTemplate/images/icons/arrow-left-2.png" alt="Arrow Image">
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <!-- single-banner-call-to-action-wrapper -->
-                <div class="single-banner-call-to-action-wrapper">
-                    <img src="~/ClientTemplate/images/banner/4.png" alt="Image of Banner">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <!-- single-banner-call-to-action-wrapper -->
-                <div class="single-banner-call-to-action-wrapper">
-                    <img src="~/ClientTemplate/images/icons/arrow-right-2.png" alt="Arrow Image">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- BANNER CALL TO ACTION AREA END -->
-@section scripts {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("button.owl-prev").find("img").remove();
-            $("button.owl-next").find("img").remove();
-            var iconPrev = "<i></i>";
-            $("button.owl-prev").append(iconPrev);
-            $("button.owl-prev i").addClass("fa fa-arrow-left");
-            $("button.owl-next").append(iconPrev);
-            $("button.owl-next i").addClass("fa fa-arrow-right");
-        });
-    </script>
-}
+<!-- new-product-area end -->
