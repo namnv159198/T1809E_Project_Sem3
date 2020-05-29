@@ -14,13 +14,18 @@
                 <!-- SHOP AREA START -->
                 <div class="shop-area">
                     <!-- input search -->
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="search" placeholder="Search category...">
-                        <div class="input-group-prepend">
-                            <input type="submit" name="submit" value="Search" style="border-radius: 8%;">
-                        </div>
+                    @using (Html.BeginForm("Lady", "Client", FormMethod.Get, new { @name = "search-form" }))
+                    {
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="searchString" placeholder="Search ...">
+                            <div class="input-group-prepend">
+                                <input type="submit" name="submit"  style="border-radius: 8%;">
+                            </div>
 
-                    </div>
+                        </div>
+                        
+                        }
+
                     <!-- shop-option -->
                     <div class="shop-option clearfix mb-30">
                         <!-- short-by-menu -->
@@ -50,390 +55,43 @@
                         <div class="tab-pane fade show active" id="shop-tab-menu-1-1">
                             <div class="shop-grid-view">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/1.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <!-- single-product-wrapper -->
+                                            <div class="single-product-wrapper">
+                                                <div class="product-img">
+                                                    <a href="single-product.html"><img src="@item.GetDefaultThumbnails()" alt="Image of Product"></a>
+                                                    <div class="product-hover">
+                                                        <div class="quick-view">
+                                                            <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
+                                                        </div>
+                                                        <div class="product-action clearfix">
+                                                            <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                                                            <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Aliquam lobortis</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
+                                                <!-- product-info -->
+                                                <div class="product-info">
+                                                    <h4><a href="single-product.html">@item.Name</a></h4>
+                                                    <div class="product-rattings">
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star"></i></span>
+                                                        <span><i class="fa fa-star-half-o"></i></span>
+                                                        <span><i class="fa fa-star-o"></i></span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span>@item.Price</span><del>£150.00</del>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/2.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Ornare sed consequat</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/3.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">The Shirt Women</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/4.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Phasellus shirt women</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/5.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Pellentesque men</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/6.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Pellentesque men</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/7.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Coat men</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£125.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/8.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">Pellentesque men</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-half-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£145.00</span><del>£150.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/19.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">short fusce</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£7.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/16.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">t-shirt amet</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£55.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/15.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">sport coat amet</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                    <span><i class="fa fa-star-o"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£80.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- single-product-wrapper -->
-                                        <div class="single-product-wrapper">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="~/ClientTemplate/images/product/14.jpeg" alt="Image of Product"></a>
-                                                <div class="product-hover">
-                                                    <div class="quick-view">
-                                                        <a href="#" data-toggle="modal" data-target="#product_modal" title="Quick View"><i class="fa fa-search"></i>Quick View</a>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="cart.html" data-toggle="tooltip" data-original-title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
-                                                        <a href="#" data-toggle="tooltip" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="wishlist.html" data-toggle="tooltip" data-original-title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product-info -->
-                                            <div class="product-info">
-                                                <h4><a href="single-product.html">sport coat women</a></h4>
-                                                <div class="product-rattings">
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                    <span><i class="fa fa-star"></i></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>£115.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    }
+
+
                                 </div>
                             </div>
                         </div>
