@@ -1,4 +1,6 @@
-﻿
+﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.Product>
+@using PagedList.Mvc;
+@using T1809E_Project_Sem3.Models
 @{
     ViewBag.Title = "Men";
     Layout = "~/Views/Shared_Client/_Layout.cshtml";
@@ -241,7 +243,7 @@
                                                 </div>
                                                 <div class="product-content">
                                                     <h5><a href="#"></a> </h5>
-                                                    <p >@item.Name</p>
+                                                    <p>@item.Name</p>
                                                     <div class="price">
                                                         <p>@item.Price</p>
                                                     </div>
@@ -250,8 +252,15 @@
                                             </div>
                                         </div>
                                     }
-                                     
-                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div>
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                                @Html.PagedListPager(Model, page => Url.Action("Men",
+                                    new { page }))
                             </div>
                             <div role="tabpanel" class="tab-pane" id="profile">
                                 <div class="row">
@@ -515,4 +524,5 @@
         </div>
     </div>
 </div>
+
 <!-- shop-area end -->
