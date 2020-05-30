@@ -118,6 +118,25 @@ namespace T1809E_Project_Sem3.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
+            CreateTable(
+                "dbo.UserCustomerViewModels",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        UserName = c.String(nullable: false, maxLength: 50),
+                        Address = c.String(nullable: false, maxLength: 100),
+                        Email = c.String(nullable: false),
+                        Phonenumber = c.String(nullable: false, maxLength: 10),
+                        CreatedAt = c.DateTime(),
+                        Status = c.Int(nullable: false),
+                        Gender = c.Int(nullable: false),
+                        Customer_Type = c.Int(nullable: false),
+                        Total_Money_Purchased = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Total_Quantity_Purchased = c.Int(nullable: false),
+                        Total_Purchased = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
@@ -140,6 +159,7 @@ namespace T1809E_Project_Sem3.Migrations
             DropIndex("dbo.Products", new[] { "UpdateById" });
             DropIndex("dbo.Products", new[] { "CreateById" });
             DropIndex("dbo.Products", new[] { "CategoryID" });
+            DropTable("dbo.UserCustomerViewModels");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");

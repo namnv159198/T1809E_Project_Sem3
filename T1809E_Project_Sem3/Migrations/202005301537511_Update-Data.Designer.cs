@@ -13,7 +13,7 @@ namespace T1809E_Project_Sem3.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202005220325582_Update-Data"; }
+            get { return "202005301537511_Update-Data"; }
         }
         
         string IMigrationMetadata.Source
