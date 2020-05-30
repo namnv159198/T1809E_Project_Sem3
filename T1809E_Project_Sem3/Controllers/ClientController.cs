@@ -19,10 +19,12 @@ namespace T1809E_Project_Sem3.Controllers
           
             return View();
         }
-        public ActionResult Men()
+        public ActionResult Men(int? page)
         {
             var Product = db.Products.Where(m => m.category.Name == "Men");
-            return View(Product);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(Product.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Women()
         {
