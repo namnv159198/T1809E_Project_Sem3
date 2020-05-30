@@ -24,12 +24,14 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-        public ActionResult Women()
+        public ActionResult Women(int? page)
         {
 
             var Product = db.Products.Where(m => m.category.Name == "Women");
 
-            return View(Product);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(Product.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
         }
     }
 }
