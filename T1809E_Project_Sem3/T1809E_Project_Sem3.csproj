@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
 
+
     <Compile Include="Migrations\202005311358041_Add_Customer.cs" />
     <Compile Include="Migrations\202005311358041_Add_Customer.Designer.cs">
       <DependentUpon>202005311358041_Add_Customer.cs</DependentUpon>
@@ -1992,8 +1993,10 @@
   </ItemGroup>
   <ItemGroup>
 
+
     <EmbeddedResource Include="Migrations\202005311358041_Add_Customer.resx">
       <DependentUpon>202005311358041_Add_Customer.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

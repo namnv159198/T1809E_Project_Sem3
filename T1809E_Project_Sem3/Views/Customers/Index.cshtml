@@ -1,5 +1,7 @@
-﻿@model IEnumerable<T1809E_Project_Sem3.Models.UserCustomerViewModel>
+﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.UserCustomerViewModel>
 @using T1809E_Project_Sem3.Models
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
@@ -66,7 +68,7 @@
                                 <p class="padding">
                                     Search By Gender
                                 </p>
-                                @Html.DropDownList("Gender",
+                                @Html.DropDownList("gender",
                              EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumGender)),
                              "Select Gender",
                              new { @class = "btn btn-default" })
@@ -75,9 +77,18 @@
                                 <p class="padding">
                                     Search By Customer Type
                                 </p>
-                                @Html.DropDownList("Customer_Type",
+                                @Html.DropDownList("customer_type",
                              EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumCustomer_Type)),
                              "Select Type",
+                             new { @class = "btn btn-default" })
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <p class="padding">
+                                    Search By Status
+                                </p>
+                                @Html.DropDownList("status",
+                             EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumStatus)),
+                             "Select Status",
                              new { @class = "btn btn-default" })
                             </div>
                         </div>
@@ -98,23 +109,27 @@
 
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Email)
+                                    Email
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Address)
+                                    Address
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Gender)
+                                    Gender
                                 </th>
                                 <th>
                                     @Html.ActionLink("Created At", "Index", new { sortOrder = ViewBag.DateSort })
                                     <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
+              <th>
+                                    Customer Type
+
                       @Html.DisplayNameFor(model => model.Customer_Type)
+
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Status)
+                                    Status
                                 </th>
 
                                 <th></th>
@@ -196,6 +211,12 @@
 
                         </table>
                     </div>
+                    <br />
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, status = ViewBag.Status }))
                 </div>
             </section>
         </div>
@@ -204,15 +225,15 @@
 @section scripts{
     <script type="text/javascript">
 
-        $('select[name="Customer_Type"]').change(function () {
+        $('select[name="customer_type"]').change(function () {
             $('form[name="search-form"]').submit();
         });
-        $('select[name="Gender"]').change(function () {
+        $('select[name="gender"]').change(function () {
             $('form[name="search-form"]').submit();
         });
-
-
-
+        $('select[name="status"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
     </script>
 }
 @{ if ((string)TempData["message"] == "Create")

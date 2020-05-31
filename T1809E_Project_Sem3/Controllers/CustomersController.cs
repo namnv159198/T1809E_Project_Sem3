@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,13 +16,25 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index(string sortOrder, string searchStringName, string searchStringEmail, string searchStringAddress, string currentFilter)
+        public ActionResult Index(string sortOrder, int? status, int? gender, int? customer_type, string searchStringName, string searchStringEmail, string searchStringAddress, string currentFilter, int? page, DateTime? start, DateTime? end)
         {
             var customers = db.UserCustomerViewModels.AsQueryable();
+            if (searchStringName != null || searchStringEmail != null || searchStringAddress != null)
+            {
+                page = 1;
+            }
             ViewBag.CurrentFilter = searchStringName;
             if (!string.IsNullOrEmpty(searchStringName))
             {
                 customers = customers.Where(s => s.UserName.Contains(searchStringName));
+                if (!string.IsNullOrEmpty(searchStringEmail))
+                {
+                    customers = customers.Where(s => s.Email.Contains(searchStringEmail));
+                }
+                if (!string.IsNullOrEmpty(searchStringAddress))
+                {
+                    customers = customers.Where(s => s.Address.Contains(searchStringAddress));
+                }
             }
             else
             {
@@ -29,6 +42,10 @@ namespace T1809E_Project_Sem3.Controllers
                 if (!string.IsNullOrEmpty(searchStringEmail))
                 {
                     customers = customers.Where(s => s.Email.Contains(searchStringEmail));
+                    if (!string.IsNullOrEmpty(searchStringAddress))
+                    {
+                        customers = customers.Where(s => s.Address.Contains(searchStringAddress));
+                    }
                 }
                 else
                 {
@@ -38,6 +55,33 @@ namespace T1809E_Project_Sem3.Controllers
                         customers = customers.Where(s => s.Address.Contains(searchStringAddress));
                     }
                 }
+            }
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Status == status.Value);
+            }
+            if (gender.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Gender == gender.Value);
+            }
+            if (customer_type.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Customer_Type == customer_type.Value);
+            }
+            if (start != null)
+            {
+                var startDate = start.GetValueOrDefault().Date;
+                startDate = startDate.Date + new TimeSpan(0, 0, 0);
+                customers = customers.Where(p => p.CreatedAt >= startDate);
+            }
+            if (end != null)
+            {
+                var endDate = end.GetValueOrDefault().Date;
+                endDate = endDate.Date + new TimeSpan(23, 59, 59);
+                customers = customers.Where(p => p.CreatedAt <= endDate);
             }
             if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
             {
@@ -131,7 +175,9 @@ namespace T1809E_Project_Sem3.Controllers
                     ViewBag.SortIcon = "fa fa-sort";
                     break;
             }
-            return View(customers.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(customers.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Customers/Details/5
