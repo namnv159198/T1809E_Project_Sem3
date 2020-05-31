@@ -3,7 +3,7 @@ namespace T1809E_Project_Sem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateData : DbMigration
+    public partial class Add_Customer : DbMigration
     {
         public override void Up()
         {
