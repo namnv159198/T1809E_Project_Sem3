@@ -16,10 +16,10 @@ namespace T1809E_Project_Sem3.Controllers
         // GET: Client
         public ActionResult Index()
         {
-          
+
             return View();
         }
-        public ActionResult Men(int? page,String sortOrder, string searchString)
+        public ActionResult Men(int? page, String sortOrder, string searchString)
         {
             var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             product = product.Where(m => m.category.Name == "Men").AsQueryable();
@@ -27,10 +27,6 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 product = product.Where(s => s.Name.Contains(searchString));
             }
-
-
-
-
 
             switch (sortOrder)
             {
@@ -56,7 +52,7 @@ namespace T1809E_Project_Sem3.Controllers
             int pageNumber = (page ?? 1);
             return View(product.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Women(int? page , string sortOrder, string searchString)
+        public ActionResult Women(int? page, string sortOrder, string searchString)
         {
             var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             product = product.Where(m => m.category.Name == "Women").AsQueryable();
@@ -64,10 +60,6 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 product = product.Where(s => s.Name.Contains(searchString));
             }
-
-
-
-
 
             switch (sortOrder)
             {
