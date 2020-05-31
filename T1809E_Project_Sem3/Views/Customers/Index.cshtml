@@ -103,8 +103,10 @@
                         <table class="display table table-bordered table-striped col-md-11">
                             <tr>
                                 <th>
+
                                     @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
                                     <i class="@Iconsort" aria-hidden="true"></i>
+
                                 </th>
                                 <th>
                                     Email
@@ -120,93 +122,91 @@
                                     <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Total Quantity Purchased", "Index", new { sortOrder = ViewBag.Total_Quantity_PurchasedSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Total Money Purchased", "Index", new { sortOrder = ViewBag.Total_Money_PurchasedSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
-                                <th>
+              <th>
                                     Customer Type
+
+                      @Html.DisplayNameFor(model => model.Customer_Type)
+
                                 </th>
                                 <th>
                                     Status
                                 </th>
-                                <th>
-                                    @Html.ActionLink("Total Purchased", "Index", new { sortOrder = ViewBag.Total_PurchasedSort })
-                                    <i class="@Iconsort" aria-hidden="true"></i>
-                                </th>
+
                                 <th></th>
                             </tr>
 
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UserName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Address)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Gender)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedAt)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Total_Quantity_Purchased)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Total_Money_Purchased)
-                                    </td>
-                                    <td>
-                                        @using (Html.BeginForm("Edit", "Customers", FormMethod.Post))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            @Html.Hidden("Id", item.Id)
-                                            @Html.Hidden("UserName", item.UserName)
-                                            @Html.Hidden("Email", item.Email)
-                                            @Html.Hidden("Address", item.Address)
-                                            @Html.Hidden("Phonenumber", item.Phonenumber)
-                                            @Html.Hidden("Gender", item.Gender)
-                                            @Html.Hidden("Total_Quantity_Purchased", item.Total_Quantity_Purchased)
-                                            @Html.Hidden("Total_Money_Purchased", item.Total_Money_Purchased)
-                                            @Html.Hidden("Status", item.Status)
-                                            @Html.Hidden("Total_Purchased", item.Total_Purchased)
-                                            @Html.DropDownList("Customer_Type", EnumHelper.GetSelectList(typeof(UserCustomerViewModel.EnumCustomer_Type), item.Customer_Type), new { onchange = "this.form.submit()", @class = "btn btn-default" })
-                                        }
-                                    </td>
-                                    <td>
-                                        @using (Html.BeginForm("Edit", "Customers", FormMethod.Post))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            @Html.Hidden("Id", item.Id)
-                                            @Html.Hidden("UserName", item.UserName)
-                                            @Html.Hidden("Email", item.Email)
-                                            @Html.Hidden("Address", item.Address)
-                                            @Html.Hidden("Phonenumber", item.Phonenumber)
-                                            @Html.Hidden("Gender", item.Gender)
-                                            @Html.Hidden("Total_Quantity_Purchased", item.Total_Quantity_Purchased)
-                                            @Html.Hidden("Total_Money_Purchased", item.Total_Money_Purchased)
-                                            @Html.Hidden("Customer_Type", item.Customer_Type)
-                                            @Html.Hidden("Total_Purchased", item.Total_Purchased)
-                                            @Html.DropDownList("Status", EnumHelper.GetSelectList(typeof(UserCustomerViewModel.EnumStatus), item.Status), new { onchange = "this.form.submit()", @class = "btn btn-default" })
-                                        }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Total_Purchased)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedAt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Customer_Type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("Edit", "Customers", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightblue"><i class="fa fa-pencil"></i></a> |
+                                <a href="@Url.Action("Details", "Customers", new { id = item.Id })" class="btn btn-sm btn-light" style="background-color:lightgreen"><i class="fa fa-info-circle"></i></a>  |
+
+                                <button type="button" class="btn btn-sm btn-danger  " data-toggle="modal" data-target="#myModal_@item.Id">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+
+                                <div class="modal" id="myModal_@item.Id">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Message</h4>
+
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <span>Are your sure delete</span> <span class="text-uppercase" style="text-decoration: underline; font-weight: bold">@item.UserName </span> ?
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <!-- Cỏntroller -->
+                                                @using (Html.BeginForm("Delete", "Customers", new { id = item.Id }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                    <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                }
+
+
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                             }
 
                         </table>
