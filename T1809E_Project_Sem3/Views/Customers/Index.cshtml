@@ -32,6 +32,8 @@
                     </div>
                     @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @name = "search-form" }))
                     {
+                        <input type="hidden" name="start" value="" />
+                        <input type="hidden" name="end" value="" />
                         <input type="hidden" name="sortOrder" value="" />
 
                         <div class="row">
@@ -90,6 +92,14 @@
                              EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumStatus)),
                              "Select Status",
                              new { @class = "btn btn-default" })
+                            </div>
+                            <div class="col-lg-3 col-md-10">
+                                <div class="pull-left">
+                                    <p class="padding">
+                                        Search By Time
+                                    </p>
+                                    <input type="text" name="daterange" value="" class="form-control fa fa-clock-o" />
+                                </div>
                             </div>
                         </div>
                     }
