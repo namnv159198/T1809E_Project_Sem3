@@ -15,9 +15,123 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchStringName, string searchStringEmail, string searchStringAddress, string currentFilter)
         {
-            return View(db.UserCustomerViewModels.ToList());
+            var customers = db.UserCustomerViewModels.AsQueryable();
+            ViewBag.CurrentFilter = searchStringName;
+            if (!string.IsNullOrEmpty(searchStringName))
+            {
+                customers = customers.Where(s => s.UserName.Contains(searchStringName));
+            }
+            else
+            {
+                ViewBag.CurrentFilter = searchStringEmail;
+                if (!string.IsNullOrEmpty(searchStringEmail))
+                {
+                    customers = customers.Where(s => s.Email.Contains(searchStringEmail));
+                }
+                else
+                {
+                    ViewBag.CurrentFilter = searchStringAddress;
+                    if (!string.IsNullOrEmpty(searchStringAddress))
+                    {
+                        customers = customers.Where(s => s.Address.Contains(searchStringAddress));
+                    }
+                }
+            }
+            if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
+            {
+                ViewBag.DateSort = "date-desc";
+                ViewBag.NameSort = "name-desc";
+                ViewBag.Total_Quantity_PurchasedSort = "quantity-desc";
+                ViewBag.Total_Money_PurchasedSort = "money-desc";
+                ViewBag.Total_PurchasedSort = "purchased-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("date-desc"))
+            {
+                ViewBag.DateSort = "date-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("name-asc"))
+            {
+                ViewBag.NameSort = "name-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("name-desc"))
+            {
+                ViewBag.NameSort = "name-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("quantity-asc"))
+            {
+                ViewBag.Total_Quantity_PurchasedSort = "quantity-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("quantity-desc"))
+            {
+                ViewBag.Total_Quantity_PurchasedSort = "quantity-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("money-asc"))
+            {
+                ViewBag.Total_Money_PurchasedSort = "money-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("money-desc"))
+            {
+                ViewBag.Total_Money_PurchasedSort = "money-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+            else if (sortOrder.Equals("purchased-asc"))
+            {
+                ViewBag.Total_PurchasedSort = "purchased-desc";
+                ViewBag.SortIcon = "fa fa-sort-asc";
+            }
+            else if (sortOrder.Equals("purchased-desc"))
+            {
+                ViewBag.Total_PurchasedSort = "purchased-asc";
+                ViewBag.SortIcon = "fa fa-sort-desc";
+            }
+
+            switch (sortOrder)
+            {
+                case "name-asc":
+                    customers = customers.OrderBy(p => p.UserName);
+                    break;
+                case "name-desc":
+                    customers = customers.OrderByDescending(p => p.UserName);
+                    break;
+                case "date-asc":
+                    customers = customers.OrderBy(p => p.CreatedAt);
+                    break;
+                case "date-desc":
+                    customers = customers.OrderByDescending(p => p.CreatedAt);
+                    break;
+                case "quantity-asc":
+                    customers = customers.OrderBy(p => p.Total_Quantity_Purchased);
+                    break;
+                case "quantity-desc":
+                    customers = customers.OrderByDescending(p => p.Total_Quantity_Purchased);
+                    break;
+                case "money-asc":
+                    customers = customers.OrderBy(p => p.Total_Money_Purchased);
+                    break;
+                case "money-desc":
+                    customers = customers.OrderByDescending(p => p.Total_Money_Purchased);
+                    break;
+                case "purchased-asc":
+                    customers = customers.OrderBy(p => p.Total_Purchased);
+                    break;
+                case "purchased-desc":
+                    customers = customers.OrderByDescending(p => p.Total_Purchased);
+                    break;
+                default:
+                    customers = customers.OrderByDescending(p => p.CreatedAt);
+                    ViewBag.SortIcon = "fa fa-sort";
+                    break;
+            }
+            return View(customers.ToList());
         }
 
         // GET: Customers/Details/5
