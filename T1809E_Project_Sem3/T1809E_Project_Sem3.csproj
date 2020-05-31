@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -185,9 +186,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005220325582_Update-Data.cs" />
-    <Compile Include="Migrations\202005220325582_Update-Data.Designer.cs">
-      <DependentUpon>202005220325582_Update-Data.cs</DependentUpon>
+    <Compile Include="Migrations\202005310820568_Update-Data.cs" />
+    <Compile Include="Migrations\202005310820568_Update-Data.Designer.cs">
+      <DependentUpon>202005310820568_Update-Data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -910,6 +911,11 @@
     <Content Include="Views\Shared_Client\_Footer.cshtml" />
     <Content Include="Views\Client\Men.cshtml" />
     <Content Include="Views\Client\Women.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
@@ -1984,8 +1990,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005220325582_Update-Data.resx">
-      <DependentUpon>202005220325582_Update-Data.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005310820568_Update-Data.resx">
+      <DependentUpon>202005310820568_Update-Data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
