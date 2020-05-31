@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using T1809E_Project_Sem3.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
 
 namespace T1809E_Project_Sem3.Controllers
 {
@@ -32,6 +35,7 @@ namespace T1809E_Project_Sem3.Controllers
                 searchString = currentFilter;
             }
             ViewBag.CurrentFilter = searchString;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.Name.Contains(searchString));
@@ -135,7 +139,7 @@ namespace T1809E_Project_Sem3.Controllers
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
-            return View(products.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5
