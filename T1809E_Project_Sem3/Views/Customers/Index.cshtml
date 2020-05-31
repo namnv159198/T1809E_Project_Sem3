@@ -3,8 +3,15 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
+    var Iconsort = ViewBag.SortIcon;
 }
+<style>
 
+    .padding {
+        padding-top: 15px;
+        padding-bottom: 8px;
+    }
+</style>
 <h2>Index</h2>
 <div class="wrapper">
     <div class="row">
@@ -21,11 +28,72 @@
                             <i class="fa fa-plus"></i>
                         </a>
                     </div>
-                    <div class="adv-table padding row">
+                    @using (Html.BeginForm("Index", "Customers", FormMethod.Get, new { @name = "search-form" }))
+                    {
+                        <input type="hidden" name="sortOrder" value="" />
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-5">
+                                <p class="padding">
+                                    Search By Keyword
+                                </p>
+                                <div class="input-group m-bot15">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
+                                    </span>
+                                    @Html.TextBox("SearchStringName", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-5">
+                                <p class="padding">
+                                    Search By Email
+                                </p>
+                                <div class="input-group m-bot15">
+                                    @Html.TextBox("SearchStringEmail", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Email. . . " })
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-5">
+                                <p class="padding">
+                                    Search By Address
+                                </p>
+                                <div class="input-group m-bot15">
+                                    @Html.TextBox("SearchStringAddress", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Address. . . " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-12">
+                                <p class="padding">
+                                    Search By Gender
+                                </p>
+                                @Html.DropDownList("Gender",
+                             EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumGender)),
+                             "Select Gender",
+                             new { @class = "btn btn-default" })
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <p class="padding">
+                                    Search By Customer Type
+                                </p>
+                                @Html.DropDownList("Customer_Type",
+                             EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumCustomer_Type)),
+                             "Select Type",
+                             new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Count() == 0)
+                    {
+                        <div style="font-style:italic ; text-align:center ; font-size: 1.2em;" class="padding">
+                            (NO RESULT IS FOUND)
+                        </div>
+                    }
+                    <div class="adv-table padding row mt-lg-3">
                         <table class="display table table-bordered table-striped col-md-11">
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.UserName)
+                                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
+                                    <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Email)
@@ -37,13 +105,16 @@
                                     @Html.DisplayNameFor(model => model.Gender)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.CreatedAt)
+                                    @Html.ActionLink("Created At", "Index", new { sortOrder = ViewBag.DateSort })
+                                    <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Total_Quantity_Purchased)
+                                    @Html.ActionLink("Total Quantity Purchased", "Index", new { sortOrder = ViewBag.Total_Quantity_PurchasedSort })
+                                    <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Total_Money_Purchased)
+                                    @Html.ActionLink("Total Money Purchased", "Index", new { sortOrder = ViewBag.Total_Money_PurchasedSort })
+                                    <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Customer_Type)
@@ -52,7 +123,8 @@
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Total_Purchased)
+                                    @Html.ActionLink("Total Purchased", "Index", new { sortOrder = ViewBag.Total_PurchasedSort })
+                                    <i class="@Iconsort" aria-hidden="true"></i>
                                 </th>
                                 <th></th>
                             </tr>
@@ -133,4 +205,64 @@
         </div>
     </div>
 </div>
+@section scripts{
+    <script type="text/javascript">
 
+        $('select[name="Customer_Type"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+        $('select[name="Gender"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+
+
+
+    </script>
+}
+@{ if ((string)TempData["message"] == "Create")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Created',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Edit")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Edited',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Fail")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!'
+            })
+        </script>
+    }
+    else if ((string)TempData["message"] == "Delete")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+}
