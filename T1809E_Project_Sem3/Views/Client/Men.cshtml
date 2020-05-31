@@ -1,58 +1,13 @@
 ﻿@model PagedList.IPagedList<T1809E_Project_Sem3.Models.Product>
 @using PagedList.Mvc;
 @using T1809E_Project_Sem3.Models
- <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Men";
     Layout = "~/Views/Shared_Client/_Layout.cshtml";
 }
 
-<style>
-    /* Style The Dropdown Button */
-    .dropbtn {
-        background-color: #c92c61;
-        color: white;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        width: 160px;
-        height: 33px;
-    }
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-        z-index: 9999;
-        position: relative;
-        display: inline-block;
-    }
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-            /* Change color of dropdown links on hover */
-            .dropdown-content a:hover {
-                background-color: #f1f1f1;
-            }
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
-        background-color: #c92c61;
-    }
-</style>
 
 <!-- shop-area start -->
 <div class="container-fluid">
@@ -61,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="left-content pt-40">
-   
+
                         <div class="content-box">
                             <h2>price</h2>
                             <p>
@@ -70,7 +25,7 @@
                             </p>
                             <div id="slider-range"></div>
                         </div>
-                      
+
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -209,4 +164,4 @@
         </div>
     </div>
 </div>
-<!-- shop-area end -->  
+<!-- shop-area end -->
