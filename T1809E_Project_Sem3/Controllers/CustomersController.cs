@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,9 +16,13 @@ namespace T1809E_Project_Sem3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
-        public ActionResult Index(string sortOrder, string searchStringName, string searchStringEmail, string searchStringAddress, string currentFilter)
+        public ActionResult Index(string sortOrder, int? status, int? gender, int? customer_type, string searchStringName, string searchStringEmail, string searchStringAddress, string currentFilter, int? page)
         {
             var customers = db.UserCustomerViewModels.AsQueryable();
+            if (searchStringName != null || searchStringEmail != null || searchStringAddress != null)
+            {
+                page = 1;
+            }
             ViewBag.CurrentFilter = searchStringName;
             if (!string.IsNullOrEmpty(searchStringName))
             {
@@ -38,6 +43,21 @@ namespace T1809E_Project_Sem3.Controllers
                         customers = customers.Where(s => s.Address.Contains(searchStringAddress));
                     }
                 }
+            }
+            if (status.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Status == status.Value);
+            }
+            if (gender.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Gender == gender.Value);
+            }
+            if (customer_type.HasValue)
+            {
+                ViewBag.Status = status;
+                customers = customers.Where(p => (int)p.Customer_Type == customer_type.Value);
             }
             if (string.IsNullOrEmpty(sortOrder) || sortOrder.Equals("date-asc"))
             {
@@ -131,7 +151,9 @@ namespace T1809E_Project_Sem3.Controllers
                     ViewBag.SortIcon = "fa fa-sort";
                     break;
             }
-            return View(customers.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(customers.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Customers/Details/5
