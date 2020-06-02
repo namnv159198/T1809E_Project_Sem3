@@ -1,7 +1,7 @@
 ﻿function showUploadWidget() {
     cloudinary.openUploadWidget({
-        cloudName: "dye967djr",
-        uploadPreset: "ml_default",
+        cloudName: "drixqdvy6",
+        uploadPreset: "tan_dat",
         sources: [
             "local",
             "url",
