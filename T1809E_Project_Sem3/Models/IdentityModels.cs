@@ -66,7 +66,8 @@ namespace T1809E_Project_Sem3.Models
         }
 
         public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.Category> Categories { get; set; }
-
+        public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.Order> Orders { get; set; }
+        public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.OrderDetails> OrderDetails { get; set; }
         public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.Product> Products { get; set; }
 
         public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.UserCustomerViewModel> UserCustomerViewModels { get; set; }

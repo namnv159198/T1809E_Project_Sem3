@@ -17,8 +17,8 @@ namespace T1809E_Project_Sem3.Models
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public EnumGender Gender { get; set; }
-        public enum EnumGender
+        public OrderEnumGender Gender { get; set; }
+        public enum OrderEnumGender
         {
             Male = 1,
             Female = 0,

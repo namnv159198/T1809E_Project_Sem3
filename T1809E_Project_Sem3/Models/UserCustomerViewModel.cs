@@ -38,8 +38,8 @@ namespace T1809E_Project_Sem3.Models
             Delete = -1
         }
         [Required]
-        public EnumGender Gender { get; set; }
-        public enum EnumGender
+        public CustomerEnumGender Gender { get; set; }
+        public enum CustomerEnumGender
         {
             Male = 0,
             Female = 1,
