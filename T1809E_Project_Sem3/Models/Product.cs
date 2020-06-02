@@ -31,6 +31,7 @@ namespace T1809E_Project_Sem3.Models
         [Range(0, 100)]
         [Display(Name ="Discount (%)")]
         public int Discount { get; set; }
+        [Display(Name = "Created At")]
         public DateTime? CreateAt { get; set; }
         public Product()
         {
