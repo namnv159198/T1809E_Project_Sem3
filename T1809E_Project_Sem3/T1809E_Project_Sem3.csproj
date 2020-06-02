@@ -841,6 +841,9 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Shared_Client\_TopNavigation.cshtml" />
+    <Content Include="Views\Client\Checkout.cshtml" />
+    <Content Include="Views\Client\Login.cshtml" />
+    <Content Include="Views\Client\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
