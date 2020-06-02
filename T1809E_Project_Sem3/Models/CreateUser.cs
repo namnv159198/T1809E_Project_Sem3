@@ -31,6 +31,7 @@ namespace T1809E_Project_Sem3.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
+        [Display(Name = "Created At")]
         public DateTime CreateAt { get; set; }
         public User.GenderEnum Gender { get; set; }
         public enum GenderEnum

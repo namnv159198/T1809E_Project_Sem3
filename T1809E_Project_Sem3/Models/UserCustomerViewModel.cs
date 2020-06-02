@@ -31,6 +31,7 @@ namespace T1809E_Project_Sem3.Models
         [Phone(ErrorMessage = "Please enter a valid Phone Number")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string Phonenumber { get; set; }
+        [Display(Name = "Created At")]
         public DateTime? CreatedAt { get; set; }
         public EnumStatus Status { get; set; }
         public enum EnumStatus
