@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                 <div class="logo">
-                    <a href="index.html"><img src="~/ClientTemplate/img/logo.jpeg" alt=""></a>
+                    <a href="@Url.Action("Index","Client")"><img src="~/ClientTemplate/img/logo.jpeg" alt=""></a>
                 </div>
             </div>
        
@@ -13,7 +13,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a class="active" href="index.html">Home</a>
+                                <a class="active" href="@Url.Action("Index","Client")">Home</a>
                               
                             </li>
                             <li class="static">
@@ -40,11 +40,11 @@
                             <i class="icon_cog"></i>
                             <ul class="settings-open">
                                 <li>
-                                    <a href="#">Sign In</a>
-                                    <a href="#">My Cart</a>
+                                    <a href="@Url.Action("Login","Client")">Sign In</a>
+                                    <a href="@Url.Action("ViewCart","Client")">My Cart</a>
                                     <a href="#">Compare</a>
                                     <a href="#">Wishlist</a>
-                                    <a href="#">Check Out</a>
+                                    <a href="@Url.Action("Check Out","Client")">Check Out</a>
                                 </li>
                                 <li>
                                     Currencies
@@ -105,7 +105,7 @@
                                 </li>
                                 <li class="check-out">
                                     <div class="checkout-bg">
-                                        <a href="#">checkout <i class="fa fa-angle-right"></i></a>
+                                        <a href="@Url.Action("Checkout","Client")">checkout <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </li>
                             </ul>

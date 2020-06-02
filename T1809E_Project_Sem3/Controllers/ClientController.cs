@@ -85,5 +85,20 @@ namespace T1809E_Project_Sem3.Controllers
             int pageNumber = (page ?? 1);
             return View(product.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+        public ActionResult Checkout()
+        {
+
+            return View();
+        }
+        public ActionResult ViewCart()
+        {
+
+            return View();
+        }
     }
 }
