@@ -16,8 +16,8 @@ namespace T1809E_Project_Sem3.Controllers
         // GET: Client
         public ActionResult Index()
         {
-
-            return View();
+            var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            return View(product);
         }
         public ActionResult Men(int? page, String sortOrder, string searchString)
         {
