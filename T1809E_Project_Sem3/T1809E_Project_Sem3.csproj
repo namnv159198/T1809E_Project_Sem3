@@ -844,6 +844,7 @@
     <Content Include="Views\Client\Checkout.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Client\ViewCart.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
