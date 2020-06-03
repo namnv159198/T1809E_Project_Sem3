@@ -50,6 +50,25 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View("Index");
         }
+        public ActionResult UpdateCart(int productID, int quantity)
+        {
+            var existingProduct = db.Products.FirstOrDefault(m => m.Id == productID);
+
+            if (existingProduct == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                if (listCart[i].Product.Id == productID)
+                {
+                    listCart[i].Quantity = quantity;
+                }
+            }
+            Session[ShoppingCartSession] = listCart;
+            return Redirect("Index");
+        }
         private int CheckExistingProduct(int? id)
         {
             List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
