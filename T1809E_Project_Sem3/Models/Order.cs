@@ -30,7 +30,7 @@ namespace T1809E_Project_Sem3.Models
         public ApplicationUser CreatedBy { get; set; }
         [ForeignKey("UpdatedById")]
         public ApplicationUser UpdatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
         public Order ()
         {
             this.CreatedAt = DateTime.Now;
