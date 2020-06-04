@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared_Client/_Layout.cshtml";
 }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <div class="body-content outer-top-xs">
     <div class="container">
@@ -26,8 +27,7 @@
                                         <th class="cart-sub-total item">Subtotal</th>
                                         <th class="cart-sub-total item">Discount</th>
                                         <th class="cart-qty item">Quantity</th>
-                                        <th class="cart-qty item">Update</th>
-                                        <th class="cart-total last-item">Grandtotal</th>
+                                        <th class="cart-sub-total item">Grandtotal</th>
                                         <th class="cart-romove item">Remove</th>
                                     </tr>
                                 </thead>
@@ -69,12 +69,12 @@
                                                             <input type="hidden" name="productID" value="@cart.Product.Id" />
 
                                                             @*<div class="arrows">
-            <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-            <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-        </div>*@
+                                                                    <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
+                                                                    <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+                                                                </div>*@
                                                             <input type="number" id="spinner" min="1" style="text-align:center" step="1" name="quantity" value="@cart.Quantity" />
                                                         </div>
-                                                        
+
                                                         <button class="btn btn-primary btn-sm"> Cập nhật </button>
                                                     </form>
                                                 </div>
@@ -86,13 +86,39 @@
                                                 }
                                                 @TotalPrice
                                             </td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger">
-                                                    <a href="@Url.Action("DeleteItem", "ShoppingCart", new {productID = cart.Product.Id})" onclick="return confirm('Do you sure delete this item ?')">
-                                                        <i class="fa fa-trash" style="color: white"></i>
-                                                    </a>
-                                                </button>
+                                            <td class="romove-item">
+
+                                                <a href="#" title="cancel" class="icon" data-toggle="modal" data-target="#myModal_@cart.Product.Id"><i class="fa fa-trash-o"></i></a>
                                             </td>
+                                            <div class="modal" id="myModal_@cart.Product.Id">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Message</h4>
+
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <span>Are your sure delete this Product?</span>
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <!-- Cỏntroller -->
+                                                            @using (Html.BeginForm("DeleteItem", "ShoppingCart", new { productID = cart.Product.Id }))
+                                                            {
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                                                                <input type="button" class=" btn btn-default " data-dismiss="modal" value="Cancel" />
+                                                            }
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
 
                                     }
@@ -113,37 +139,106 @@
                                         </tr>
                                     </tfoot>*@
 
-
+                                @if (Session["SHOPPING_CART"] == null)
+                                {
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="7">
+                                                <div class="shopping-cart-btn">
+                                                    <span class="">
+                                                        <a href="../Client" class="btn btn-upper btn-primary outer-left-xs">Go To Home Page</a>
+                                                    </span>
+                                                </div><!-- /.shopping-cart-btn -->
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                }
+                                else
+                                {
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="7">
+                                                <div class="shopping-cart-btn">
+                                                    <span class="">
+                                                        <a href="../../Client" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
+                                                    </span>
+                                                </div><!-- /.shopping-cart-btn -->
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                }
                             </table>
 
                         }
 
                     </div>
                 </div>
-                @if (Session["SHOPPING_CART"] == null)
-                {
-                    <div class="shopping-cart-btn">
-                        <span class="">
-                            <a href="../Client" class="btn btn-upper btn-primary outer-left-xs">Go To Home Page</a>
 
-                        </span>
-                    </div>
-                }
-                else
-                {
-                    <div class="shopping-cart-btn">
-                        <span class="">
-                            <a href="../Client" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
 
-                        </span>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="cart-shopping-total">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="cart-sub-total">
+                                            Subtotal<span class="inner-left-md">
+                                                @{
+                                                    List<Cart> temp = (List<Cart>)Session["SHOPPING_CART"];
+                                                    var total = String.Format("{0:N0}", temp.Sum(x => x.Product.Price * x.Quantity));
+                                                    var subtotal = String.Format("{0:N0}", temp.Sum(x => (x.Product.Price - ((x.Product.Price * x.Product.Discount)/100)) * x.Quantity));
+                                                }
+                                                $@total
+                                            </span>
+                                        </div>
+                                        <div class="cart-grand-total">
+                                            Grand Total<span class="inner-left-md">$@subtotal</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead><!-- /thead -->
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="cart-checkout-btn pull-right">
+                                            <button type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</button>
+                                            <span class="">Checkout with multiples address!</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody><!-- /tbody -->
+                        </table><!-- /table -->
                     </div>
-                }
+                </div>
             </div>
 
         </div>
 
     </div>
 </div>
+
+@if ((string)TempData["message"] == "Delele")
+{
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Delete Success'
+        })
+    </script>
+}
 
 
 
