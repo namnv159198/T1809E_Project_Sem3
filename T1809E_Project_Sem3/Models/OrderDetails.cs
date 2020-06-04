@@ -26,9 +26,6 @@ namespace T1809E_Project_Sem3.Models
         [Range(0,100)]
         public Double Discount { get; set; }
 
-        public OrderDetails()
-        {
-            UnitPrice = Quantity * Product.Price;
-        }
+        
     }
 }

@@ -89,6 +89,7 @@ namespace T1809E_Project_Sem3.Controllers
             return Redirect("Index");
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult Checkout(Order o)
         {
             var random = new Random();
@@ -96,38 +97,42 @@ namespace T1809E_Project_Sem3.Controllers
             List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
 
 
-
-            Order order = new Order()
+            if (ModelState.IsValid)
             {
-                Id = "Order" + DateTime.Now.Millisecond,
-                Status = OrderStatus.Pending,
-                CreatedAt = DateTime.Now,
-                CustomerName = o.CustomerName,
-                Address = o.Address,
-                Discount = 0,
-                Email = o.Email,
-                Phone = o.Phone,
-                TotalPrice = listCart.Sum(x => x.Product.Price * x.Quantity)
-            };
-
-            db.Orders.Add(order);
-            db.SaveChanges();
-
-            foreach (Cart cart in listCart)
-            {
-                OrderDetails orderDetails = new OrderDetails()
+                Order order = new Order()
                 {
-                    OrderId = order.Id,
-                    ProductId = cart.Product.Id,
-                    Quantity = cart.Quantity,
+                    Id = "Order" + DateTime.Now.Millisecond,
+                    Status = OrderStatus.Pending,
+                    CreatedAt = DateTime.Now,
+                    CustomerName = o.CustomerName,
+                    Address = o.Address,
+                    Discount = 0,
+                    Email = o.Email,
+                    Phone = o.Phone,
+                    TotalPrice = listCart.Sum(x => x.Product.Price * x.Quantity)
                 };
-                db.OrderDetails.Add(orderDetails);
-                db.SaveChanges();
-            }
 
-            Session.Remove(ShoppingCartSession);
-            TempData["message"] = "success";
-            return Redirect("../Client/Index");
+                db.Orders.Add(order);
+                db.SaveChanges();
+
+                foreach (Cart cart in listCart)
+                {
+                    OrderDetails orderDetails = new OrderDetails()
+                    {
+                        OrderId = order.Id,
+                        ProductId = cart.Product.Id,
+                        Quantity = cart.Quantity,
+                    };
+                    db.OrderDetails.Add(orderDetails);
+                    db.SaveChanges();
+                }
+
+                Session.Remove(ShoppingCartSession);
+                TempData["message"] = "success";
+                return Redirect("../Client/Index");
+            }
+            return View("Index");
+                
         }
         private int CheckExistingProduct(int? id)
         {
