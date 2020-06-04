@@ -852,6 +852,10 @@
     <Content Include="Views\Client\ViewCart.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Client\Shop.cshtml" />
+    <Content Include="Views\Client\Blog.cshtml" />
+    <Content Include="Views\Client\TrackOrder.cshtml" />
+    <Content Include="Views\Client\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
