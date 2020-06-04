@@ -105,6 +105,26 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-   
+        public ActionResult Shop()
+        {
+            var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            return View(product);
+         
+        }
+        public ActionResult Blog()
+        {
+
+            return View();
+        }
+        public ActionResult TrackOrder()
+        {
+
+            return View();
+        }
+        public ActionResult Contact()
+        {
+
+            return View();
+        }
     }
 }
