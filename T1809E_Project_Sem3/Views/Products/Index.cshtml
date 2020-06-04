@@ -37,7 +37,7 @@
 
                         <input type="hidden" name="start" value="" />
                         <input type="hidden" name="end" value="" />
-                        <input type="hidden" name="sortOrder" value="" />
+                  
 
                         <div class="row">
                             <div class="col-lg-3 col-md-5">
@@ -232,18 +232,7 @@
 </div>
 
         }
-@section scripts{
-    <script type="text/javascript">
 
-        $('select[name="status"]').change(function () {
-            $('form[name="search-form"]').submit();
-        });
-
-
-
-
-    </script>
-}
 @{ if ((string)TempData["message"] == "Create")
     {
         <script type="text/javascript">
