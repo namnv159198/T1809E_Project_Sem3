@@ -5,119 +5,155 @@
     Layout = "~/Views/Shared_Admin/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="wrapper">
+    <section class="panel">
+        <header class="panel-heading">
+            Role Table
+        </header>
+        <div class="panel-body">
+            <div class="btn-group" style="margin-bottom: 1%">
+                <a href="@Url.Action("Create","Create")" class="btn btn-primary">
+                    Create New &nbsp;
+                    <i class="fa fa-plus"></i>
+                </a>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy.Address)
-        </dt>
+            </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy.Address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedBy.Address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedBy.Address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Discount)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.UpdatedAt)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.deletedAt)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.deletedAt)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.deletedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.deletedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-    </dl>
+            </dl>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>UnitPrice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.UnitPrice</td>
+                            <td>
+                                @{
+                                    var TotalPrice = String.Format("{0:N0}", item.UnitPrice * item.Quantity);
+                                }
+                                @TotalPrice $
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Total Price</th>
+                        <th>
+                            @{
+                                var temp = Model.OrderDetails;
+                                var total = String.Format("{0:N0}", temp.Sum(x => x.UnitPrice * x.Quantity));
+                            }
+                            @total $
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+    
+
+
+
