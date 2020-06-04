@@ -69,6 +69,26 @@ namespace T1809E_Project_Sem3.Controllers
             Session[ShoppingCartSession] = listCart;
             return Redirect("Index");
         }
+        public ActionResult DeleteItem(int? productID)
+        {
+            var existingProduct = db.Products.FirstOrDefault(m => m.Id == productID);
+
+            if (existingProduct == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                if (listCart[i].Product.Id == productID)
+                {
+                    listCart.RemoveAt(i);
+                }
+            }
+            Session[ShoppingCartSession] = listCart;
+            TempData["message"] = "Delele";
+            return Redirect("Index");
+        }
         private int CheckExistingProduct(int? id)
         {
             List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
@@ -76,7 +96,6 @@ namespace T1809E_Project_Sem3.Controllers
             {
                 if (listCart[i].Product.Id == id) return i;
             }
-
             return -1;
         }
     }
