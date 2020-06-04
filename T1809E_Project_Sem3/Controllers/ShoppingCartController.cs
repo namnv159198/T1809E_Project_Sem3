@@ -47,8 +47,7 @@ namespace T1809E_Project_Sem3.Controllers
                 }
                 Session[ShoppingCartSession] = listCart;
             }
-
-            return View("Index");
+            return Json("success");
         }
         public ActionResult UpdateCart(int productID, int quantity)
         {
