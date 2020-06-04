@@ -361,13 +361,13 @@
                     <div id="myTabContent" class="tab-content category-list">
                         <div class="tab-pane active " id="grid-container">
                             <div class="category-product">
-                                <div class="row">
+                                <div >
                                  
-                                    <div class="col-sm-6 col-md-4 wow fadeInUp" >
+                                    <div class=" row wow fadeInUp " >
                                         @foreach (var item in Model)
                                         {
-                                            <div class="products">
-                                                <div class="product">
+                                            <div class="col-md-4 products">
+                                                <div class=" product">
                                                     <div class="product-image">
                                                         <div class="image"> <a href="detail.html"><img src="@item.GetDefaultThumbnails()" alt=""></a> </div>
                                                         <!-- /.image -->
