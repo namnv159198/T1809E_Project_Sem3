@@ -89,6 +89,48 @@ namespace T1809E_Project_Sem3.Controllers
             TempData["message"] = "Delele";
             return Redirect("Index");
         }
+
+        public ActionResult Checkout(Order o)
+        {
+            var random = new Random();
+
+            List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];
+
+
+
+            Order order = new Order()
+            {
+                Id = "Order" + DateTime.Now.Millisecond,
+                Status = OrderStatus.Pending,
+                CreatedAt = DateTime.Now,
+                CustomerName = o.CustomerName,
+                Address = o.Address,
+                Discount = 0,
+                Email = o.Email,
+                Phone = o.Phone,
+                TotalPrice = listCart.Sum(x => x.Product.Price * x.Quantity)
+            };
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            foreach (Cart cart in listCart)
+            {
+                OrderDetails orderDetails = new OrderDetails()
+                {
+                    OrderId = order.Id,
+                    ProductId = cart.Product.Id,
+                    Quantity = cart.Quantity,
+                    UnitPrice = cart.TotalPrice
+                };
+                db.OrderDetails.Add(orderDetails);
+                db.SaveChanges();
+            }
+
+            Session.Remove(ShoppingCartSession);
+            TempData["message"] = "success";
+            return Redirect("../Client/Index");
+        }
         private int CheckExistingProduct(int? id)
         {
             List<Cart> listCart = (List<Cart>)Session[ShoppingCartSession];

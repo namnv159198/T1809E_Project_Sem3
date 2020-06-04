@@ -112,6 +112,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Order ID</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -122,6 +123,7 @@
                     @foreach (var item in Model.OrderDetails)
                     {
                         <tr>
+                            <td>@item.OrderId</td>
                             <td>@item.Product.Name</td>
                             <td>@item.Quantity</td>
                             <td>@item.UnitPrice</td>
@@ -139,6 +141,7 @@
                         <th></th>
                         <th></th>
                         <th>Total Price</th>
+                        <th></th>
                         <th>
                             @{
                                 var temp = Model.OrderDetails;
