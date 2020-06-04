@@ -121,7 +121,6 @@ namespace T1809E_Project_Sem3.Controllers
                     OrderId = order.Id,
                     ProductId = cart.Product.Id,
                     Quantity = cart.Quantity,
-                    UnitPrice = cart.TotalPrice
                 };
                 db.OrderDetails.Add(orderDetails);
                 db.SaveChanges();
