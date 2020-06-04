@@ -19,139 +19,194 @@
 
             </div>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.TotalPrice)
-                </dt>
+            <table class="table table-dark">
 
-                <dd>
-                    @Html.DisplayFor(model => model.TotalPrice)
-                </dd>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalPrice)
+                    </th>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Discount)
-                </dt>
+                    <td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Discount)
-                </dd>
+                        @Html.DisplayFor(model => model.TotalPrice)
+                    </td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.CustomerName)
-                </dt>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discount)
+                    </th>
 
-                <dd>
-                    @Html.DisplayFor(model => model.CustomerName)
-                </dd>
+                    <td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Address)
-                </dt>
+                        @Html.DisplayFor(model => model.Discount)
+                    </td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerName)
+                    </th>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Phone)
-                </dt>
+                    <td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Phone)
-                </dd>
+                        @Html.DisplayFor(model => model.CustomerName)
+                    </td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
+                    <td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Gender)
-                </dt>
+                        @Html.DisplayFor(model => model.Address)
+                    </td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Gender)
-                </dd>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.CreatedAt)
-                </dt>
+                    <td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.CreatedAt)
-                </dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.UpdatedAt)
-                </dt>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
 
-                <dd>
-                    @Html.DisplayFor(model => model.UpdatedAt)
-                </dd>
+                    <td>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.deletedAt)
-                </dt>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.deletedAt)
-                </dd>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
+                    <td>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
+                        @Html.DisplayFor(model => model.Gender)
+                    </td>
 
-            </dl>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>UnitPrice</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.OrderDetails)
-                    {
-                        <tr>
-                            <td>@item.OrderId</td>
-                            <td>@item.Product.Name</td>
-                            <td>@item.Quantity</td>
-                            <td>@item.UnitPrice</td>
-                            <td>
-                                @{
-                                    var TotalPrice = String.Format("{0:N0}", item.UnitPrice * item.Quantity);
-                                }
-                                @TotalPrice $
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Total Price</th>
-                        <th></th>
-                        <th>
-                            @{
-                                var temp = Model.OrderDetails;
-                                var total = String.Format("{0:N0}", temp.Sum(x => x.UnitPrice * x.Quantity));
-                            }
-                            @total $
-                        </th>
-                    </tr>
-                </tfoot>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.CreatedAt)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedAt)
+                    </th>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.UpdatedAt)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.deletedAt)
+                    </th>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.deletedAt)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.Status)
+                    </td>
+
+                </tr>
             </table>
+              
+                   
+
+                    
+
+                   
+
+                    
+
+                    
+
+                   
+
+                    
+
+                   
+
+                   
+
+                    
+                   
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>UnitPrice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td>@item.OrderId</td>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UnitPrice</td>
+                                <td>
+                                    @{
+                                        var TotalPrice = String.Format("{0:N0}", item.UnitPrice * item.Quantity);
+                                    }
+                                    @TotalPrice $
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Total Price</th>
+                            <th></th>
+                            <th>
+                                @{
+                                    var temp = Model.OrderDetails;
+                                    var total = String.Format("{0:N0}", temp.Sum(x => x.UnitPrice * x.Quantity));
+                                }
+                                @total $
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
         </div>
     </section>
 </div>
