@@ -10,88 +10,124 @@
 <div>
     <h4>UserCustomerViewModel</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+    <table class="table table-dark">
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+                @Html.DisplayFor(model => model.Email)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
+            <td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+                @Html.DisplayFor(model => model.Address)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total_Quantity_Purchased)
-        </dt>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total_Quantity_Purchased)
-        </dd>
+            <td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total_Money_Purchased)
-        </dt>
+                @Html.DisplayFor(model => model.Gender)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total_Money_Purchased)
-        </dd>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer_Type)
-        </dt>
+            <td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Customer_Type)
-        </dd>
+                @Html.DisplayFor(model => model.CreatedAt)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Quantity_Purchased)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total_Purchased)
-        </dt>
+                @Html.DisplayFor(model => model.Total_Quantity_Purchased)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total_Purchased)
-        </dd>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Money_Purchased)
+            </th>
 
-    </dl>
+            <td>
+
+                @Html.DisplayFor(model => model.Total_Money_Purchased)
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_Type)
+            </th>
+
+            <td>
+
+                @Html.DisplayFor(model => model.Customer_Type)
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <td>
+
+                @Html.DisplayFor(model => model.Status)
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Purchased)
+            </th>
+
+            <td>
+
+                @Html.DisplayFor(model => model.Total_Purchased)
+            </td>
+
+        </tr>
+    </table>
+       
+           
+
+          
+            
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

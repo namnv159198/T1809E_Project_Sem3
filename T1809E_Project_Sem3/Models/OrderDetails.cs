@@ -25,5 +25,7 @@ namespace T1809E_Project_Sem3.Models
         public decimal UnitPrice { get; set; }
         [Range(0,100)]
         public Double Discount { get; set; }
+
+        
     }
 }

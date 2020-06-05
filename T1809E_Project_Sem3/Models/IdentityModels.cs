@@ -72,6 +72,11 @@ namespace T1809E_Project_Sem3.Models
 
         public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.UserCustomerViewModel> UserCustomerViewModels { get; set; }
 
+        internal object Entity<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         //public System.Data.Entity.DbSet<T1809E_Project_Sem3.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

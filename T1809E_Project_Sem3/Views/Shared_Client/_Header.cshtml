@@ -1,4 +1,5 @@
 ﻿ <!-- ============================================== HEADER ============================================== -->
+@using T1809E_Project_Sem3.Models
 <header class="header-style-1">
 
     <!-- ============================================== TOP MENU ============================================== -->
@@ -90,36 +91,86 @@
                     <div class="dropdown dropdown-cart">
                         <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
                             <div class="items-cart-inner">
-                                <div class="basket"></div>
-                                <div class="basket-item-count"><span class="count">2</span></div>
-                                <div class="total-price-basket"> <span class="lbl"></span> <span class="total-price"> <span class="sign">$</span><span class="value">600.00</span> </span> </div>
+                                @if (Session["SHOPPING_CART"] == null)
+                                {
+
+
+                                    <div class="basket"></div>
+                                    <div class="basket-item-count"><span class="count">0</span></div>
+                                    <div class="total-price-basket"> <span class="lbl"></span> <span class="total-price"> <span class="sign">$</span><span class="value">0</span> </span> </div>
+                                }
+                                else
+                                {
+                                    List<Cart> temp = (List<Cart>)Session["SHOPPING_CART"];
+                                    var total = String.Format("{0:N0}", temp.Sum(x => x.Product.Price * x.Quantity));
+                                    var subtotal = String.Format("{0:N0}", temp.Sum(x => (x.Product.Price - ((x.Product.Price * x.Product.Discount) / 100)) * x.Quantity));
+                                    <div class="basket"></div>
+                                    <div class="basket-item-count"><span class="count">@temp.Count</span></div>
+                                    <div class="total-price-basket"> <span class="lbl"></span> <span class="total-price"> <span class="sign">$</span><span class="value">@total</span> </span> </div>
+                                }
+
                             </div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <div class="cart-item product-summary">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <div class="image"> <a href="detail.html"><img src="~/ClientTemplate/assets/images/cart.jpg" alt=""></a> </div>
-                                        </div>
-                                        <div class="col-xs-7">
-                                            <h3 class="name"><a href="index8a95.html?page-detail">Simple Product</a></h3>
-                                            <div class="price">$600.00</div>
-                                        </div>
-                                        <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
-                                    </div>
-                                </div>
-                                <!-- /.cart-item -->
-                                <div class="clearfix"></div>
-                                <hr>
-                                <div class="clearfix cart-total">
-                                    <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>$600.00</span> </div>
-                                    <div class="clearfix"></div>
-                                    <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
-                                </div>
-                                <!-- /.cart-total-->
+                            @if (Session["SHOPPING_CART"] == null)
+                            {
 
-                            </li>
+                                <li>
+                                    <div class="cart-item product-summary">
+                                        <div class="row">
+                                            <h5 style="text-align:center">No Item In Shopping Cart!</h5>
+                                        </div>
+                                    </div>
+                                    <!-- /.cart-item -->
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                    <div class="clearfix cart-total">
+                                        <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>$0</span> </div>
+
+
+                                    </div>
+                                    <!-- /.cart-total-->
+
+                                </li>
+
+                            }
+                            else
+                            {
+
+                                <li>
+                                    <div class="cart-item product-summary">
+                                        @foreach (var cart in (List<Cart>)Session["SHOPPING_CART"])
+                                        {
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="image"> <a href="detail.html"><img src="@cart.Product.GetDefaultThumbnails()" alt=""></a> </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <h3 class="name"><a href="index8a95.html?page-detail">@cart.Product.Name</a></h3>
+                                                    <div class="price">@cart.Product.Price</div>
+                                                </div>
+                                                <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <!-- /.cart-item -->
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                    @{List<Cart> temp = (List<Cart>)Session["SHOPPING_CART"];
+                                        var total = String.Format("{0:N0}", temp.Sum(x => x.Product.Price * x.Quantity));
+                                    }
+                                    <div class="clearfix cart-total">
+                                        <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>@total</span> </div>
+                                        <div class="clearfix"></div>
+                                        <a href="/ShoppingCart" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
+                                    </div>
+                                    <!-- /.cart-total-->
+
+                                </li>
+
+
+                            }
+
                         </ul>
                         <!-- /.dropdown-menu-->
                     </div>

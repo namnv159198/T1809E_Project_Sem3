@@ -3,7 +3,7 @@ namespace T1809E_Project_Sem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateData : DbMigration
+    public partial class Update_dB : DbMigration
     {
         public override void Up()
         {
@@ -40,14 +40,14 @@ namespace T1809E_Project_Sem3.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Discount = c.Double(nullable: false),
-                        CustomerName = c.String(),
-                        Address = c.String(),
-                        Phone = c.String(),
-                        Email = c.String(),
+                        CustomerName = c.String(nullable: false),
+                        Address = c.String(nullable: false),
+                        Phone = c.String(nullable: false),
+                        Email = c.String(nullable: false),
                         Gender = c.Int(nullable: false),
                         CreatedById = c.String(maxLength: 128),
                         UpdatedById = c.String(maxLength: 128),
-                        CreatedAt = c.DateTime(nullable: false),
+                        CreatedAt = c.DateTime(),
                         UpdatedAt = c.DateTime(),
                         deletedAt = c.DateTime(),
                         Status = c.Int(nullable: false),
