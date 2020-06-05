@@ -19,72 +19,72 @@ namespace T1809E_Project_Sem3.Controllers
             var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
             return View(product);
         }
-        public ActionResult Men(int? page, String sortOrder, string searchString)
-        {
-            var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
-            product = product.Where(m => m.category.Name == "Men").AsQueryable();
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                product = product.Where(s => s.Name.Contains(searchString));
-            }
+        //public ActionResult Men(int? page, String sortOrder, string searchString)
+        //{
+        //    var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+        //    product = product.Where(m => m.category.Name == "Men").AsQueryable();
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        product = product.Where(s => s.Name.Contains(searchString));
+        //    }
 
-            switch (sortOrder)
-            {
-                case "name-asc":
-                    product = product.OrderBy(p => p.Name);
-                    break;
-                case "name-desc":
-                    product = product.OrderByDescending(p => p.Name);
-                    break;
-                case "price-asc":
-                    product = product.OrderBy(p => p.Price);
-                    break;
-                case "price-desc":
-                    product = product.OrderByDescending(p => p.Price);
-                    break;
-                default:
-                    product = product.OrderBy(x => x.CreateAt);
-                    break;
+        //    switch (sortOrder)
+        //    {
+        //        case "name-asc":
+        //            product = product.OrderBy(p => p.Name);
+        //            break;
+        //        case "name-desc":
+        //            product = product.OrderByDescending(p => p.Name);
+        //            break;
+        //        case "price-asc":
+        //            product = product.OrderBy(p => p.Price);
+        //            break;
+        //        case "price-desc":
+        //            product = product.OrderByDescending(p => p.Price);
+        //            break;
+        //        default:
+        //            product = product.OrderBy(x => x.CreateAt);
+        //            break;
 
-            }
+        //    }
 
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            return View(product.ToPagedList(pageNumber, pageSize));
-        }
-        public ActionResult Women(int? page, string sortOrder, string searchString)
-        {
-            var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
-            product = product.Where(m => m.category.Name == "Women").AsQueryable();
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                product = product.Where(s => s.Name.Contains(searchString));
-            }
+        //    int pageSize = 6;
+        //    int pageNumber = (page ?? 1);
+        //    return View(product.ToPagedList(pageNumber, pageSize));
+        //}
+        //public ActionResult Women(int? page, string sortOrder, string searchString)
+        //{
+        //    var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+        //    product = product.Where(m => m.category.Name == "Women").AsQueryable();
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        product = product.Where(s => s.Name.Contains(searchString));
+        //    }
 
-            switch (sortOrder)
-            {
-                case "name-asc":
-                    product = product.OrderBy(p => p.Name);
-                    break;
-                case "name-desc":
-                    product = product.OrderByDescending(p => p.Name);
-                    break;
-                case "price-asc":
-                    product = product.OrderBy(p => p.Price);
-                    break;
-                case "price-desc":
-                    product = product.OrderByDescending(p => p.Price);
-                    break;
-                default:
-                    product = product.OrderBy(x => x.CreateAt);
-                    break;
+        //    switch (sortOrder)
+        //    {
+        //        case "name-asc":
+        //            product = product.OrderBy(p => p.Name);
+        //            break;
+        //        case "name-desc":
+        //            product = product.OrderByDescending(p => p.Name);
+        //            break;
+        //        case "price-asc":
+        //            product = product.OrderBy(p => p.Price);
+        //            break;
+        //        case "price-desc":
+        //            product = product.OrderByDescending(p => p.Price);
+        //            break;
+        //        default:
+        //            product = product.OrderBy(x => x.CreateAt);
+        //            break;
 
-            }
+        //    }
 
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            return View(product.ToPagedList(pageNumber, pageSize));
-        }
+        //    int pageSize = 6;
+        //    int pageNumber = (page ?? 1);
+        //    return View(product.ToPagedList(pageNumber, pageSize));
+        //}
         public ActionResult Login()
         {
 
@@ -105,6 +105,26 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-   
+        public ActionResult Shop()
+        {
+            var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            return View(product);
+         
+        }
+        public ActionResult Blog()
+        {
+
+            return View();
+        }
+        public ActionResult TrackOrder()
+        {
+
+            return View();
+        }
+        public ActionResult Contact()
+        {
+
+            return View();
+        }
     }
 }

@@ -40,6 +40,7 @@
                 roleManager.Create(role);
             }
 
+
             // Dong ho nam
             //product1
             var product1 = new Product()
@@ -327,11 +328,13 @@
                 Status = Product.ProductStatus.Active,
                 Description = "This is a good gift for your love or friends women watch leather band strap bracelet womens watches clearance sale fossil bulova stuhrling michael kors kate spade clearance sale michael kors Silver Guess under 20 timex g shock eco drive invicta gold on sale rose gold luxury casio citizen digital sports waterproof Watches for Women girl Casual Design bling rhinestone dress watch girl gift 2016 Bracelet Quartz Braided Winding Wrap Wrist Watch fashion party bangle Gold-Tone Pink Bracelet Wa",
                 Thumbnails = "image/upload/v1591106637/Women/15_uubcvr.jpg",
+
                 Price = 29,
                 Discount = 0,
                 CreateAt = DateTime.Now.AddDays(-7),
                 CategoryID = 1
             };
+
             context.Products.AddOrUpdate(product22);
             var product23 = new Product()
             {
@@ -555,6 +558,7 @@
                 CategoryID = 1
             };
             context.Products.AddOrUpdate(product39);
+
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
