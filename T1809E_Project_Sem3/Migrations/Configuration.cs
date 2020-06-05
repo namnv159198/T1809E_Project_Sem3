@@ -398,6 +398,7 @@
                 CategoryID = 1
             };
             context.Products.AddOrUpdate(product27);
+            // product 28
             var product28 = new Product()
             {
                 Id = 28,
@@ -554,6 +555,7 @@
                 CategoryID = 1
             };
             context.Products.AddOrUpdate(product39);
+
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }
