@@ -13,11 +13,11 @@ namespace T1809E_Project_Sem3.Models
         public String Id { get; set; }
         public decimal TotalPrice { get; set; }
         public double Discount { get; set; }
-        [Required]
+   
         public String CustomerName { get; set; }
-        [Required]
+   
         public string Address { get; set; }
-        [Required]
+     
         [Display(Name = "Phone Number")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
@@ -41,10 +41,7 @@ namespace T1809E_Project_Sem3.Models
         [ForeignKey("UpdatedById")]
         public ApplicationUser UpdatedBy { get; set; }
         public DateTime? CreatedAt { get; set; }
-        public Order ()
-        {
-            this.CreatedAt = DateTime.Now;
-            }
+       
         public DateTime? UpdatedAt { get; set; }
         public DateTime? deletedAt { get; set; }
         public OrderStatus Status { get; set; }
@@ -58,7 +55,7 @@ namespace T1809E_Project_Sem3.Models
             }
 
             this.OrderDetails.Add(orderDetails);
-            this.TotalPrice += orderDetails.UnitPrice * orderDetails.Quantity;
+            this.TotalPrice += orderDetails.Product.Price * orderDetails.Quantity;
         }
 
     }
