@@ -198,6 +198,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
@@ -368,9 +369,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ChartController.cs" />
     <Compile Include="Models\CreateUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelsChart.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
@@ -799,6 +802,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
     <Content Include="Content\DropDown.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -925,6 +930,8 @@
     <Content Include="ClientTemplate\assets\fonts\Simple-Line-Icons.woff" />
     <Content Include="ClientTemplate\assets\fonts\Simple-Line-Iconsd41d.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\CustomScripts\CalendarFilter.js" />
     <Content Include="Scripts\CustomScripts\CloudinaryCreate.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1024,6 +1031,7 @@
     <Content Include="Views\Client\Blog.cshtml" />
     <Content Include="Views\Client\TrackOrder.cshtml" />
     <Content Include="Views\Client\Contact.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />

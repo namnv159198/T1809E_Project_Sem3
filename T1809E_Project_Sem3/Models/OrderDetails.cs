@@ -13,8 +13,6 @@ namespace T1809E_Project_Sem3.Models
         public string OrderId { get; set; }
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
-
-
         [Key, Column(Order = 1)]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
@@ -26,6 +24,5 @@ namespace T1809E_Project_Sem3.Models
         [Range(0,100)]
         public Double Discount { get; set; }
 
-        
     }
 }

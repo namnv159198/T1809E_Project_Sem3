@@ -147,29 +147,24 @@ namespace T1809E_Project_Sem3.Migrations
                     Phone = String.Concat("0", random.Next(9), random.Next(9), randomPhone),
                     CustomerName = RandomNames[indexName],
                 };
-                context.Orders.AddOrUpdate(order);
-            
-            }
-            //
-            // // // // ---------------------------------- Seeding Order Details ---------------------------------- //
-            var listO = context.Orders.ToList();
-            
-            for (int j = 1; j <= 10; j++)
-            {
-                int p = random.Next(0,listP.Count);
-                int o = random.Next(0,listO.Count);
-                int qr = random.Next(1, 3);
-                var orderDetails = new OrderDetails()
+                for (int j = 1 ; j <= random.Next(1,3); j++)
                 {
-                    OrderId = listO[o].Id,
-                    ProductId = listP[p].Id,
-                    Quantity = qr,
-                    UnitPrice = qr*listP[p].Price
-                };
-                context.OrderDetails.Add(orderDetails);
-                // listO[o].AddOrderDetails(orderDetails);
-                // context.Orders.AddOrUpdate(listO[o]);
+                    int p = random.Next(0, listP.Count);
+                    int qr = random.Next(1, 3);
+                    var orderDetails = new OrderDetails()
+                    {
+                        OrderId = order.Id,
+                        ProductId = listP[p].Id,
+                        Quantity = qr,
+                        UnitPrice = listP[p].Price
+                    };
+                    order.TotalPrice += orderDetails.UnitPrice;
+                    context.OrderDetails.Add(orderDetails);
+                }
+                context.Orders.AddOrUpdate(order);
             }
+            
+          
 
            
       
