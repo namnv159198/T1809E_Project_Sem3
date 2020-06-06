@@ -1024,6 +1024,7 @@
     <Content Include="Views\Client\Blog.cshtml" />
     <Content Include="Views\Client\TrackOrder.cshtml" />
     <Content Include="Views\Client\Contact.cshtml" />
+    <Content Include="Views\Admin\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
