@@ -357,13 +357,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006050505445_Update_dB.cs" />
-    <Compile Include="Migrations\202006050505445_Update_dB.Designer.cs">
-      <DependentUpon>202006050505445_Update_dB.cs</DependentUpon>
+    <Compile Include="Migrations\202006061310431_Seeding_Product.cs" />
+    <Compile Include="Migrations\202006061310431_Seeding_Product.Designer.cs">
+      <DependentUpon>202006061310431_Seeding_Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006050510172_fix-seeding.cs" />
-    <Compile Include="Migrations\202006050510172_fix-seeding.Designer.cs">
-      <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
+    <Compile Include="Migrations\202006061314234_Seeding_Order.cs" />
+    <Compile Include="Migrations\202006061314234_Seeding_Order.Designer.cs">
+      <DependentUpon>202006061314234_Seeding_Order.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2106,11 +2106,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006050505445_Update_dB.resx">
-      <DependentUpon>202006050505445_Update_dB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006061310431_Seeding_Product.resx">
+      <DependentUpon>202006061310431_Seeding_Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006050510172_fix-seeding.resx">
-      <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006061314234_Seeding_Order.resx">
+      <DependentUpon>202006061314234_Seeding_Order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
