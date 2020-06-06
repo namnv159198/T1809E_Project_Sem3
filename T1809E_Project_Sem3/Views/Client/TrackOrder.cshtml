@@ -1,4 +1,4 @@
-﻿
+﻿@model T1809E_Project_Sem3.Models.Order
 @{
     ViewBag.Title = "TrackOrder";
     Layout = "~/Views/Shared_Client/_Layout.cshtml";
@@ -14,7 +14,107 @@
         </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
 </div><!-- /.breadcrumb -->
-
+@if ((string)TempData["status"] == "fail")
+{
+    <h1 style="text-align:center; font-style:italic">No Result Found!! Please Retry Again.</h1>
+}
+else if ((string)TempData["status"] == "success")
+{
+    <div class="body-content outer-top-xs">
+        <div class="container">
+            <div>
+                <div class="shopping-cart">
+                    <div class="shopping-cart-table ">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-description item">Order ID</th>
+                                        <th class="cart-product-name item">Customer Name</th>
+                                        <th class="cart-sub-total item">Address</th>
+                                        <th class="cart-sub-total item">Phone Number</th>
+                                        <th class="cart-qty item">Email</th>
+                                        <th class="cart-sub-total item">Status</th>
+                                        <th class="cart-romove item">Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>@Html.DisplayFor(model => model.Id)</th>
+                                        <th>@Html.DisplayFor(model => model.CustomerName)</th>
+                                        <th>@Html.DisplayFor(model => model.Address)</th>
+                                        <th>@Html.DisplayFor(model => model.Phone)</th>
+                                        <th>@Html.DisplayFor(model => model.Email)</th>
+                                        <th>@Html.DisplayFor(model => model.Status)</th>
+                                        <th>@Html.DisplayFor(model => model.TotalPrice)</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body-content outer-top-xs">
+        <div class="container">
+            <div>
+                <div class="shopping-cart">
+                    <div class="shopping-cart-table ">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-product-name item">Product Name</th>
+                                        <th class="cart-qty item">Quantity</th>
+                                        <th class="cart-sub-total item">Price</th>
+                                        <th class="cart-sub-total item">Unit Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.OrderDetails)
+                                    {
+                                        <tr>
+                                            
+                                            <td class="cart-product-name item">@item.Product.Name</td>
+                                            <td class="cart-product-edit">@item.Quantity</td>
+                                            <td class="cart-product-sub-total"><span class="cart-sub-total-price">@item.Product.Price</span></td>
+                                            <td class="cart-product-sub-total">
+                                                <span class="cart-sub-total-price">
+                                                    @{
+                                                        var TotalPrice = String.Format("{0:N0}", item.Product.Price * item.Quantity);
+                                                    }
+                                                    @TotalPrice $
+                                                </span>
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Total Price</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th >
+                                                @{
+                                                    var temp = Model.OrderDetails;
+                                                    var total = String.Format("{0:N0}", temp.Sum(x => x.Product.Price * x.Quantity));
+                                                }
+                                                @total $
+                                            
+                                           
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 <div class="body-content">
     <div class="container">
         <div class="track-order-page">
@@ -22,17 +122,19 @@
                 <div class="col-md-12">
                     <h2 class="heading-title">Track your Order</h2>
                     <span class="title-tag inner-top-ss">Please enter your Order ID in the box below and press Enter. This was given to you on your receipt and in the confirmation email you should have received. </span>
-                    <form class="register-form outer-top-xs" role="form">
+                    @using (Html.BeginForm("TrackOrder", "Client", FormMethod.Get, new { @class = "register-form outer-top-xs" }))
+                    {
                         <div class="form-group">
                             <label class="info-title" for="exampleOrderId1">Order ID</label>
-                            <input type="text" class="form-control unicase-form-control text-input" id="exampleOrderId1">
+                            <input type="text" class="form-control unicase-form-control text-input" id="OrderId" name="OrderId">
                         </div>
                         <div class="form-group">
                             <label class="info-title" for="exampleBillingEmail1">Billing Email</label>
-                            <input type="email" class="form-control unicase-form-control text-input" id="exampleBillingEmail1">
+                            <input type="email" class="form-control unicase-form-control text-input" id="OrderEmail" name="OrderEmail">
                         </div>
                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Track</button>
-                    </form>
+                    }
+
                 </div>
             </div><!-- /.row -->
         </div><!-- /.sigin-in-->
@@ -133,3 +235,4 @@
     <!-- ============================================== NEWSLETTER: END ============================================== -->
 
 </section>
+

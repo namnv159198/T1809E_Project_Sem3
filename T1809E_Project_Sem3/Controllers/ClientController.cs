@@ -116,11 +116,25 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-        public ActionResult TrackOrder()
+       
+        
+        [HttpGet]
+        public ActionResult TrackOrder(string OrderId, string OrderEmail)
         {
-
+            if (OrderId != null || OrderEmail != null )
+            {
+                Order order = db.Orders.Find(OrderId);
+                TempData["status"] = "fail";
+                if (order != null)
+                {
+                    TempData["status"] = "success";
+                    return View(order);
+                }
+                return View();
+            }
             return View();
         }
+
         public ActionResult Contact()
         {
 
