@@ -18,6 +18,16 @@ namespace T1809E_Project_Sem3.Controllers
         public ActionResult Index()
         {
             var orders = db.Orders.Include(o => o.CreatedBy).Include(o => o.UpdatedBy);
+            foreach (var o in orders)
+            {
+                var id = o.Id;
+                var od = db.OrderDetails.Where(p=>p.OrderId == id);
+                if (od.Any())
+                {
+                    o.TotalPrice = od.Sum(p => p.UnitPrice);
+                }
+                
+            }
             return View(orders.ToList());
         }
 
