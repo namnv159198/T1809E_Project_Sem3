@@ -345,6 +345,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -365,11 +366,14 @@
     <Compile Include="Migrations\202006050510172_fix-seeding.Designer.cs">
       <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006070731219_Update.cs" />
+    <Compile Include="Migrations\202006070731219_Update.Designer.cs">
+      <DependentUpon>202006070731219_Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\ChartController.cs" />
     <Compile Include="Models\CreateUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -2111,6 +2115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006050510172_fix-seeding.resx">
       <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006070731219_Update.resx">
+      <DependentUpon>202006070731219_Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

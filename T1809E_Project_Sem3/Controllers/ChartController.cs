@@ -23,7 +23,7 @@ namespace T1809E_Project_Sem3.Models
 		{
 			
 			List<ModelsChart.DataPoint> dataPoints = new List<ModelsChart.DataPoint>();
-			var orders = db.Orders.Where(o => o.CreatedAt.Value.Year == DateTime.Now.Year);
+			var orders = db.Orders.Where(o => o.CreatedAt.Value.Year == DateTime.Now.Year).Where(o => o.Status == OrderStatus.Order_Completed);
 			var ordersJan = orders.Where(o => o.CreatedAt.Value.Month == 1);
 			var ordersFeb = orders.Where(o => o.CreatedAt.Value.Month == 2);
 			var ordersMar = orders.Where(o => o.CreatedAt.Value.Month == 3);
