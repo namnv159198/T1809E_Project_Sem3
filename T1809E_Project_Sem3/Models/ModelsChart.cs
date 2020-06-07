@@ -16,6 +16,18 @@ namespace T1809E_Project_Sem3.Models
                 this.X = x;
                 this.Y = y;
             }
+            public DataPoint(string label, double y)
+            {
+                this.Label = label;
+                this.Y = y;
+            }
+            public DataPoint(double y,string label )
+            {
+                this.Label = label;
+                this.Y = y;
+            }
+            [DataMember(Name = "label")]
+            public string Label = "";
 
             //Explicitly setting the name to be used while serializing to JSON.
             [DataMember(Name = "x")]

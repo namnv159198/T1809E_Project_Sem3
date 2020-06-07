@@ -3,7 +3,7 @@ namespace T1809E_Project_Sem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Update_dB : DbMigration
+    public partial class dataTable : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +24,7 @@ namespace T1809E_Project_Sem3.Migrations
                         OrderId = c.String(nullable: false, maxLength: 128),
                         ProductId = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UnitPrice = c.Double(nullable: false),
                         Discount = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => new { t.OrderId, t.ProductId })
@@ -38,11 +38,11 @@ namespace T1809E_Project_Sem3.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        TotalPrice = c.Double(nullable: false),
                         Discount = c.Double(nullable: false),
-                        CustomerName = c.String(nullable: false),
-                        Address = c.String(nullable: false),
-                        Phone = c.String(nullable: false),
+                        CustomerName = c.String(),
+                        Address = c.String(),
+                        Phone = c.String(),
                         Email = c.String(nullable: false),
                         Gender = c.Int(nullable: false),
                         CreatedById = c.String(maxLength: 128),
@@ -130,7 +130,7 @@ namespace T1809E_Project_Sem3.Migrations
                         Status = c.Int(nullable: false),
                         Description = c.String(nullable: false),
                         Thumbnails = c.String(),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Price = c.Double(nullable: false),
                         Discount = c.Int(nullable: false),
                         CreateAt = c.DateTime(),
                         CategoryID = c.Int(nullable: false),

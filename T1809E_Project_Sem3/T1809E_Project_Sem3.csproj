@@ -345,6 +345,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -357,13 +358,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006050505445_Update_dB.cs" />
-    <Compile Include="Migrations\202006050505445_Update_dB.Designer.cs">
-      <DependentUpon>202006050505445_Update_dB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006050510172_fix-seeding.cs" />
-    <Compile Include="Migrations\202006050510172_fix-seeding.Designer.cs">
-      <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
+    <Compile Include="Migrations\202006070502201_dataTable.cs" />
+    <Compile Include="Migrations\202006070502201_dataTable.Designer.cs">
+      <DependentUpon>202006070502201_dataTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -374,6 +371,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelsChart.cs" />
+    <Compile Include="Models\MultipleTableJoin.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
@@ -1031,7 +1029,7 @@
     <Content Include="Views\Client\Blog.cshtml" />
     <Content Include="Views\Client\TrackOrder.cshtml" />
     <Content Include="Views\Client\Contact.cshtml" />
-    <Content Include="Views\Chart\Index.cshtml" />
+    <Content Include="Views\Charts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminTemplate\images\css\css\css\" />
@@ -2106,11 +2104,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006050505445_Update_dB.resx">
-      <DependentUpon>202006050505445_Update_dB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006050510172_fix-seeding.resx">
-      <DependentUpon>202006050510172_fix-seeding.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006070502201_dataTable.resx">
+      <DependentUpon>202006070502201_dataTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

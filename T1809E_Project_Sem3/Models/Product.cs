@@ -26,8 +26,8 @@ namespace T1809E_Project_Sem3.Models
         public string Description { get; set; }
         public string Thumbnails { get; set; }
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335", ErrorMessage = "The Field Price Can Not < 0")]
-        public decimal Price { get; set; }
+        [Range(typeof(double), "0", "79228162514264337593543950335", ErrorMessage = "The Field Price Can Not < 0")]
+        public double Price { get; set; }
         [Range(0, 100)]
         [Display(Name ="Discount (%)")]
         public int Discount { get; set; }

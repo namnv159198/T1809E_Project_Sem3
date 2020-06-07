@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/Chart.js"></script>
+<script src="~/Scripts/Chart.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script>
+    window.onload = function () {
+ 
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Women Nobel Laureates"
+            },
+            subtitles: [{
+                text: "from 1903 to 2015"
+            }],
+           
+            data: [{
+                type: "bar",
+                indexLabel: "{y}",
+                dataPoints: @Html.Raw(ViewBag.DataPoints)
+            }]
+        });
+        chart.render();
+ 
+    }
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
