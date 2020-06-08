@@ -46,7 +46,7 @@
             var product1 = new Product()
             {
                 Id = 1,
-                Name = "SKY-DWELLER",
+                Name = "LONGINES L4.805.1.11.7",
                 Status = Product.ProductStatus.Active,
                 Description = "Style: : fashion casual, business simple design",
                 Thumbnails = "image/upload/v1591077386/clock/m126301-0009e6c4_ck1er7.png",
@@ -61,7 +61,7 @@
             var product2 = new Product()
             {
                 Id = 2,
-                Name = "DATEJUST 41",
+                Name = " LONGINES L2.755.8.78.5",
                 Status = Product.ProductStatus.Active,
                 Description = "This is a good gift for your love or friends women watch leather band strap bracelet womens watches clearance sale fossil bulova stuhrling michael kors kate spade clearance sale michael kors Silver Guess under 20 timex g shock eco drive invicta gold on sale rose gold luxury casio citizen digital sports waterproof Watches for Women girl Casual Design bling rhinestone dress watch girl gift 2016 Bracelet Quartz Braided Winding Wrap Wrist Watch fashion party bangle Gold-Tone Pink Bracelet Wa",
                 Thumbnails = "image/upload/v1591077388/clock/m128238-0069e6c4_mr2ret.png",
@@ -74,7 +74,7 @@
             var product3 = new Product()
             {
                 Id = 3,
-                Name = "OYSTER PERPETUAL 39",
+                Name = " LONGINES L2.919.4.78.6",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077387/clock/m126719blro-0002e6c4_dqghum.png",
@@ -87,7 +87,7 @@
             var product4 = new Product()
             {
                 Id = 4,
-                Name = "AIR-KING",
+                Name = "LONGINES L2.910.4.92.0",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077389/clock/m278288rbr-0004e6c4_gphf9e.png",
@@ -113,7 +113,7 @@
             var product6 = new Product()
             {
                 Id = 6,
-                Name = "SUBMARINER DATE",
+                Name = "GUCCI YA126283",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077196/clock/navigation-collection-watches-cosmograph-daytona_m116518ln_0040_1706jva_001_r_portrait32c7_iq7run.jpg",
@@ -126,7 +126,7 @@
             var product7 = new Product()
             {
                 Id = 7,
-                Name = "SEA-DWELLER",
+                Name = "GUCCI YA126213",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077196/clock/navigation-collection-watches-submariner_m116613lb-0005_1807jva_001_portrait32c7_ijs2op.jpg",
@@ -139,7 +139,7 @@
             var product8 = new Product()
             {
                 Id = 8,
-                Name = "GMT-MASTER II",
+                Name = "GUCCI YA126304",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077196/clock/navigation-collection-watches-skydweller_m326934_0003_1711jva_001_r_portrait32c7_sxlvxa.jpg",
@@ -152,7 +152,7 @@
             var product9 = new Product()
             {
                 Id = 9,
-                Name = "YACHT-MASTER 42",
+                Name = "GUCCI YA126347",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077196/clock/navigation-collection-watches-sea-dweller_m126600-0001_1710jva_001_portrait32c7_ad3qsz.jpg",
@@ -165,7 +165,7 @@
             var product10 = new Product()
             {
                 Id = 10,
-                Name = "EXPLORER II",
+                Name = "TISSOT T122.407.33.031.00",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-pearlmaster_m86285-0001_1612jva_001_r_portrait32c7_wba00x.jpg",
@@ -191,7 +191,7 @@
             var product12 = new Product()
             {
                 Id = 12,
-                Name = "CELLINI MOONPHASE",
+                Name = "TISSOT T122.410.16.043.00",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-milgauss_m116400gv-0002_1809jva_001_portrait32c7_guveo8.jpg",
@@ -204,7 +204,7 @@
             var product13 = new Product()
             {
                 Id = 13,
-                Name = "DAY-DATE 36",
+                Name = "TISSOT T122.410.11.053.00",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-explorer-ii_m216570_0001_1809jva_002_portrait32c7_b4ctli.jpg",
@@ -217,7 +217,7 @@
             var product14 = new Product()
             {
                 Id = 14,
-                Name = "DAY-DATE 40",
+                Name = "TISSOT T116.410.16.047.00",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-lady-datejust_m279381rbr-0013_1610jva_001_r_portrait32c7_l5pamr.jpg",
@@ -230,7 +230,7 @@
             var product15 = new Product()
             {
                 Id = 15,
-                Name = "OYSTER PERPETUAL 36",
+                Name = "TISSOT T116.410.16.047.00",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-datejust_m126333-0010_1802jva_001_r_portrait32c7_k2zngs.jpg",
@@ -243,7 +243,7 @@
             var product16 = new Product()
             {
                 Id = 16,
-                Name = "DATEJUST 36",
+                Name = "HAMILTON H76695733",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-day-date_m228238_0042_1804jva_001_2_re_portrait32c7_lstqgq.jpg",
@@ -256,7 +256,7 @@
             var product17 = new Product()
             {
                 Id = 17,
-                Name = "SUBMARINER",
+                Name = "HAMILTON H43515175",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-gmt-master-ii_m126710blro_0001_1809jva_001_portrait32c7_y2my8r.jpg",
@@ -269,7 +269,7 @@
             var product18 = new Product()
             {
                 Id = 18,
-                Name = "ROLEX DEEPSEA",
+                Name = " HAMILTON H24411732",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-cellini_m50535-0002_1712jva_001_r_portrait32c7_qo5ipr.jpg",
@@ -282,7 +282,7 @@
             var product19 = new Product()
             {
                 Id = 19,
-                Name = "YACHT-MASTER II",
+                Name = "HAMILTON H32451751",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591077195/clock/navigation-collection-watches-air-king_m116900-0001_1809jva_001_portrait32c7_xkmnbg.jpg",
@@ -311,7 +311,7 @@
             var product21 = new Product()
             {
                 Id = 21,
-                Name = "PEARLMASTER 39",
+                Name = "EDOX 57002 37RC AIR",
                 Status = Product.ProductStatus.Active,
                 Description = "Style: : fashion casual, business simple design",
                 Thumbnails = "image/upload/v1591106637/Women/16_zqyoeq.jpg",
@@ -324,7 +324,7 @@
             var product22 = new Product()
             {
                 Id = 22,
-                Name = "DATEJUST 31",
+                Name = "EDOX 85025 37RM ARR",
                 Status = Product.ProductStatus.Active,
                 Description = "This is a good gift for your love or friends women watch leather band strap bracelet womens watches clearance sale fossil bulova stuhrling michael kors kate spade clearance sale michael kors Silver Guess under 20 timex g shock eco drive invicta gold on sale rose gold luxury casio citizen digital sports waterproof Watches for Women girl Casual Design bling rhinestone dress watch girl gift 2016 Bracelet Quartz Braided Winding Wrap Wrist Watch fashion party bangle Gold-Tone Pink Bracelet Wa",
                 Thumbnails = "image/upload/v1591106637/Women/15_uubcvr.jpg",
@@ -339,7 +339,7 @@
             var product23 = new Product()
             {
                 Id = 23,
-                Name = "DATEJUST 36",
+                Name = "EDOX 85019 37RA NADR",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106636/Women/13_laicnp.jpg",
@@ -352,7 +352,7 @@
             var product24 = new Product()
             {
                 Id = 24,
-                Name = "DAY-DATE 36",
+                Name = "MICHEL HERBELIN 16915/69GO",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106636/Women/11_wok9nc.jpg",
@@ -365,7 +365,7 @@
             var product25 = new Product()
             {
                 Id = 25,
-                Name = "LADY-DATEJUST 12",
+                Name = "EDOX 85025 3C NIN",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106636/Women/10_gebyse.jpg",
@@ -378,7 +378,7 @@
             var product26 = new Product()
             {
                 Id = 26,
-                Name = "DATEJUST 32",
+                Name = "MICHEL HERBELIN 17408/BPR19",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106636/Women/12_hmud5w.jpg",
@@ -405,7 +405,7 @@
             var product28 = new Product()
             {
                 Id = 28,
-                Name = "DATEJUST 35",
+                Name = "BALMAIN B4931.33.16",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106636/Women/9_b8ro3q.jpg",
@@ -418,7 +418,7 @@
             var product29 = new Product()
             {
                 Id = 29,
-                Name = "LADY-DATEJUST 22",
+                Name = "BALMAIN B4759.32.66",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/7_hsox7p.jpg",
@@ -444,7 +444,7 @@
             var product31 = new Product()
             {
                 Id = 31,
-                Name = "PEARLMASTER 25",
+                Name = "BALMAIN B4379.32.86",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/4_n5c9mf.jpg",
@@ -457,7 +457,7 @@
             var product32 = new Product()
             {
                 Id = 32,
-                Name = "PEARLMASTER 30",
+                Name = "MOVADO 0606812",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/2_tw3qhh.jpg",
@@ -470,7 +470,7 @@
             var product33 = new Product()
             {
                 Id = 33,
-                Name = "PEARLMASTER 33",
+                Name = "MOVADO 0606248",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/5_y2l7tb.jpg",
@@ -483,7 +483,7 @@
             var product34 = new Product()
             {
                 Id = 34,
-                Name = "LADY-DATEJUST 35",
+                Name = "MOVADO 0606552",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/1_poazj2.jpg",
@@ -496,7 +496,7 @@
             var product35 = new Product()
             {
                 Id = 35,
-                Name = "DAY-DATE 33",
+                Name = "CITIZEN FE7053-51X",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591106635/Women/8_wwds6l.jpg",
@@ -509,7 +509,7 @@
             var product36 = new Product()
             {
                 Id = 36,
-                Name = "DATEJUST 22",
+                Name = "CITIZEN EM0738-80D",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591087804/Women/m81298-0002_bveo6f.png",
@@ -522,7 +522,7 @@
             var product37 = new Product()
             {
                 Id = 37,
-                Name = "DAY-DATE 30",
+                Name = "CITIZEN EW5554-82D",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591087464/Women/71NTfNWmWiL._AC_SL1008__v9zmhs.jpg",
@@ -548,7 +548,7 @@
             var product39 = new Product()
             {
                 Id = 39,
-                Name = "DAY-DATE 25",
+                Name = "CALVIN KLEIN K4E2N111",
                 Status = Product.ProductStatus.Active,
                 Description = "Đồng hồ cơ",
                 Thumbnails = "image/upload/v1591086198/Women/Women-Watches-Rose-Gold-Luxury-Ladies-Watch-Ultra-thin-Wrist-W_gksbsx.webp",
