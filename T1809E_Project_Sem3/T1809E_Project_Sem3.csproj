@@ -359,7 +359,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
 
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -2103,7 +2102,7 @@
   </ItemGroup>
   <ItemGroup>
 
-    </EmbeddedResource>
+  
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
