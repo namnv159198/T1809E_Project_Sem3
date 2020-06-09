@@ -19,6 +19,19 @@ namespace T1809E_Project_Sem3.Models
            
             return View();
         }
+		public static decimal num2;
+		public void AddSum(IQueryable<Order> orders)
+		{
+			num2 = 0;
+			decimal num1;
+			decimal num = 0;
+			foreach (var o in orders)
+            {
+				num1 = o.TotalPrice;
+				num += num1;
+			}
+			num2 = num;
+		}
 		public ContentResult JSON()
 		{
 			
@@ -36,90 +49,29 @@ namespace T1809E_Project_Sem3.Models
 			var ordersOct = orders.Where(o => o.CreatedAt.Value.Month == 10);
 			var ordersNov = orders.Where(o => o.CreatedAt.Value.Month == 11);
 			var ordersDec = orders.Where(o => o.CreatedAt.Value.Month == 12);
-			decimal num1 = 0;
-			decimal num2 = 0;
-			foreach (var o in ordersJan)
-			{
-				num1 = o.TotalPrice;
-                num2 += num1;
-			}
+			AddSum(ordersJan);
 			dataPoints.Add(new ModelsChart.DataPoint(01, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersFeb)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersFeb);
 			dataPoints.Add(new ModelsChart.DataPoint(02, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersMar)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersMar);
 			dataPoints.Add(new ModelsChart.DataPoint(03, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersApr)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersApr);
 			dataPoints.Add(new ModelsChart.DataPoint(04, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersMay)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersMay);
 			dataPoints.Add(new ModelsChart.DataPoint(05, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersJun)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersJun);
 			dataPoints.Add(new ModelsChart.DataPoint(06, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersJul)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersJul);
 			dataPoints.Add(new ModelsChart.DataPoint(07, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersAug)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersAug);
 			dataPoints.Add(new ModelsChart.DataPoint(08, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersSep)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersSep);
 			dataPoints.Add(new ModelsChart.DataPoint(09, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersOct)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersOct);
 			dataPoints.Add(new ModelsChart.DataPoint(10, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersNov)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersNov);
 			dataPoints.Add(new ModelsChart.DataPoint(11, (double)num2));
-			num2 = 0;
-			foreach (var o in ordersDec)
-			{
-				num1 = o.TotalPrice;
-				num2 += num1;
-			}
+			AddSum(ordersDec);
 			dataPoints.Add(new ModelsChart.DataPoint(12, (double)num2));
 
 
