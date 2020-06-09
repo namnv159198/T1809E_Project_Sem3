@@ -95,11 +95,20 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+                return View(product);
         }
+
         public ActionResult ViewCart()
         {
 
