@@ -276,10 +276,36 @@
             <!-- /.sidebar -->
             <div class='col-md-9'>
                 <!-- ========================================== SECTION – HERO ========================================= -->
+                @using (Html.BeginForm("Shop", "Client", FormMethod.Get, new { @name = "search-form" }))
+                {
+
+                    <div class="col-md-11" style="margin-bottom: 4%;">
+                        <div class="col-md-3">
+                            <div class="lbl-cnt">
+                                <div class="fld inline">
+                                    @Html.DropDownList("Category", (IEnumerable<SelectListItem>)ViewBag.Categorylist, "Select category", new { @class = "form-control" })
+                                </div>
+                                <!-- /.fld -->
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="input-group m-bot15">
+                                <span class="input-group-btn">
+                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
+                                    <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
+
+                                </span>
 
 
+                            </div>
 
+                        </div>
+
+                    </div>
+                }
                 <div class="page-title"><h2>Electronics</h2></div>
+
                 <div class="clearfix filters-container m-t-10">
                     <div class="row">
                         <div class="col col-sm-6 col-md-3">
@@ -361,9 +387,9 @@
                     <div id="myTabContent" class="tab-content category-list">
                         <div class="tab-pane active " id="grid-container">
                             <div class="category-product">
-                                <div >
-                                 
-                                    <div class=" row wow fadeInUp " >
+                                <div>
+
+                                    <div class=" row wow fadeInUp ">
                                         @foreach (var item in Model)
                                         {
                                             <div class="col-md-4 products">
@@ -401,13 +427,13 @@
                                                     <!-- /.cart -->
                                                 </div>
                                                 <!-- /.product -->
-                                                
+
                                             </div>
                                         }
-                                            <!-- /.products -->
-                                        </div>
-                                        
-                                    
+                                        <!-- /.products -->
+                                    </div>
+
+
                                     <!-- /.item -->
                                     <!-- /.item -->
                                 </div>
@@ -469,9 +495,9 @@
                                         <!-- /.products -->
                                     </div>
                                 }
-                                    
 
-                                </div>
+
+                            </div>
                             <!-- /.category-product -->
                         </div>
                         <!-- /.tab-pane #list-container -->
@@ -507,11 +533,33 @@
 
 
     </div>
-    </div>
+</div>
 
 
 
 
-    <!-- ============================================== NEWSLETTER ============================================== -->
-    <!-- /.sidebar-widget-body -->
-    <!-- /.body-content -->
+<!-- ============================================== NEWSLETTER ============================================== -->
+<!-- /.sidebar-widget-body -->
+<!-- /.body-content -->
+@section scripts{
+    <script type="text/javascript">
+        $('select[name="Category"]').change(function () {
+            $('form[name="search-form"]').submit();
+        });
+    </script>
+
+}
+@{ if ((string)TempData["message"] == "NotFound")
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'warning',
+                title: 'Not Found Products',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+   
+} 

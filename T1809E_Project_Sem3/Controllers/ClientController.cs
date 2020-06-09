@@ -114,9 +114,20 @@ namespace T1809E_Project_Sem3.Controllers
 
             return View();
         }
-        public ActionResult Shop()
+        public ActionResult Shop(string searchString,int? category)
         {
+            var listCategory = db.Categories.ToList();
+            SelectList Categorylist = new SelectList(listCategory, "ID", "Name");
+            ViewBag.Categorylist = Categorylist;
             var product = db.Products.Include(p => p.category).Include(p => p.CreateBy).Include(p => p.DeleteBy).Include(p => p.UpdateBy);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                product = product.Where(s => s.Name.Contains(searchString));
+            }
+            if (!product.Any())
+            {
+                TempData["message"] = "NotFound";
+            }
             return View(product);
          
         }
