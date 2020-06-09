@@ -11,7 +11,7 @@ namespace T1809E_Project_Sem3.Models
     {
         [Key]
         public String Id { get; set; }
-        public decimal TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
         public double Discount { get; set; }
    
         public String CustomerName { get; set; }
