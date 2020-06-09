@@ -414,9 +414,10 @@
                                                     <div class="cart clearfix animate-effect">
                                                         <div class="action">
                                                             <ul class="list-unstyled">
-                                                                <li class="add-cart-button btn-group">
-                                                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                <li class="add-cart-button btn-group" title="@item.Id">
+                                                                    <button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                                                     <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+
                                                                 </li>
                                                                 <li class="lnk wishlist"> <a class="add-to-cart" href="@Url.Action("Details","Client")" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
                                                                 <li class="lnk"> <a class="add-to-cart" href="@Url.Action("Details","Client")" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
