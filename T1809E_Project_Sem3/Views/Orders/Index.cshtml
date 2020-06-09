@@ -16,8 +16,71 @@
                     Create New &nbsp;
                     <i class="fa fa-plus"></i>
                 </a>
-
             </div>
+            @using (Html.BeginForm("Index", "Orders", FormMethod.Get, new { @name = "search-form" }))
+            {
+                <input type="hidden" name="start" value="" />
+                <input type="hidden" name="end" value="" />
+                <input type="hidden" name="sortOrder" value="" />
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-5">
+                        <p class="padding">
+                            Search By Keyword
+                        </p>
+                        <div class="input-group m-bot15">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
+                            </span>
+                            @Html.TextBox("SearchStringName", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-5">
+                        <p class="padding">
+                            Search By Email
+                        </p>
+                        <div class="input-group m-bot15">
+                            @Html.TextBox("SearchStringEmail", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Email. . . " })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-5">
+                        <p class="padding">
+                            Search By Address
+                        </p>
+                        <div class="input-group m-bot15">
+                            @Html.TextBox("SearchStringAddress", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Address. . . " })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="col-lg-3 col-md-12">
+                        <p class="padding">
+                            Search By Status
+                        </p>
+                        @Html.DropDownList("status",
+                     EnumHelper.GetSelectList(typeof(T1809E_Project_Sem3.Models.UserCustomerViewModel.EnumStatus)),
+                     "Select Status",
+                     new { @class = "btn btn-default" })
+                    </div>
+                    <div class="col-lg-3 col-md-10">
+                        <div class="pull-left">
+                            <p class="padding">
+                                Search By Time
+                            </p>
+                            <input type="text" name="daterange" value="" class="form-control fa fa-clock-o" />
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Count() == 0)
+            {
+                <div style="font-style:italic ; text-align:center ; font-size: 1.2em;" class="padding">
+                    (NO RESULT IS FOUND)
+                </div>
+            }
+
+        </div>
             <table class="table">
                 <tr>
                     @*<th>
