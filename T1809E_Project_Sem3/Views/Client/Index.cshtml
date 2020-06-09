@@ -87,7 +87,7 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="@Url.Action("Details","Client")"> @item.Name</a></h3>
+                                                <h3 class="name"><a href="@Url.Action("Details","Client",new { id = item.Id})"> @item.Name</a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
                                                 <div class="product-price">
@@ -106,8 +106,8 @@
                                                             <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
 
                                                         </li>
-                                                        <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href=" @Url.Action("Details","Client")  " title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                        <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="@Url.Action("Details","Client")" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                        <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href=" @Url.Action("Details","Client",new { id = item.Id})  " title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                        <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="@Url.Action("Details","Client",new { id = item.Id})" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                                                     </ul>
                                                 </div>
                                                 <!-- /.action -->
@@ -198,7 +198,7 @@
                             <div class="col-md-6 col-xs-12 por-tabs ">
                                 <div class="tab-pane in active" id="all">
                                     <div class="product-slider">
-                                        <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
+                                        <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="3">
                                             @foreach (var item in Model)
                                             {
                                                 <div class="item item-carousel">
@@ -213,7 +213,7 @@
                                                             <!-- /.product-image -->
 
                                                             <div class="product-info text-left">
-                                                                <h3 class="name"><a href="@Url.Action("Details","Client")"> @item.Name</a></h3>
+                                                                <h3 class="name"><a href="Client/Details/@item.Id"> @item.Name</a></h3>
                                                                 <div class="rating rateit-small"></div>
                                                                 <div class="description"></div>
                                                                 <div class="product-price">
@@ -227,15 +227,15 @@
                                                             <div class="cart clearfix animate-effect">
                                                                 <div class="action">
                                                                     <ul class="list-unstyled">
-                                                                        <li class="add-cart-button btn-group">
-                                                                            <a href="/ShoppingCart/AddItem/@item.Id">
-                                                                                <button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
-                                                                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                                            </a>
+
+                                                                        <li class="add-cart-button btn-group" title="@item.Id">
+                                                                            <button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+
 
                                                                         </li>
-                                                                        <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="@Url.Action("Details","Client")" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                                        <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="@Url.Action("Details","Client")" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                                        
+                                                                       
                                                                     </ul>
                                                                 </div>
                                                                 <!-- /.action -->
@@ -305,7 +305,7 @@
                     position: 'top-end',
                     icon: 'success',
                     title: 'Add To Cart Successfuly!',
-                    showConfirmButton: false,
+                    showConfirmButton: false,   
                     timer: 1500
                 })
                 setInterval('location.reload()', 2000);
