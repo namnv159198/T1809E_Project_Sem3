@@ -277,9 +277,39 @@
             <div class='col-md-9'>
                 <!-- ========================================== SECTION – HERO ========================================= -->
 
+                <div class="col-md-11" style="margin-bottom: 4%;">
+                <div class="col-md-3">
+                    <div class="lbl-cnt">
+                        <div class="fld inline">
+                            <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
+                                <button data-toggle="dropdown" type="button" class="btn dropdown-toggle" style="width: 159px"> Category <span class="caret"></span> </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li role="presentation"><a href="#" onclick="alert("Không có sản phẩm")">Men</a></li>
+                                    <li role="presentation"><a href="#" onclick="Women">Women</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.fld -->
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    @using (Html.BeginForm("Lady", "Client", FormMethod.Get, new { @name = "search-form" }))
+                    {
+                        <div class="input-group m-bot15">
+                            <span class="input-group-btn">
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Name. . . " })
+                                <button class="btn btn-default" type="submit" style="height:34px"> Search <i class="fa fa-search"></i></button>
+
+                            </span>
 
 
+                        </div>
+                    }
+                    </div>
+        
+                    </div>
                 <div class="page-title"><h2>Electronics</h2></div>
+
                 <div class="clearfix filters-container m-t-10">
                     <div class="row">
                         <div class="col col-sm-6 col-md-3">
@@ -361,9 +391,9 @@
                     <div id="myTabContent" class="tab-content category-list">
                         <div class="tab-pane active " id="grid-container">
                             <div class="category-product">
-                                <div >
-                                 
-                                    <div class=" row wow fadeInUp " >
+                                <div>
+
+                                    <div class=" row wow fadeInUp ">
                                         @foreach (var item in Model)
                                         {
                                             <div class="col-md-4 products">
@@ -401,13 +431,13 @@
                                                     <!-- /.cart -->
                                                 </div>
                                                 <!-- /.product -->
-                                                
+
                                             </div>
                                         }
-                                            <!-- /.products -->
-                                        </div>
-                                        
-                                    
+                                        <!-- /.products -->
+                                    </div>
+
+
                                     <!-- /.item -->
                                     <!-- /.item -->
                                 </div>
@@ -469,9 +499,9 @@
                                         <!-- /.products -->
                                     </div>
                                 }
-                                    
 
-                                </div>
+
+                            </div>
                             <!-- /.category-product -->
                         </div>
                         <!-- /.tab-pane #list-container -->
